@@ -1,18 +1,25 @@
 % !TeX root = .\main.tex
-\documentclass[11pt]{book}
+\documentclass[oneside,11pt]{article}
 \usepackage{babel}[spanish]
 \usepackage{mathrsfs}
 \usepackage[utf8]{inputenc}
-
-
 \begin{document}
 \include{./src/portada}
+\newpage
 \tableofcontents
-\chapter{Introducción}
-\chapter{Tema 1: Campo Electrostático}
-\chapter{Tema 2: Campo Magnetostático}
-\chapter{Tema 3: Circuitos de Corriente Continua}
-\chapter{Tema 4: Inducción Electromagnética}
-\chapter{Tema 5: Circuitos de Corriente Alterna}
-\chapter{Tema 6: Ondas Electromagnéticas}
+% * PARA MODIFICAR ALGÚN TEMA, HAY QUE IR AL ARCHIVO CORRESPONDIENTE, Y SI SE QUIERE AÑADIR ALGÚN SUB APARTADO, SE AÑADE AHÍ *%
+\section{Introducción}
+\include{./src/intro}
+\section{Tema 1: Campo Electrostático}
+\include{./src/t1}
+\section{Tema 2: Campo Magnetostático}
+\include{./src/t2}
+\section{Tema 3: Circuitos de Corriente Continua}
+\include{./src/t3}
+\section{Tema 4: Inducción Electromagnética}
+\include{./src/t4}
+\section{Tema 5: Circuitos de Corriente Alterna}
+\include{./src/t5}
+\section{Tema 6: Ondas Electromagnéticas}
+\include{./src/t6}
 \end{document}
