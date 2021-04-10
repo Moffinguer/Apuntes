@@ -38,8 +38,30 @@ y
 \( \vec{a} = cte \to\) \fbox{\(\vec{x} = \vec{x_o} + \vec{v_0}t + \frac{\vec{a}t^2}{2}\)}
 
 \subsubsection{MCU y MCUA}
-\vspace{0.5cm}
-\input{src/figures/mcu}
-% TODO ARREGLAR LA FIGURA CORRESPONDIENTE
+% TODO La figura no sale correctamente, es mejor modificarla para que quede un poco más pequeña%
+\input{src/figures/mcu} \par
+El \textbf{MCU} o Movimiento Circular Uniforme, se genera en las rotaciones de un cuerpo respecto a un punto \(p\). Podemos analizar la posición de un punto cualquiera, en función de las componentes horizontales y verticales:
+\[
+        \boxed{\vec{P}(t)=(\vec{x}(t),\vec{y}(t))=R(\cos{\theta}\vec{\imath} + \sin{\theta}\vec{\jmath})}
+\]
+Sabemos que el modulo de \(\vec{P}(t)\) es lo mismo que: \(\left | \vec{P} \right | = R\) y que al derivar un angulo cualquiera en función del tiempo, obtenemos la velocidad angular por unidad de tiempo: \[
+        \frac{\partial \theta}{\partial t} = \frac{v}{R}t = wt\
+\]
+Por lo tanto, podemos concluir con lo siguiente
+\[
+        \vec{v} =\frac{\partial \vec{P}}{\partial t} =R \hspace{1.35mm} (w\cos{\theta}\vec{\jmath} - w\sin{\theta}\vec{\imath}\hspace{1mm})  = \boxed{Rw \hspace{1.35mm} (\cos{\theta}\vec{\jmath} - \sin{\theta}\vec{\imath}\hspace{1mm})}
+\]
+Y que el modulo de la velocidad es constante:
+\[
+        \left | \vec{v} \right | = wR = cte
+\]
+Evidentemente podemos calcular a partir de la velocidad, el vector aceleración:
+\[
+        \vec{a} =\frac{\partial \vec{v}}{\partial t} = -Rw^2 \hspace{1.35mm}(\cos{\theta}\vec{\imath} + \sin{\theta}\vec{\jmath}\hspace{1mm}) \hspace{1.35mm}= \boxed{-w^{2}\vec{P}}
+\]
+De esta expresón podemos deducir que \underline{el vector \(\vec{a}\) es Antiparalelo a \(\vec{P}(t)\)} y el modulo de la aceleración es \fbox{\(\vec{a}=\frac{v^2}{R}\)}
 
-El \textbf{MCU} o Movimiento Circular Uniforme, se genera en las rotaciones de un cuerpo respecto a un punto \(p\)
+\subsection{Vectores}
+
+Aquí aparecerán las operaciones y transformaciones más relevantes: \par
+\hspace{0.5cm}
