@@ -1,11 +1,15 @@
-\hspace{0.5cm}
-\begin{tikzpicture}[x=1cm,y=1cm]
-        \draw[->,ultra thick] (0,0)--(3,0) node[above = -20]{\(x\)} node[above = -13, left = 45] {\(R\)};
-        \draw[->,ultra thick] (0,0)--(0,3) node[left = 3]{\(y\)};
-        \draw[thick] (2,0) arc (0:90:2);
-        \draw[thin] (1,0) arc (0:45:1) node[above = -18]{\( \theta\)};
-        \draw[->,thick] (1.4,1.42828) -- (0.5098765432099,2.429629629629) node[above = 2, right = 1]{\(\vec{v}\)};
-        \draw[dotted] (1.4,1.42828) -- (2.676296,0);
-        \draw[->,thick] (0,0) -- (1.4,1.42828) node[left = 30, above = -30]{\(\vec{p}\)};
-        \filldraw[color = black] (1.4,1.42828) circle (1pt);
-\end{tikzpicture}
+\begin{wrapfigure}{1}{6cm}
+        \hspace{0.2cm}
+        \resizebox{.3\textwidth}{!}{
+                \begin{tikzpicture}[x=1cm,y=1cm]
+                        \draw[->,ultra thick] (0,0)--(3,0) node[above = -20]{\(x\)} node[above = -13, left = 45] {\(R\)};
+                        \draw[->,ultra thick] (0,0)--(0,3) node[left = 3]{\(y\)};
+                        \draw[thick] (2,0) arc (0:90:2);
+                        \draw[->,thick] (1,0) arc (0:45:1) node[above = -18]{\( \theta\)};
+                        \draw[->,thick] (1.4,1.42828) -- (0.5098765432099,2.429629629629) node[above = 2, right = 1]{\(\vec{v}\)};
+                        \draw[dotted] (1.4,1.42828) -- (2.676296,0);
+                        \draw[->,thick] (0,0) -- (1.4,1.42828) node[left = 30, above = -30]{\(\vec{p}\)};
+                        \filldraw[color = black] (1.4,1.42828) circle (1pt);
+                \end{tikzpicture}
+        }
+\end{wrapfigure}
