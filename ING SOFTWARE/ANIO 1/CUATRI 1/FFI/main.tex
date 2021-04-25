@@ -10,11 +10,12 @@
 \usepackage{amsfonts}
 \usepackage[annataritalic]{tengwarscript}
 \usepackage[a4paper, width=150mm, top=25mm, bottom=25mm]{geometry}
+\usetikzlibrary{shapes}
 \pdfmapfile{=tengwarscript.map}
 \pgfplotsset{compat=1.17}
 \usetikzlibrary{arrows, babel}
 \begin{document}
 \include{./src/header/portada}
+\setlength{\parindent}{12pt}
 \include{./src/header/index}
 \end{document}
-% TODO GUARDAR UNA PLANTILLA QUE GUARDE EL FORMATO DE LA PORTADA, MODIFICAR EL DE LA PLANTILLA MAIN Y SEPARAR LOS PACKAGES EN UNA CARPETA A PARTE%

@@ -1,0 +1,9 @@
+\begin{tikzpicture}[scale=2]
+        \pgfmathsetmacro{\cubex}{2}
+        \pgfmathsetmacro{\cubey}{1}
+        \pgfmathsetmacro{\cubez}{1}
+        \draw[] (0,0,0) -- ++(0,0,-\cubez) -- ++(0,-\cubey,0) -- ++(0,0,\cubez) -- cycle;
+        \draw[->,ultra thick] (0,-.35,-0.25) --(1,-.35,-.25) node[above = -20]{\(\vec{E}\)};
+        \draw[->,ultra thick] (0,-.35,-0.25) -- (30:1) node[above = 5]{\(\vec{S}\)};
+        \draw[->,thick] (0.65,-.25) arc (0:45:0.5) node[above = -18]{\( \theta\)};
+\end{tikzpicture}
