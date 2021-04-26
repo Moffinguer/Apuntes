@@ -1,6 +1,7 @@
 % !TeX root = .\main.tex
 \documentclass[oneside,11pt]{article}
-\usepackage{babel}[spanish]
+\usepackage[spanish]{babel}
+\usepackage{datetime}
 \usepackage{mathrsfs}
 \usepackage{amsmath}
 \usepackage{tikz, pgf}
@@ -10,6 +11,7 @@
 \usepackage{amsfonts}
 \usepackage[annataritalic]{tengwarscript}
 \usepackage[a4paper, width=150mm, top=25mm, bottom=25mm]{geometry}
+\renewcommand{\today}{\number \day\space de \ifcase \month \or Enero\or Febrero\or Marzo\or Abril\or Mayo \or Junio\or Julio\or Agosto\or Septiembre\or Octubre\or Noviembre\orDiciembre\fi \space del \number \year}
 \usetikzlibrary{shapes}
 \pdfmapfile{=tengwarscript.map}
 \pgfplotsset{compat=1.17}
