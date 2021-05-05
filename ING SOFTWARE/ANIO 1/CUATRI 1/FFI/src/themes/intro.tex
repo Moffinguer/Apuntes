@@ -1,27 +1,25 @@
-
 \subsection{Movimiento}
-En este apartado veremos un repaso de los movimientos más básicos.
+\noindent En este apartado veremos un repaso de los movimientos más básicos.
 
 
 \subsubsection{MRU y MRUA}
 
-Partiendo de la \textit{\(2^a\) Ley de Newton}, sabemos que la Fuerza es igual a la masa por su aceleración:
+\noindent Partiendo de la \textit{\(2^a\) Ley de Newton}, sabemos que la Fuerza es igual a la masa por su aceleración:
 \[\vec{F} = m\vec{a}\]
 Podemos descomponer la fuerza en sus componentes horizontales y verticales:
-\[
+\begin{align*}
         \vec{F_{x}}=\frac{\partial^{2}\vec{x}}{\partial{t}}m
         \to
         m\frac{\partial^2 \vec{x}}{\partial t} = 0
         \Leftrightarrow
         \frac{\partial^2{\vec{x}}}{\partial{t}} = 0
-\]
-\[
+        \\
         \vec{F_{y}}=F_{y}\hat{\jmath}
         \to
         \vec{F_y} = m\frac{\partial\vec{v}}{\partial t}\Leftrightarrow
         \frac{\vec{F_y}}{m} = \vec{a_y}
-\]
-Es decir, cuando \(\vec{F_x}\) = 0N \(\to\vec{a}=0\)m/\(s^2\), por lo que la velocidad es constante, \(\vec{v}=cte\), solo si \(\vec{F_y}\neq 0\)N y \(\vec{a_y} = \vec{a} = \frac{\vec{F_y}}{m}=cte\).\par \vspace{0.5cm} Sabiendo esto y las expresiones de la aceleración y la velocidad, podemos definir las expresiones del \textbf{MRU} y \textbf{MRUA}: \par \vspace{0.5cm} \hspace{5cm}
+\end{align*}
+Es decir, cuando \(\bm{\vec{F_x}}\)\textbf{ = 0N} \(\bm{\to\vec{a}=0}\)\textbf{m/}\(\bm{s^2}\), por lo que la velocidad es constante, \(\vec{v}=cte\), solo si \(\bm{\vec{F_y}\neq 0}\)\textbf{N} y \(\bm{\vec{a_y} = \vec{a} = \frac{\vec{F_y}}{m}=cte}\).\par \vspace{0.5cm} \noindent Sabiendo esto y las expresiones de la aceleración y la velocidad, podemos definir las expresiones del \textbf{MRU} y \textbf{MRUA}: \par \vspace{0.5cm} \hspace{5cm}
 \( \vec{a} = \frac{\partial \vec{v} }{\partial t}\) Y \( \vec{v} = \frac{\partial \vec{x} }{\partial t}\) \par \vspace{0.5cm} Obtenemos:
 \[
         \int_{0}^{t}{\vec{a}\hspace{1mm}\partial{t}} = \int_{0}\partial{t}
@@ -33,7 +31,7 @@ Es decir, cuando \(\vec{F_x}\) = 0N \(\to\vec{a}=0\)m/\(s^2\), por lo que la vel
         \to
         \boxed{\vec{x} = \vec{x_o} + \vec{v_0}t}
 \]
-\hspace{2.3cm} Si \( \vec{v} = \vec{v_o} + \vec{a}t\)
+\hspace{2.3cm} Si \( \bm{\vec{v} = \vec{v_o} + \vec{a}t}\)
 y
 \( \vec{a} = cte \to\) \fbox{\(\vec{x} = \vec{x_o} + \vec{v_0}t + \frac{\vec{a}t^2}{2}\)}
 \subsubsection{MCU y MCUA}
@@ -42,17 +40,18 @@ y
         \input{src/figures/mcu}
         \par
 \end{wrapfigure}
-El \textbf{MCU} o Movimiento Circular Uniforme, se genera en las rotaciones de un cuerpo respecto a un punto \(p\) en un radio \(R\).
+\noindent El \textbf{MCU} o Movimiento Circular Uniforme, se genera en las rotaciones de un cuerpo respecto a un punto \(\bm{p}\) en un radio \(\bm{R}\).
 Podemos analizar la posición de un punto cualquiera, en función de las componentes horizontales y verticales:
 \[
-        \boxed{\vec{P}(t)=(\vec{x}(t),\vec{y}(t))=R(\cos{\theta}\vec{\imath} + \sin{\theta}\vec{\jmath})}
+        \boxed{\vec{P}(t)=(\vec{x}(t),\vec{y}(t))=R(\cos{\theta}\hspace{1mm}\vec{\imath} + \sin{\theta}\hspace{1mm}\vec{\jmath})}
 \]
-Sabemos que el modulo de \(\vec{P}(t)\) es lo mismo que: \(\left | \vec{P} \right | = R\) y que al derivar un angulo cualquiera en función del tiempo, obtenemos la velocidad angular por unidad de tiempo: \[
-        \frac{\partial \theta}{\partial t} = \frac{v}{R}t = wt\
+Sabemos que el modulo de \(\bm{\vec{P}(t)}\) es lo mismo que: \(\bm{\left | \vec{P} \right | = R}\) y que al derivar un angulo cualquiera en función del tiempo, obtenemos la velocidad angular por unidad de tiempo:
+\[
+        \boxed{\bm{\frac{\partial \theta}{\partial t} = \frac{v}{R}t = wt}}
 \]
 Por lo tanto, podemos concluir con lo siguiente
 \[
-        \vec{v} =\frac{\partial \vec{P}}{\partial t} =R \hspace{1.35mm} (w\cos{\theta}\vec{\jmath} - w\sin{\theta}\vec{\imath}\hspace{1mm})  = \boxed{Rw \hspace{1.35mm} (\cos{\theta}\vec{\jmath} - \sin{\theta}\vec{\imath}\hspace{1mm})}
+        \vec{v} =\frac{\partial \vec{P}}{\partial t} =R \hspace{1.35mm} (w\cos{\theta}\hspace{1mm}\vec{\jmath} - w\sin{\theta}\hspace{1mm}\vec{\imath}\hspace{1mm})  =\boxed{Rw \hspace{1.35mm} (\cos{\theta}\hspace{1mm}\vec{\jmath} - \sin{\theta}\hspace{1mm}\vec{\imath}\hspace{1mm})}
 \]
 Y que el modulo de la velocidad es constante:
 \[
@@ -60,24 +59,24 @@ Y que el modulo de la velocidad es constante:
 \]
 Evidentemente podemos calcular a partir de la velocidad, el vector aceleración:
 \[
-        \vec{a} =\frac{\partial \vec{v}}{\partial t} = -Rw^2 \hspace{1.35mm}(\cos{\theta}\vec{\imath} + \sin{\theta}\vec{\jmath}\hspace{1mm}) \hspace{1.35mm}= \boxed{-w^{2}\vec{P}}
+        \vec{a} =\frac{\partial \vec{v}}{\partial t} = -Rw^2 \hspace{1.35mm}(\cos{\theta}\hspace{1mm}\vec{\imath} + \sin{\theta}\hspace{1mm}\vec{\jmath}\hspace{1mm}) \hspace{1.35mm}= \boxed{-w^{2}\vec{P}}
 \]
-De esta expresón podemos deducir que \underline{el vector \(\vec{a}\) es Antiparalelo a \(\vec{P}(t)\)} y el modulo de la aceleración es \fbox{\(\left | \vec{a} \right |=\frac{v^2}{R}\)}
+De esta expresón podemos deducir que \underline{el vector \(\bm{\vec{a}}\) es Antiparalelo a \(\bm{\vec{P}(t)}\)} y el modulo de la aceleración es \fbox{\(\bm{\left | \vec{a} \right | =\frac{v^2}{R}}\)}
 \subsection{Vectores}
-Un vector es un elemento matemático dotado de dirección, sentido y modulo, es decir, el vector se mueve de cierta forma a un punto, de una forma concreta a una distancia.
+\noindent Un vector es un elemento matemático dotado de dirección, sentido y modulo, es decir, el vector se mueve de cierta forma a un punto, de una forma concreta a una distancia.
 Aquí aparecerán las operaciones y transformaciones más relevantes:
 
 
 \vspace{0.5cm}
-Considerando los vectores \( \vec{u},\vec{w}, \vec{u} \in \mathbb{R}^n\) tenemos:
+Considerando los vectores \(\bm{\vec{u},\vec{w}, \vec{u} \in \mathbb{R}^n}\) tenemos:
 
 
 \vspace{0.3cm}
 \begin{itemize}
-        \item Producto escalar: \( \vec{v}\cdot \vec{w} = \left\lvert v\right\rvert \left\lvert w\right\rvert \cos{\alpha } = \left\lvert u\right\rvert \)
+        \item Producto escalar: \( \bm{\vec{v}\cdot \vec{w}} = \left\lvert v\right\rvert \left\lvert w\right\rvert \cos{\alpha } = \left\lvert u\right\rvert \)
 
 
-        \item Producto vectorial: \(\vec{v}\times  \vec{w} = \left\lvert v\right\rvert \left\lvert w\right\rvert \sin{\alpha } = \vec{u} = \begin{vmatrix}
+        \item Producto vectorial: \(\bm{\vec{v}\times \vec{w}} = \left\lvert v\right\rvert \left\lvert w\right\rvert \sin{\alpha } = \vec{u} = \begin{vmatrix}
                       \vec{\imath} & \vec{\jmath} & \vec{k} \\
                       v_x          & v_y          & v_z     \\
                       w_x          & w_y          & w_z
@@ -96,11 +95,38 @@ Considerando los vectores \( \vec{u},\vec{w}, \vec{u} \in \mathbb{R}^n\) tenemos
               \end{vmatrix}
               \) \par
               En el Tema 3, veremos algunas propiedades interesantes, sin embargo, con esto será suficiente.
-        \item Vector unitario: \( \hat{u} = \frac{\vec{u}}{\left | \vec{u} \right |}\) Lo que da lugar a un vector, igual en todo sentido a \(\vec{u}\) pero de longitud 1.
+        \item Vector unitario: Un vector, igual en todo sentido a \(\vec{u}\) pero de longitud 1 \(\Rightarrow  \bm{\hat{u} = \frac{\vec{u}}{\left | \vec{u} \right |}}\)
 \end{itemize}
 %TODO COMPLETAR ESTA PARTE CUANDO SE LLEGUE AL TEMA DE CORRIENTE ALTERNA%
 \subsection{Trigonometría}
+\begin{wrapfigure}{r}{4cm}
+        \vspace{1cm}
+        \hspace{-4cm}
+        \begin{tikzpicture}
+                \draw (0,0) node[anchor=north]{$A$}
+                -- (2,0) node[anchor=north]{$C$}
+                -- (2,2) node[anchor=south]{$B$} -- cycle;
+        \end{tikzpicture}
+\end{wrapfigure}
 %TODO INDICAR EL CALCULO DE ANGULOS, TRASLACION DE ANGULOS DE UN CUADRANTE A OTRO, PROPIEDADES DE ANGULOS AL SUMAR, RESTAR, ETC%
+\noindent Veremos como calcular las funciones trigonométricas y posteriormente algunas de sus propiedades
+\begin{itemize}
+        \item \(\bm{\sin{\bm{\alpha}} = \frac{\overline{BC}}{\overline{AB}}}\)
+        \item \(\bm{\cos{\bm{\alpha}} = \frac{\overline{AC}}{\overline{AB}}}\)
+        \item \(\bm{\tan{\bm{\alpha}} = \frac{\overline{BC}}{\overline{AC}}}\)
+        \item \(\bm{\csc{\bm{\alpha}} = \sin{\bm{\alpha}}^{-1}=\frac{\overline{AB}}{\overline{BC}}}\)
+        \item \(\bm{\sec{\bm{\alpha}} = \cos{\bm{\alpha}}^{-1}=\frac{\overline{AB}}{\overline{AC}}}\)
+        \item \(\bm{\cot{\bm{\alpha}} = \tan{\bm{\alpha}}^{-1}=\frac{\overline{AC}}{\overline{BC}}}\)
+\end{itemize}
+Al hablar en trigonometría usaremos los radianes \(\bm{k\pi}\) \textbf{rad} y en función del angulo que tengamos, lo podemos simplificar a otro que sea inferior a \(\frac{\pi}{2}\) rad:
+\begin{itemize}
+        \item {\boldmath \(\sin{(\frac{\pi}{2} \pm \alpha)} = \cos{\alpha}\)}
+        \item {\boldmath \(\cos{(\frac{\pi}{2} \pm \alpha)} = \mp\sin{\alpha}\)}
+        \item {\boldmath \(\sin{(\pi \pm \alpha)} = \mp\sin{\alpha}\)}
+        \item {\boldmath \(\cos{(\pi \pm \alpha)} = -\cos{\alpha}\)}
+        \item {\boldmath \(\sin{(3\frac{\pi}{2} \pm \alpha)} = -\cos{\alpha}\)}
+        \item {\boldmath \(\cos{(3\frac{\pi}{2} \pm \alpha)} = \mp\sin{\alpha}\)}
+\end{itemize}
 \subsection{Números Complejos}
 %TODO EXPLICAR QUE ES UN COMPLEJO, OPERACIONES Y PROPIEDADES%
 \subsubsection{Fasores}
