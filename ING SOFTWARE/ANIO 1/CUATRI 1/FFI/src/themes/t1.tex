@@ -135,7 +135,7 @@ Por lo tanto el trabajo requerido para mover una carga de un punto A a otro B, e
 \]
 \noindent Gracias al conocimiento del trabajo, podemos decir que las unidades del Campo Eléctrico pueden ser tanto \textbf{N/C} como \textbf{V/m}
 \subsection{Superficies Equipotenciales}
-\noindent Estos son aquellos espacios donde la diferencia de potencial \(\bm{\nabla V}\) vale siempre cero, es decir, tienen el mismo potencial en todos los puntos. \\
+\noindent Estos son aquellos espacios donde la diferencia de potencial \(\bm{\Delta V}\) vale siempre cero, es decir, tienen el mismo potencial en todos los puntos. \\
 Los espacios que satisfacen esta situacion son aquellos situados paralelamente, en sentido del campo eléctrico. \\ Es decir:
 \[
         \boxed{\Delta V = - E \mathrm{d} \cos{\alpha} \Rightarrow \mathrm{d}V = - \vec{E}\mathrm{d}\vec{r}}
@@ -145,7 +145,7 @@ Los espacios que satisfacen esta situacion son aquellos situados paralelamente, 
 \end{wrapfigure}
 Dada esta expresión, dos puntos son equipotenciales cuando \(\bm{\cos{\bm{\alpha}} = 0}\). Como se puede ver en el diagrama, todos los puntos paralelos, en función de las lineas de cambio, son equipotenciales entre si.
 \subsection{Conductores}
-\noindent Las cargas en un conductor tenderán a moverse, mientras circula un campo \(\bm{\vec{E}}\), hasta que la carga neta del sistema se estabilice y quede en equilibrio, alrededor de unos \(10^{-14}\) s.\\\\
+\noindent Las cargas en un conductor tenderán a moverse, mientras circula un campo \(\bm{\vec{E}}\), hasta que la carga neta del sistema se estabilice y quede en equilibrio, alrededor de unos \(10^{-14}\) segundos.\\\\
 Estos materiales poseen una serie de propiedades, estudiandolos internamente, estas son:\\\\
 \hspace{3cm}\textbf{Propiedades:}
 \begin{enumerate}
@@ -208,7 +208,7 @@ Siendo \(\bm{Sd}\) el volumen entre ambas placas, y \(\bm{\epsilon_\textnormal{o
 \\\\
 Es decir, las cargas se polarizan, en la superficie, y estas tenderán a ser la misma que la polarizada cuanto más cerca estén de la superficie. Pasado un tiempo, la variación de la polarización se invertirá:
 \[
-        E = \frac{\sigma_+-\sigma_-}{\epsilon_{\textnormal{o}}}
+        E = \frac{\bm{\sigma_+}-\bm{\sigma_-}}{\epsilon_{\textnormal{o}}}
 \]
 \subsubsection{Permitivad relativa}
 \noindent La permitivad relativa \(\bm{\kappa }\) indica la facilidad con la que la corriente fluye a través de un medio:
@@ -218,4 +218,38 @@ Es decir, las cargas se polarizan, en la superficie, y estas tenderán a ser la 
 Siendo \(\bm{\epsilon_\textnormal{R}}\) la permitividad en un medio \(\bm{R}\) y \(\bm{\kappa}\) la permitividad relativa
 \subsection{Asociación de condensadores}
 \subsubsection{En serie}
+\begin{wrapfigure}{r}{6cm}
+        \begin{circuitikz}[]
+                \draw (-2,0) to[short, l=\(\bm{Q^-}\)] (-1,0)to[C, l_=\(\mathcal{C}\)] (0.5,0)to[short, l=\(0\)] (2,0) to[C, l_=\(\mathcal{C}\)] (3,0) to[short, l=\(\bm{Q^-}\)]  (4,0);
+        \end{circuitikz}
+\end{wrapfigure}
+\noindent \textbf{Por cada uno de los condensadores hay una caida de tensión, pero la intensidad es la misma en todo, por lo que la carga es} \(\bm{cte}\)\\\\
+\[
+        \boxed{\mathcal{C}_T = \mathcal{C}_{\textnormal{eq}} = \frac{1}{\sum^k_{n=1}\frac{1}{\mathcal{C}_n}}}
+\]
+\[
+        \boxed{V_T = \sum^n_{i=1}V_n}
+\]
+\[
+        \boxed{Q_n = Q_1 = ... = Q_k = cte}
+\]
+
 \subsubsection{En paralelo}
+\begin{wrapfigure}{r}{1cm}
+        \begin{circuitikz}
+                \draw (0,0) to[C=\(\mathcal{C}\)] (2,0);
+                \draw (0,-2) to[C=\(\mathcal{C}\)] (2,-2);
+                \draw (0,-4)  to[C=\(\mathcal{C}\)] (2,-4);
+                \draw (0,0)--(0,-6) (2,0)--(2,-6);
+        \end{circuitikz}
+\end{wrapfigure}
+\noindent \textbf{Por cada uno de los condensadores la tensión es la misma, es \(\bm{cte}\), pero la carga no, por lo que la intensidad depende de cada capacitor}:
+\[
+        \boxed{\mathcal{C}_T = \mathcal{C}_\textnormal{eq} = \sum^k_{n=1}\mathcal{C}_n}
+\]
+\[
+        \boxed{V_n = V_1 = ... = V_k = cte}
+\]
+\[
+        \boxed{Q_T = \sum^k_{n=1}Q_n}
+\]
