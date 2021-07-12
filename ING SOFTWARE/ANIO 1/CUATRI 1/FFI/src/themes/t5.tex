@@ -1,0 +1,66 @@
+\subsection{Uso de fasores}
+\noindent Debido a que los cálculos con números complejos pueden llegar a ser complicados, es más propicio usar fasores en este tema. El fasor más simple que podemos calcular, de temas anteriores, se puede obtener para calcular la tensión inducida de una espira.
+\[
+        \varepsilon (t) = -\frac{\mathrm{d} \Phi}{\mathrm{d} t} = -\left | \vec{B} \right |\left | \vec{S} \right |\frac{\mathrm{d} \cos{(wt+\rho )}}{\mathrm{d} t} = \varepsilon_{\textnormal{o}}\sin{(wt + \rho)}
+\]
+\noindent Normalmente, la amplitud se refleja con valores eficaces \(\mathbf{X_{\textnormal{e}} = \frac{X_{\textnormal{o}}}{\sqrt{2}}}\).
+\subsection{Impedancia}
+\noindent La impedancia es la forma de representar la ''resistencia"\space que oponen los elementos de un circuito de corriente continua al paso de la corriente.\\
+Dependiendo del elemento, resistencia; bobina o capacitor, la señal estará en fase o desfase.\\ Se miden en ohmios.
+\begin{itemize}
+        \item Resistencias:
+              \(\boxed{\mathbf{R = \frac{\tilde{V}}{\tilde{I}}}}\) Se encuentra en resonancia, misma fase.
+        \item Condensadores:
+              \(\boxed{\mathbf{\mathrm{C} = \frac{\tilde{I}}{w\tilde{V}j}}}\) Se encuentra en desfase, de \(\mathbf{-\frac{\pi}{2}}\).
+        \item Bobinas:
+              \(\boxed{\mathbf{L = \frac{\tilde{V}}{w\tilde{I}j}}}\) Se encuentra en fase, de \(\mathbf{\frac{\pi}{2}}\)
+\end{itemize}
+La suma de impedancias sigue la misma regla que la suma de resistencias \[
+        \boxed{Z_T = \underset{\textnormal{serie}}{\sum_{n=1}^{k} Z_n} = \underset{\textnormal{paralelo}}{\frac{1}{\sum_{n=1}^{k}\frac{1}{Z_n}}}}
+\]
+\subsection{Potencia}
+\noindent Aquí solo veremos las fórmulas correspondientes:
+\begin{itemize}
+        \item \(
+              \boxed{P(t) = \tilde{V}\tilde{I} = V_{\textnormal{o}}\cos{(wt + \rho)}\hspace{3mm}I_{\textnormal{o}}\cos{(wt)}} \hspace{5mm} \) Esta es la expresión general para calcular la potencia que consume, o el calor que se pierde en el circuito.
+        \item \(
+              \boxed{P_m = \frac{V_{\textnormal{o}}I_{\textnormal{o}}\cos{\rho}}{2}}\hspace{5mm}
+              \) De aquí podemos deducir la potencia que consume el circuito en total, siendo \(\mathbf{\rho = \rho_v - \rho_I}\).
+        \item \(
+              \boxed{P_R= \frac{V_{\textnormal{o}}I_{\textnormal{o}}}{2}\hspace{5mm}}\) Aquí vemos que la potencia consumida por \underline{las resistencias} es igual que en un circuito de corriente continua.
+              \item\(\boxed{P_z = \frac{I_{\textnormal{o}}^2}{2}\hspace{2mm} \Re(z) = O} \hspace{5mm}
+              \) Todo lo que no sea una resistencia, no consumirá energía, por lo que su potencia es siempre 0.
+\end{itemize}
+\subsection{Ondas en un circuito}
+\noindent Este es un caso especial, que aparece en las telecomunicaciones, veremos las ecuaciones más relevantes, unicamente:
+\[
+        \tilde{\varepsilon} = \tilde{I}Z
+\]
+\[
+        \boxed{I_{\textnormal{o}} = \frac{\varepsilon_{\textnormal{o}}}{\sqrt{R^2+(X_L - X_C)^2}}}
+\]
+\noindent Cuando \(\mathbf{X_L = X_C}\) entonces decimos que están en resonancia y podremos calcular la frecuencia:
+\[
+        \boxed{Lw_{\textnormal{o}} = \frac{1}{\mathrm{C}w_{\textnormal{o}}}}
+\]
+\[
+        f_{\textnormal{o}} = \frac{1}{2\pi\sqrt{L\mathrm{C}}}
+\]
+\noindent Y por ende:
+\[
+        \boxed{\tilde{V_L} = -\tilde{V_C}}
+\]
+\begin{wrapfigure}{l}{2cm}
+        \begin{tikzpicture}
+                \path (0,0) coordinate (ref_gnd);
+                \draw
+                (ref_gnd)
+                to[battery=\(\varepsilon\)] ++(0,1)
+                to[nos] ++(0,2)
+                to[R=\(R\)] ++(3,0)
+                to[L=\(L\)] ++(0,-3)
+                to[C=\(\mathrm{C}\)] ++ (-3,0)
+                -- (ref_gnd);
+        \end{tikzpicture}
+\end{wrapfigure}
+\noindent Aquí vemos un dibujo del circuito que estamos analizando:

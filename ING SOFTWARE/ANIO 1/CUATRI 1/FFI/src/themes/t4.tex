@@ -1,0 +1,74 @@
+\subsection{Introducción}
+\noindent En el Tema 2 se vio brevemente el concepto de \underline{Flujo} con la \underline{Ley de Gauss}, que no es más que el número de líneas que atraviesa una superficie en movimiento. La variación de este número de líneas generan una tensión.
+\[
+        \boxed{\Phi \hspace{1mm}=\hspace{1mm} \oint \vec{B}\hspace{1mm}\mathrm{d}\vec{S}}
+\]
+\noindent Vemos que cuando la superficie es paralela al campo magnético el flujo es nulo.\\
+\noindent El flujo se mueve en Webers \textbf{Wb}.
+\subsection{Ley de Lenz y Faraday}
+\subsubsection{Ley de Faraday}
+\noindent El voltaje inducido es opuesto en dirección y sentido al que se genera dentro del cuerpo:
+\[
+        \boxed{\mathbf{\varepsilon_{\textnormal{ind}}} = -N\frac{\mathrm{d}\Phi}{\mathrm{d}t} = IR}
+\]
+\noindent Por defecto \(\mathbf{N}\) vale 1, e indica el número de líneas de la espira o cuerpo induccido.
+\subsubsection{Ley de Lenz}
+La intensidad inducida posee dirección y sentido opuesto al generado por el flujo.
+\begin{itemize}
+        \item Si el campo o la superficie aumenta, \textbf{el flujo es creciente}.
+        \item Si el campo o la superficie disminuye, \textbf{el flujo es decreciente}.
+        \item El sentido del flujo es el mismo que el del campo magnético.
+        \item Si el flujo \underline{\textbf{aumenta}}, el sentido de la corriente inducida debe ser opuesto al del flujo.
+        \item Si el flujo \underline{\textbf{disminuye}}, el sentido de la corriente inducida debe ser complementario al del flujo, y tiene que tener el mismo sentido, por ende.
+\end{itemize}
+\subsection{Inductancia}
+\noindent Se denomina \underline{inductancia} al proceso por el cual un cuerpo genera un flujo que atraviesa a otro cuerpo, puede ser ese mismo.\\
+Normalmente viene dado por una expresión del tipo \(\mathbf{\Phi = I \kappa}\), siendo \(\mathbf{\kappa}\) una \(\mathbf{cte}\) que se mide en Henrios \textbf{H}.
+\subsubsection{AutoInducción}
+\noindent Se refiere al proceso por el cual atraviesa un flujo producido por el mismo cuerpo.
+\[
+        \boxed{\kappa = \frac{\Phi}{I} = L \hspace{5mm} \textnormal{[Coeficiente de Autoinducción]}}
+\]
+\[
+        \Phi \hspace{1mm}=\hspace{1mm} \oint \hspace{1mm}\left | \vec{B} \right |\left |\vec{S} \right | \cos{\alpha}\hspace{1mm} = \hspace{1mm}IL \hspace{3mm}\Rightarrow \hspace{3mm} \boxed{L = \frac{BS\cos{\alpha}}{I}}
+\]
+\subsubsection{Inductancia Mutua}
+\noindent Este efecto se produce entre dos cuerpos, de forma recíproca.\\
+Consideraremos \(\Phi_{11}\) el \underline{\textbf{autoflujo}} y \(\Phi_{12}\) el \underline{\textbf{flujo mutuo entre 1 y 2}} pero el generado por el cuerpo 2 en el cuerpo 1.
+\[
+        \Phi_{12} = \oint_{S_1} \vec{B_2}\mathrm{d}\vec{S}
+\]
+\[
+        \boxed{M_{12} = \frac{\Phi_{12}}{I_2} = M_{21}}
+\]
+\subsubsection{En general}
+\[
+        \Phi_n = \Phi_{nn} + \Phi_{nm} +\Phi_{\textnormal{ext}}
+        \Rightarrow
+        \boxed{-[L \frac{\mathrm{d}I_n}{\mathrm{d}t}+M\frac{\mathrm{d}I_m}{\mathrm{d}t} - \frac{\mathrm{d}\Phi_{\textnormal{ext}}}{\mathrm{d}t}]} = \varepsilon_k
+\]
+\begin{itemize}
+        \item \(\mathbf{\Phi_{nn}}\) es la Autoinducción.
+              \item\(\mathbf{\Phi_{nm}}\) es ela inducción mutua.
+              \item\(\mathbf{\Phi_{\textnormal{ext}}}\) son anomalías externas, por lo general es 0.
+\end{itemize}
+\noindent La \underline{autoinducción} depende de la \dashuline{geometría} y la \underline{mutua} de la \dashuline{geometría y la orientación}.
+\subsection{Bobina}
+\begin{wrapfigure}{r}{2cm}
+        \begin{tikzpicture}
+                \path (0,0) coordinate (ref_gnd);
+                \draw
+                (ref_gnd)
+                to[battery=\(\varepsilon\)] ++(0,1)
+                to[nos] ++(0,2)
+                to[R=\(R\)] ++(3,0)
+                to[L=\(L\)] ++(0,-3)
+                -- (ref_gnd);
+        \end{tikzpicture}
+\end{wrapfigure}
+\noindent En un estado estacionario, \(\mathbf{t \rightarrow 0}\), el voltaje de la bobina valdrá 0, como un cortocircuito, pero cuando ha transcurrido un tiempo indefinido \(\mathbf{t \rightarrow \infty}\) el voltaje no es más que \(V_L = L \frac{\mathrm{d}I(t)}{\mathrm{d}t} = \varepsilon e^{-Rt/L}\)
+\subsubsection{Energía Almacenada}
+\noindent Podemos concluir con que la energía almacenada en una bobina es:
+\[
+        \boxed{\mathrm{U}_L = \frac{1}{2}LI^2 \hspace{3mm} \textnormal{\textbf{[J]}}}
+\]

@@ -4,7 +4,7 @@
 
 \subsubsection{MRU y MRUA}
 
-\noindent Partiendo de la \textit{\(2^a\) Ley de Newton}, sabemos que la Fuerza es igual a la masa por su aceleración:
+\noindent Partiendo de la \textit{\(2^a\) Ley de Newton}, sabemos que la fuerza es igual a la masa por su aceleración:
 \[\vec{F} = m\vec{a}\]
 Podemos descomponer la fuerza en sus componentes horizontales y verticales:
 \begin{align*}
@@ -45,15 +45,15 @@ Podemos analizar la posición de un punto cualquiera, en función de las compone
 \[
         \boxed{\vec{P}(t)=(\vec{x}(t),\vec{y}(t))=R(\cos{\theta}\hspace{1mm}\vec{\imath} + \sin{\theta}\hspace{1mm}\vec{\jmath})}
 \]
-Sabemos que el modulo de \(\bm{\vec{P}(t)}\) es lo mismo que: \(\bm{\left | \vec{P} \right | = R}\) y que al derivar un angulo cualquiera en función del tiempo, obtenemos la velocidad angular por unidad de tiempo:
+Sabemos que el módulo de \(\bm{\vec{P}(t)}\) es lo mismo que: \(\bm{\left | \vec{P} \right | = R}\) y que al derivar un ángulo cualquiera en función del tiempo, obtenemos la velocidad angular por unidad de tiempo:
 \[
         \boxed{\bm{\frac{\partial \theta}{\partial t} = \frac{v}{R}t = wt}}
 \]
-Por lo tanto, podemos concluir con lo siguiente
+Por lo tanto, podemos concluir con lo siguiente:
 \[
         \vec{v} =\frac{\partial \vec{P}}{\partial t} =R \hspace{1.35mm} (w\cos{\theta}\hspace{1mm}\vec{\jmath} - w\sin{\theta}\hspace{1mm}\vec{\imath}\hspace{1mm})  =\boxed{Rw \hspace{1.35mm} (\cos{\theta}\hspace{1mm}\vec{\jmath} - \sin{\theta}\hspace{1mm}\vec{\imath}\hspace{1mm})}
 \]
-Y que el modulo de la velocidad es constante:
+Y que el módulo de la velocidad es constante:
 \[
         \left | \vec{v} \right | = wR = cte
 \]
@@ -61,9 +61,9 @@ Evidentemente podemos calcular a partir de la velocidad, el vector aceleración:
 \[
         \vec{a} =\frac{\partial \vec{v}}{\partial t} = -Rw^2 \hspace{1.35mm}(\cos{\theta}\hspace{1mm}\vec{\imath} + \sin{\theta}\hspace{1mm}\vec{\jmath}\hspace{1mm}) \hspace{1.35mm}= \boxed{-w^{2}\vec{P}}
 \]
-De esta expresón podemos deducir que \underline{el vector \(\bm{\vec{a}}\) es Antiparalelo a \(\bm{\vec{P}(t)}\)} y el modulo de la aceleración es \fbox{\(\bm{\left | \vec{a} \right | =\frac{v^2}{R}}\)}
+De esta expresón podemos deducir que \underline{el vector \(\bm{\vec{a}}\) es Antiparalelo a \(\bm{\vec{P}(t)}\)} y el módulo de la aceleración es \fbox{\(\bm{\left | \vec{a} \right | =\frac{v^2}{R}}\)}
 \subsection{Vectores}
-\noindent Un vector es un elemento matemático dotado de dirección, sentido y modulo, es decir, el vector se mueve de cierta forma a un punto, de una forma concreta a una distancia.
+\noindent Un vector es un elemento matemático dotado de dirección, sentido y módulo, es decir, el vector se mueve de cierta forma a un punto, de una forma concreta a una distancia.
 Aquí aparecerán las operaciones y transformaciones más relevantes:
 
 
@@ -108,7 +108,7 @@ Considerando los vectores \(\bm{\vec{u},\vec{w}, \vec{u} \in \mathbb{R}^n}\) ten
                 -- (2,2) node[anchor=south]{$B$} -- cycle;
         \end{tikzpicture}
 \end{wrapfigure}
-%TODO INDICAR EL CALCULO DE ANGULOS, TRASLACION DE ANGULOS DE UN CUADRANTE A OTRO, PROPIEDADES DE ANGULOS AL SUMAR, RESTAR, ETC%
+%TODO INDICAR EL CALCULO DE ánguloS, TRASLACION DE ánguloS DE UN CUADRANTE A OTRO, PROPIEDADES DE ánguloS AL SUMAR, RESTAR, ETC%
 \noindent Veremos como calcular las funciones trigonométricas y posteriormente algunas de sus propiedades
 \begin{itemize}
         \item \(\bm{\sin{\bm{\alpha}} = \frac{\overline{BC}}{\overline{AB}}}\)
@@ -118,7 +118,7 @@ Considerando los vectores \(\bm{\vec{u},\vec{w}, \vec{u} \in \mathbb{R}^n}\) ten
         \item \(\bm{\sec{\bm{\alpha}} = \cos{\bm{\alpha}}^{-1}=\frac{\overline{AB}}{\overline{AC}}}\)
         \item \(\bm{\cot{\bm{\alpha}} = \tan{\bm{\alpha}}^{-1}=\frac{\overline{AC}}{\overline{BC}}}\)
 \end{itemize}
-Al hablar en trigonometría usaremos los radianes \(\bm{k\pi}\) \textbf{rad} y en función del angulo que tengamos, lo podemos simplificar a otro que sea inferior a \(\frac{\pi}{2}\) rad:
+Al hablar en trigonometría usaremos los radianes \(\bm{k\pi}\) \textbf{rad} y en función del ángulo que tengamos, lo podemos simplificar a otro que sea inferior a \(\frac{\pi}{2}\) rad:
 \begin{itemize}
         \item {\boldmath \(\sin{(\frac{\pi}{2} \pm \alpha)} = \cos{\alpha}\)}
         \item {\boldmath \(\cos{(\frac{\pi}{2} \pm \alpha)} = \mp\sin{\alpha}\)}
@@ -128,6 +128,30 @@ Al hablar en trigonometría usaremos los radianes \(\bm{k\pi}\) \textbf{rad} y e
         \item {\boldmath \(\cos{(3\frac{\pi}{2} \pm \alpha)} = \mp\sin{\alpha}\)}
 \end{itemize}
 \subsection{Números Complejos}
-%TODO EXPLICAR QUE ES UN COMPLEJO, OPERACIONES Y PROPIEDADES%
-\subsubsection{Fasores}
-%TODO RELACION CON LOS NUMEROS COMPLEJOS Y EL NUMERO DE EULER, CON MOBRIUS%
+\noindent Denominamos un número complejo aquel formado por una parte real \(\mathbf{\Re(z)}\) y una imaginaria \(\mathbf{\Im(z)}\).
+\[
+        \boxed{ z = a\pm bj \hspace{5mm} \textnormal{Siendo j = \(\sqrt{-1}\), a veces se representa con \(i\)}}
+\]
+Podemos denominar el complementario de un número complejo como aquel cuya parte imaginaria tiene el signo opuesto, se suele representar como, \(\mathbf{\overline{z}}\)
+\subsubsection{Operaciones}
+\begin{itemize}
+        \item Sumas y restas: Se suma la parte real y la imaginaria por separado.
+        \item Multiplicación: Será más sencillo expresarlos como fasores, sumando los ángulos y multiplicando las amplitudes.
+        \item División: Al igual que con la multiplicación, es más sencillo expresarlo como fasores, se restan los ángulos (numerador menos denominador) y se dividen las amplitudes,
+\end{itemize}
+\subsection{Fasores}
+\noindent Dado un número complejo \(\mathbf{z = a + bj}\), su expresión como fasor se basa usando el \underline{número de Euler}, a la que podemos llegar utilizando la:
+\[
+        \boxed{z = \left | z \right |e^{\rho j}}
+\]
+\noindent Siendo \(\mathbf{\rho}\) el ángulo que entre el coeficiente de la parte imaginaria y el de la parte real, denominado \underline{argumento} y \(\mathbf{\left | z \right |}\) es el\underline{módulo} entre la parte real y la imaginaria.
+\[\boxed{
+                \rho = \arctan{(\frac{b}{a})} \hspace{5mm} \textnormal{Siempre se expresará en radianes}}
+\]
+\[
+        \boxed{\left | z \right |=\sqrt{a^2 - (bj)^2} = \sqrt{a^2+ b^2}}
+\]
+\noindent Finalmente podemos decir que esta expresión se denomina forma polar, y podemos traspasarla a una forma usando razones trigonométricas, por lo que:
+\[
+        \boxed{z = a + bj \hspace{3mm} \Rightarrow \hspace{3mm}\tilde{z} = \left | z \right |e^{\rho j} \hspace{1.5mm}=\hspace{1.5mm}\left | z \right | \cos{(wt + \rho)}}
+\]

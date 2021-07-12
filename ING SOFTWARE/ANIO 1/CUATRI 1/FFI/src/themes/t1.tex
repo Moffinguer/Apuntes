@@ -2,8 +2,6 @@
 \noindent La carga es una unidad cuantizable, a partir de la carga del electrón \(e^{-}\),  siendo posible la carga una unidad de magnitud positiva o negativa. \par \noindent
 Esta unidad afecta a nivel de la Fuerza Electrostática, el Campo Electrostático y sus magnitudes, y podemos considerar que todas las cargas poseen masa. \par \noindent
 Además, dado un sistema, siempre \underline{la suma de todas las cargas va a ser cero}. De este enunciado podemos decir dos principios:
-
-
 \begin{itemize}
         \item \underline{Principio de Conservación de la Carga}: La suma de todas las cargas del Universo vale cero, es decir, la carga total es \(\bm{cte}\)
         \item \underline{Principio de Conservación local de la Carga}: La suma de todas las cargas en un sistema, es \(\bm{cte}\) es decir, vale 0.
@@ -51,12 +49,12 @@ Solo podemos calcular el campo cuando la carga \(\bm{q}\) es muy pequeña, o lo 
                       \item \(\vec{E_x} = \bm{2\left | \vec{E} \right | \cos{\bm{\alpha}}}\hspace{2mm} \bm{\hat{\imath}}\)
                       \item \(\vec{E_y} = \bm{2\left | \vec{E} \right | \sin{\bm{\alpha}}} \hspace{2mm} \bm{\hat{\jmath}}\)
               \end{itemize}
-        \item Las cargas actuan como sumideros.
+        \item Las cargas actúan como sumideros.
         \item El campo generado por una carga eléctrica se emite de forma radial y constante, y su número indica su intensidad.
 \end{itemize}
 \subsection{Distribución de Cargas}
-\noindent Hemos considerado un cuerpo cualquiera con carga, como una carga puntual que genera un \(\bm{\vec{E}}\), ya que la carga se distribuía de forma continua. Sin embargo en la realidad no es así, y dependiendo del cuerpo que tengamos, su forma y tamaño afectarán al cálculo del campo. Para esto, deberemos de calcular sección por sección del cuerpo de estudio con el fin de obtener una aproximación del campo total. En esta parte veremos \underline{la distribución de cargas por unidad de longitud} que la denotaremos por:
-\[ \boxed{\lambda = \frac{Q}{l}} \hspace{2cm} \textnormal{Siendo \(\bm{Q}\) la carga y \(\bm{l}\) la unidad de longitud}\]
+\noindent Hemos considerado un cuerpo cualquiera con carga, como una carga puntual que genera un \(\bm{\vec{E}}\), ya que la carga se distribuía de forma continua. Sin embargo en la realidad no es así, y dependiendo del cuerpo que tengamos, su forma y tamaño afectarán al cálculo del campo. Para esto, deberemos calcular sección por sección del cuerpo de estudio con el fin de obtener una aproximación del campo total. En esta parte veremos \underline{la distribución de cargas por unidad de longitud} que la denotaremos por:
+\[ \boxed{\lambda = \frac{Q}{l}} \hspace{2cm} \textnormal{Siendo \(\bm{Q}\) la carga y \(\bm{l}\) la unidad de longitud.}\]
 Estudiaremos un caso muy particular, el campo generado por una barra metálica \\ infinítamente larga.\par
 \vspace{0.5cm}
 \hspace{4.5cm}
@@ -78,7 +76,7 @@ Siendo \(\bm{h = \sqrt[]{x^2+y^2}}\) y las incógnitas \(\bm{x}\) e \(\bm{y}\) c
 \[
         \phi =\lim_{\Delta S \to 0}\sum_{i=0}^{\infty}\vec{E_i}\hspace{1mm}\Delta S = \int_{S}\vec{E}\hspace{1mm}\mathrm{d} \vec{S} = \boxed{\oint_{S} \vec{E} \hspace{1mm}\mathrm{d} \vec{S} = \frac{Q_\textnormal{int}}{\epsilon_o}}
 \]
-Dada esta expresión podemos deducir que el flujo total es la suma, infinitesimal de cada una de las secciones sobre la que ejerce el campo eléctrico sobre la superficie, y que el flujo \(\bm{\phi}\) es proporcional a la carga interna \(\Rightarrow \boxed{\bm{\phi} \hspace{1mm} \bm{\alpha} \hspace{1mm} \bm{q}}\) \par
+Dada esta expresión podemos deducir que el flujo total es la suma, infinitesimal de cada una de las secciones sobre la que ejerce el campo eléctrico sobre la superficie, y que el flujo \(\bm{\phi}\) es proporcional a la carga interna \(\Rightarrow \boxed{\bm{\phi} \hspace{1mm} \bm{\propto} \hspace{1mm} \bm{q}}\) \par
 \vspace{1cm}
 \hspace{-.5cm}
 Por lo tanto podemos estudiar el valor del campo \(\bm{\vec{E}}\) en casos de extrema simetría.
@@ -86,7 +84,7 @@ Para esto consideraremos una nueva magnitud \(\bm{\sigma}\) que denota la \under
 \par \vspace{.5cm} \hspace{-.5cm}No confundir la superficie del cuerpo de estudio con la superficie Gaussiana, esta es variable y depende de quien la estudie.
 \subsubsection{Plano Infinito}
 \input{src/figures/plain}\par
-\noindent Dado el diagrama propuesto, todos los puntos situados en el mismo plano, poseen la misma \\Distribución Superficial de Carga, y por ende todos los puntos poseen el mismo
+\noindent Dado el diagrama propuesto, todos los puntos situados en el mismo plano, poseen la misma \\Distribución Superficial de Carga, y por ende todos los puntos poseen el mismo \(\vec{E}\).
 \[\vec{E} = \vec{E_1} + \vec{E_2} = 2\vec{E}\]
 \subsubsection{Cilindro en un plano infinito}
 \noindent Si situaramos un cilindro en un plano infinitamente largo, observamos que el flujo corresponde a la suma del flujo que pasa por cada una de las tapas y la cubierta lateral del cilindo. De esta forma, debido a que la cubierta lateral es paralela al vector normal al campo, el flujo que pasa por ahí es nulo. Por ende:
@@ -97,7 +95,7 @@ Para esto consideraremos una nueva magnitud \(\bm{\sigma}\) que denota la \under
 \[
         2ES = \frac{Q_{\textnormal{int}}}{\epsilon_o} \Rightarrow E = \frac{\left | \sigma \right |}{2\epsilon_o} \Rightarrow \boxed{\vec{E} = \frac{\sigma}{2\epsilon_o}\hspace{1mm}\hat{n}}
 \]
-Posteriormente veremos que si el cuerpo está cargado y analizamos el campo \(\bm{\vec{E}}\), este valdrá 0, y por ende su potencial es \(cte\) aunque no sepamos cuanto pueda valer. \textbf{El vector \(\bm{\hat{n}}\) es el vector normal a la superficie}.
+Posteriormente veremos que si el cuerpo está cargado y analizamos el campo \(\bm{\vec{E}}\), este valdrá 0, y por tanto su potencial es \(cte\) aunque no sepamos cuanto pueda valer. \textbf{El vector \(\bm{\hat{n}}\) es el vector normal a la superficie}.
 \subsubsection{Esfera cargada}
 \noindent Aplicando la Ley de Gauss y considerando \(\bm{R}\) el radio de la superficie Gaussiana, y \(\bm{r}\) el radio de la esfera:
 \[
@@ -111,7 +109,7 @@ Posteriormente veremos que si el cuerpo está cargado y analizamos el campo \(\b
 \begin{wrapfigure}{r}{5cm}
         \input{src/figures/energy}
 \end{wrapfigure}
-\noindent ebido a que la fuerza electrostática es una fuerza conservativa, no importa la ruta recorrida, sino las posiciones inicial y final para calcular el trabajo requerido para mover la carga de un punto \textbf{A} al \textbf{B}.\par
+\noindent Debido a que la fuerza electrostática es una fuerza conservativa, no importa la ruta recorrida, sino las posiciones inicial y final para calcular el trabajo requerido para mover la carga de un punto \textbf{A} al \textbf{B}.\par
 \vspace{0.5cm}
 \hspace{-.725cm}
 De esta forma podemos aplicar \underline{El Teorema de las Fuerzas Vivas} por lo que \(\boxed{W_{A \to B} = \Delta E_c = \frac{1}{2} m (V_B -V_A) \hspace{2mm}J}\)
@@ -136,20 +134,20 @@ Por lo tanto el trabajo requerido para mover una carga de un punto A a otro B, e
 \noindent Gracias al conocimiento del trabajo, podemos decir que las unidades del Campo Eléctrico pueden ser tanto \textbf{N/C} como \textbf{V/m}
 \subsection{Superficies Equipotenciales}
 \noindent Estos son aquellos espacios donde la diferencia de potencial \(\bm{\Delta V}\) vale siempre cero, es decir, tienen el mismo potencial en todos los puntos. \\
-Los espacios que satisfacen esta situacion son aquellos situados paralelamente, en sentido del campo eléctrico. \\ Es decir:
+Los espacios que satisfacen esta situación son aquellos situados paralelamente, en sentido del campo eléctrico. \\ Es decir:
 \[
         \boxed{\Delta V = - E \mathrm{d} \cos{\alpha} \Rightarrow \mathrm{d}V = - \vec{E}\mathrm{d}\vec{r}}
 \]
 \begin{wrapfigure}{r}{5cm}
         \input{src/figures/equipot}
 \end{wrapfigure}
-Dada esta expresión, dos puntos son equipotenciales cuando \(\bm{\cos{\bm{\alpha}} = 0}\). Como se puede ver en el diagrama, todos los puntos paralelos, en función de las lineas de cambio, son equipotenciales entre si.
+Dada esta expresión, dos puntos son equipotenciales cuando \(\bm{\cos{\bm{\alpha}} = 0}\). Como se puede ver en el diagrama, todos los puntos paralelos, en función de las líneas de campo, son equipotenciales entre si.
 \subsection{Conductores}
 \noindent Las cargas en un conductor tenderán a moverse, mientras circula un campo \(\bm{\vec{E}}\), hasta que la carga neta del sistema se estabilice y quede en equilibrio, alrededor de unos \(10^{-14}\) segundos.\\\\
 Estos materiales poseen una serie de propiedades, estudiandolos internamente, estas son:\\\\
 \hspace{3cm}\textbf{Propiedades:}
 \begin{enumerate}
-        \item \(\bm{\vec{E}}\) en el interior es nulo, (Si no, las cargas no tenderían a equilibrarse)
+        \item \(\bm{\vec{E}}\) en el interior es nulo (sino, las cargas no tenderían a equilibrarse)
         \item  El potencial es \(cte\) en todo el conductor, interior y superficie, es decir, todo el conductor es una superficie equipotencial.
         \item La carga neta tenderá a acumularse en la superficie del conductor, esto se puede demostrar con \underline{la Ley de Gauss}:
               \[
@@ -167,7 +165,7 @@ En la realidad, un conductor no es completamente puro, no siempre, por lo que si
 \[
         \boxed{\mathcal{C} = \frac{Q}{V}}
 \]
-Esta expresión se consigue a partir de la integración del potencial en un punto de la superficie del conductor, considerando que la \underline{distribución superficial de carga \(\bm{\sigma}\)} es igual al cociente entre la derivada de la carga en función de la superficie. Es decir:
+Esta expresión se consigue a partir de la integración del potencial en un punto de la superficie del conductor, considerando que la \underline{distribución superficial de carga \(\bm{\sigma}\)} es igual al cociente entre la derivada de la carga y la superficie. Es decir:
 \[
         \sigma = \frac{\mathrm{d}q}{\mathrm{d}S}
 \]
@@ -175,7 +173,7 @@ Esta expresión se consigue a partir de la integración del potencial en un punt
         V(p) = \int \frac{\sigma K}{r} \mathrm{d}S \approx Q = V \mathcal{C}
 \]
 \subsection{Condensador}
-\noindent Un condensador es un elemento formado por dos conductores de influencia total, es decir, poseen la misma carga pero de signos distintos. Un caso particular es el condensador de placas planas y paralelas
+\noindent Un condensador es un elemento formado por dos conductores de influencia total, es decir, poseen la misma carga pero de signos distintos. Un caso particular es el condensador de placas planas y paralelas.
 \newpage
 \subsubsection{Condensador de Placas Planas y Paralelas}
 \begin{wrapfigure}{l}{0cm}
@@ -185,9 +183,9 @@ Esta expresión se consigue a partir de la integración del potencial en un punt
 \[
         \mathcal{C}  = \frac{Q}{\Delta V} = \frac{Q}{Ed} = \boxed{\frac{\epsilon_{\textnormal{o}S}}{d}}
 \]
-Posteriormente veremos como, dado un ambiente diferente al vacio, \(\bm{\epsilon_{\textnormal{o}}}\) puede valer otra cosa en función de otra variable.
+Posteriormente veremos como, dado un ambiente diferente al vacío, \(\bm{\epsilon_{\textnormal{o}}}\) puede valer otra cosa en función de otra variable.
 \subsection{Energía Almacenada en un Condensador}
-\noindent Partiendo de que tenemos dos condensadores, uno cargado y otro vacio, ambos con la misma carga pero signos opuestos, las cargas se moverán en función del campo eléctrico que afecta al sistema, redistribuyendo las cargas de forma que cuanta más carga eléctrica se mueva, el potencial eléctrico aumenta proporcionalmente. De esta forma podemos calcular el trabajo, o energía, que se almacena entre las placas:
+\noindent Partiendo de que tenemos dos condensadores, uno cargado y otro vacío, ambos con la misma carga pero signos opuestos, las cargas se moverán en función del campo eléctrico que afecta al sistema, redistribuyendo las cargas de forma que cuanta más carga eléctrica se mueva, el potencial eléctrico aumenta proporcionalmente. De esta forma podemos calcular el trabajo, o energía, que se almacena entre las placas:
 \[
         \mathrm{d}W = V(q)\mathrm{d}q
 \]
@@ -202,9 +200,9 @@ Analizandolo de una forma espacial, la energía almacenada no es más que una ex
 \[
         \boxed{\bm{\mathcal{\mu}} = E^2 \frac{\epsilon_\textnormal{o}}{2}Sd}
 \]
-Siendo \(\bm{Sd}\) el volumen entre ambas placas, y \(\bm{\epsilon_\textnormal{o}}\) la permitividad en el vacio, la cual podemos ajustar a cualquier medio.
+Siendo \(\bm{Sd}\) el volumen entre ambas placas, y \(\bm{\epsilon_\textnormal{o}}\) la permitividad en el vacío, la cual podemos ajustar a cualquier medio.
 \subsubsection{Aislantes}
-\noindent Al introducir un aislante entre dos placas cualesquiera, \(\bm{\mathcal{C}}\) aumenta, ya que los aislantes se polarizan cuando se someten a un campo eléctrico.\\\\ \textbf{\(\bm{\vec{E}}\) separa las cargas, agrupandolas por su signo y en función de la orientación del propio \(\bm{\vec{E}}\)}
+\noindent Al introducir un aislante entre dos placas cualesquiera, \(\bm{\mathcal{C}}\) aumenta, ya que los aislantes se polarizan cuando se someten a un campo eléctrico.\\\\ \textbf{\(\bm{\vec{E}}\) separa las cargas, agrupándolas por su signo y en función de la orientación del propio \(\bm{\vec{E}}\).}
 \\\\
 Es decir, las cargas se polarizan, en la superficie, y estas tenderán a ser la misma que la polarizada cuanto más cerca estén de la superficie. Pasado un tiempo, la variación de la polarización se invertirá:
 \[
@@ -223,7 +221,7 @@ Siendo \(\bm{\epsilon_\textnormal{R}}\) la permitividad en un medio \(\bm{R}\) y
                 \draw (-2,0) to[short, l=\(\bm{Q^-}\)] (-1,0)to[C, l_=\(\mathcal{C}\)] (0.5,0)to[short, l=\(0\)] (2,0) to[C, l_=\(\mathcal{C}\)] (3,0) to[short, l=\(\bm{Q^-}\)]  (4,0);
         \end{circuitikz}
 \end{wrapfigure}
-\noindent \textbf{Por cada uno de los condensadores hay una caida de tensión, pero la intensidad es la misma en todo, por lo que la carga es} \(\bm{cte}\)\\\\
+\noindent \textbf{Por cada uno de los condensadores hay una caída de tensión, pero la intensidad es la misma en todo, por lo que la carga es} \(\bm{cte}\)\\\\
 \[
         \boxed{\mathcal{C}_T = \mathcal{C}_{\textnormal{eq}} = \frac{1}{\sum^k_{n=1}\frac{1}{\mathcal{C}_n}}}
 \]
