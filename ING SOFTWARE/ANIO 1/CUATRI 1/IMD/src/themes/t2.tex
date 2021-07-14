@@ -1,0 +1,81 @@
+\subsection{Congruencia}
+\noindent Considerando un número \(\mathbf{n}\), que diremos que se comporta como 0 en un sistema \(\mathbb{Z}_n\). De esta forma definimos una función tal que:
+\[
+        y - x = nk
+\]
+\noindent El primer miembro es congruente con cualquier múltiplo \(k\) de \(n\)\\ Esto se representa como:
+\[
+        \boxed{a \equiv b(\textnormal{mod}\hspace{2mm}n)}
+\]
+\noindent De esta forma, el rango posibles de valores, son \(\mathbf{n} = {0,...,n-1}\).\par
+\noindent\fbox{{\large Propiedades}} \par
+\begin{itemize}
+        \item Equivalencia. Teniendo dos congruencias de este tipo:\[\begin{cases}
+                              \mathbf{a \equiv b(\textnormal{\textbf{mod}}\hspace{2mm}n)}\\ \mathbf{b \equiv c(\textnormal{\textbf{mod}}\hspace{2mm}n)}\end{cases}\]\noindent Entonces: \[\boxed{\mathbf{a \equiv c(\textnormal{\textbf{mod}}\hspace{2mm}n)}}\]
+        \item No existen divisiones por cero, por lo que \(ab \not \Rightarrow a = 0 \textnormal{\hspace{5mm}ó\hspace{5mm}} b = 0\)
+        \item Si existe un \(\lambda \in \mathbb{Z}\) entonces:\[\begin{cases}
+                              \mathbf{a \equiv b(\textnormal{\textbf{mod}}\hspace{2mm}\lambda n)}\\ \mathbf{\lambda a \equiv \lambda b(\textnormal{\textbf{mod}}\hspace{2mm}\lambda n)}\end{cases}\] \noindent Será siempre igual a\(a \equiv b(\textnormal{mod}\hspace{2mm}n)\), solo si \(\lambda \neq 0\).
+        \item Sumar, restar o multiplicar dos congruencias del mismo modulo, será lo mismo que una congruencia, con los terminos \(a\) y \(b\) iguales a sumar, resta o multiplicar en ambas congruencias.
+\end{itemize}
+\subsection{Inversas}
+\noindent Existe un modulo inverso cuando existe un único resultado a la ecuación \(\boxed{\mathbf{{a\mathrm{X} = 1}}}\) con \(\mathbf{a \in \mathbb{Z}_n}\)
+\subsubsection{Calculo de Inversas}
+\noindent Es un proceso muy simple.\\ Planteamos una ecuación de congruencia:
+\[
+        a\mathrm{X} = 1 (\textnormal{mod}\hspace{2mm}n)
+\]
+\noindent Si la convertimos a una \underline{ecuación diofantica}, podemos calcular el coeficiente de la identidad de \underline{Bezout} correspondiente al termino \(\mathrm{X}\).
+\[
+        a\mathrm{X} - n\mathrm{Y} = 1
+\]
+Tras resolverlo, obtendremos un \(\alpha\) que al calcular su resto respecto a \(n\), obtendremos el inverso \(\mathbf{a^-1}\).\par
+\noindent Podemos expresar entonces el calculo del inverso de la siguiente forma:
+\[
+        \boxed{1 \equiv (\alpha (\textnormal{mod}\hspace{2mm}n))(\textnormal{mod}\hspace{2mm}n)}
+\]
+\subsection{Ecuaciones en Congruencias}
+\noindent Partiendo de una congruencia como la vista al principio del tema:
+\[
+        \boxed{a \equiv b(\textnormal{mod}\hspace{2mm}n)}
+\]
+\noindent Toda ecuación en congruencia se puede resolver como una ecuación diofantica.
+\subsubsection{Sistemas de Ecuaciones en Congruencias, Teorema Chino del Resto}
+\subsection{Función de Euler}
+\noindent Dado una función \(\mathbf{\phi (N)}\), que nos indicará el numero de elementos en base \(N\) que tienen inverso, podemos calcular los valores en base a las siguientes indicaciones:
+\begin{itemize}
+        \item Si \(N \in \mathbb{P}\), es decir, \(N\) es primo: \(\boxed{\mathbf{\phi (N) = N - 1}}\)
+        \item Si \(N\) es primo y está elevado a un número \(m\):\(\boxed{\mathbf{\phi (N^m) = N^{m-1}(N-1)}}\)
+        \item Si \(N\) lo podemos descomponer en factores primos, entonces \(\boxed{\mathbf{\phi (N) = \phi(A)\hspace{5mm} \phi(B)}}\)
+\end{itemize}
+\noindent De esta forma nos quedarán dos expresiones para calcular \(\phi(N)\):
+\[
+        \phi(N) = n \prod^k_{n=t}(1-p_n^{-1})
+\]
+\[
+        \boxed{\phi(N)   = \prod^k_{n=t}(p_n^{m_n-1})(p_n-1)}
+\]
+\noindent Siendo \(p_n\) los factores primos del número en cuestión y \(m_n\) el numero de veces que aparece ese factor primo en cuestión.
+\subsection{Teoremas}
+\noindent Aquí veremos dos teoremas que nos ayudarán a extraer propiedades y conclusiones para temas posteriores.
+\subsubsection{Teorema de Fermat}
+\noindent Sabemos por definición que dado un conjunto \(\mathbb{Z}_n\), no pueden haber elementos repetidos y que existen \(n-1\) elementos. De esta forma enunciamos:
+\par \noindent Si \(\mathbf{p}\) es primo, \(\mathbf{x>0}\) y \(\mathbf{p\not |\hspace{3mm}x }\) entonces:
+\[
+        \boxed{x^{p-1} \equiv 1(\textnormal{mod}\hspace{2mm}p)}
+\]
+\noindent Si solo ocurriese que \(\mathbf{p}\) es primo y \(\mathbf{x>0}\):
+\[
+        \boxed{x^{p} \equiv x(\textnormal{mod}\hspace{2mm}p)}
+\]
+\subsubsection{Teorema de Euler}
+\noindent Es una ramificación del \underline{Teorema de Fermat}, y dice que si \(x\) y \(n\) son coprimos entonces:
+\[
+        \boxed{x^{\phi(n)} \equiv 1(\textnormal{mod}\hspace{2mm}n)}
+\]
+\subsubsection{Potencias de Fermat}
+\noindent Esta es una forma rápida de convertir una potencia a otra, en una congruencia específica:
+\[
+        x^k\hspace{1mm}\textnormal{mod}\hspace{2mm}p = x^{(p-1)\left \lfloor \frac{k}{p-1} \right \rfloor + k\hspace{1mm}\textnormal{mod}\hspace{2mm}(p-1)}=\boxed{x^{k\hspace{1mm}\textnormal{mod}\hspace{2mm}(p-1)}\textnormal{mod}\hspace{2mm}p}
+\]
+\subsection{Metodo MC, potencias rapidas}
+\subsection{Criptografía y RSA}
