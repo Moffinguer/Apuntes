@@ -1,0 +1,258 @@
+\subsection{Introducción}
+\noindent En este tema consideraremos que trabajamos con los conjuntos de los \(\mathbf{\mathbb{N},\hspace{1mm} \mathbb{Z}^+,\hspace{1mm}\mathbb{Z}^-}\) y tomaremos el orden de las operaciones en el orden de prioridad ( Potencias \(\Rightarrow\)) [Multiplicar | División] \(\Rightarrow \) [Suma | Resta] ).
+\subsection{División Euclidea}
+\noindent Tomamos dos numeros cualesquiera \(\mathbf{a}\), \(\mathbf{b}\) \(\mathbf{\in}\) \(\mathbf{Z}\), decimos que hay un \(\mathbf{c}\) y un \(\mathbf{r}\) que cumplen:
+\[
+        a = bc + r \hspace{5mm} \frac{a}{b} = c + \frac{r}{b} \hspace{1cm} 0\leq r< b
+\]
+\noindent Podemos ver que \(\mathbf{c}\) es el mayor entero tal que es menor o igual que \(\mathbf{\frac{a}{b}}\).\\
+Si lo ponemos en una recta, podemos ver lo siguiente:
+\vspace{5mm}
+\begin{adjustwidth}{0em}{-8em}
+        \begin{tikzpicture}
+                \draw[-] (0,0) -- (4,0);
+                \draw [dotted] (-1,0) -- (5,0);
+                \draw [-] (0,.5) -- (0,-.5) node[above = -15] {\(\mathbf{c}\)};
+                \draw [-] (2,.5) -- (2,-.5) node[above = -20] {\(\mathbf{\frac{a}{b}}\)};
+                \draw [-] (3,.5) -- (3,-.5) node[above = -15] {\(\mathbf{c+1}\)};
+        \end{tikzpicture}
+\end{adjustwidth}
+\noindent\fbox{{\large Propiedades}} \par
+\begin{enumerate}
+        \item Si \(\mathbf{r=0 \Leftrightarrow a = bc}\)
+              \item\(a|b,\hspace{2mm} b|c
+              \begin{cases}
+                      \mathbf{\exists  \hspace{1mm} p \in \mathbb{Z} \hspace{1.5mm} ; \hspace{1.5mm} b =ap} \\
+                      \mathbf{\exists  \hspace{1mm} q \in \mathbb{Z} \hspace{1.5mm} ; \hspace{1.5mm} c =bq} \\
+              \end{cases}
+              \)\\ \vspace{2mm}
+              Si el producto es conmutativo \(\mathbf{c = (ap)q = a(pq)}\), por lo que \(\mathbf{a|c \Rightarrow a|b,\hspace{2mm} b|c}\)
+        \item \(\mathbf{a|b,\hspace{2mm} c|d}
+              \begin{cases}
+                      \mathbf{\exists  \hspace{1mm} p \in \mathbb{Z} \hspace{1.5mm} ; \hspace{1.5mm} b =ap} \\
+                      mathbf{\exists  \hspace{1mm} q \in \mathbb{Z} \hspace{1.5mm} ; \hspace{1.5mm} d =cq }
+              \end{cases}
+              \)\\ \vspace{2mm}
+              Si el producto es conmutativo \(\mathbf{bd = (ap)(cq) = (ac)(pq))}\), por lo que \(\mathbf{a|b ,\hspace{2mm} c|d \Rightarrow \frac{ac}{bd}}\)
+        \item Si \(\mathbf{m \neq 0}\) entonces: \\
+              \(\mathbf{a|b} \begin{cases}
+                      \mathbf{\exists  \hspace{1mm} k \in \mathbb{Z} \hspace{1.5mm} ; \hspace{1.5mm} b =ak} \\
+              \end{cases}\)\\ Esto implica que \(\mathbf{k = \frac{mb}{ma} = \frac{b}{a}}\)
+        \item No hay divisiones entre cero\(\mathbf{a \neq 0 \hspace{1.5mm} \Rightarrow \hspace{1.5mm} ab = 0 \hspace{1.5mm} \Rightarrow \hspace{1.5mm} b = 0}\)
+        \item Propiedad cancelativa: \(\mathbf{a \neq 0 \hspace{1.5mm} \Rightarrow \hspace{1.5mm} ab = ac \hspace{1.5mm} \Rightarrow \hspace{1.5mm} b = c}\)
+\end{enumerate}
+
+\subsubsection{Resto}
+\noindent Aquí veremos el uso de un operador que nos servirá en temas posteriores, el \underline{resto}, denominado con \textbf{mod} y calcula el resto, valga la redundancia, de la división de dos numeros cualesquiera, siempre que sean enteros.
+\[
+        r = \boxed{a \textnormal{\hspace{1mm} mod \hspace{1mm}} b} = a - bc
+\]
+\subsubsection{Función Suelo}
+\noindent Es una función que abarca el conjunto de los números reales, tal que dado un número \(\mathbf{x}\) aproximará al entero más cercano por debajo.\\ Se representa así:
+
+\[
+        \boxed{f(x) = \left \lfloor x \right \rfloor}
+\]
+\subsubsection{Función Techo}
+\noindent Al contrario que la función suelo, esta función aproximará al entero más cercano por arriba, y se representa así:
+\[
+        \boxed{f(x) = \left \lceil x \right \rceil}
+\]
+\noindent Aquí tenemos una representación gráfica de ambas funciones, siendo la azul la función techo y la roja la suelo.
+\begin{adjustwidth}{10em}{5em}
+        \begin{tikzpicture}
+                \begin{axis}[axis lines=middle]
+                        \addplot [
+                                jump mark mid,
+                                domain=-3:3,
+                                samples=100,
+                                very thick, red
+                        ] {floor(x)};
+                        \addplot [
+                                jump mark mid,
+                                domain=-3:3,
+                                samples=100,
+                                very thick, blue
+                        ] {ceil(x)};
+                \end{axis}
+        \end{tikzpicture}
+\end{adjustwidth}
+\noindent\fbox{{\large Propiedades}} \par
+\begin{itemize}
+        \item \(\mathbf{\left \lfloor -x \right \rfloor = - \left \lceil x \right \rceil}\) es lo mismo que \(\mathbf{\left \lceil -x \right \rceil = - \left \lfloor x \right \rfloor}\)
+        \item \(\mathbf{\left \lceil x+n \right \rceil = \left \lceil x \right \rceil +n}\) Siendo \(\mathbf{n}\) un entero, es lo mismo que \(\mathbf{\left \lfloor x+n \right \rfloor = \left \lfloor x \right \rfloor +n}\)
+\end{itemize}
+\subsubsection{Función Euclidea Modificada}
+\noindent Con todo esto, podemos definir la función Euclidea de una forma un tanto más rigurosa:
+\[
+        \boxed{a = \left \lfloor a|b \right \rfloor + a \hspace{1.5mm} \textnormal{mod} \hspace{1.5mm} b}
+\]
+\subsection{Tamaño que puede abarcar un número}
+\noindent Dado un número \(\mathbf{n}\), entero y en base m, \(\mathbf{B_{m)}}\), decimos que puede dividirse entre la base \(\mathbf{B}\) tantas veces como cifras tenga.\\
+Si por ejemplo \(\mathbf{n \in B_{2)}}\):
+\[
+        n = \sum^N_{i = 0} \kappa B^i
+\]
+\[
+        \frac{n}{2} = \sum^{N-1}_{i = 0} \kappa B^i
+\]
+\noindent Siendo \(\mathbf{N}\) la posición y \(\mathbf{\kappa}\) el valor que hay en la posición indicada del número \(\mathbf{n}\).\par
+\noindent Podemos ver que por cada vez que dividimos, el elemento en la posición menos significativa desaparece, por lo que:
+\[
+        k \leq \log_{2}{n} < k + 1
+\]
+\[
+        k = \left \lfloor \log_{2}n \right \rfloor + 1
+\]
+Por lo que \(\mathbf{k}\) es el numero de cifras que posee ese número en base 2. \\ De forma general para cualquier base sería:
+\[
+        \boxed{k = \left \lfloor \log_{m}n \right \rfloor + 1}
+\]
+\subsection{M.C.D. y el Algoritmo de Euclides}
+\noindent Sabiendo como se define la \underline{función Euclidea}, podemos definir un algoritmo por el cual podremos calcular el \textbf{máximo común divisor}, \textbf{M.C.D.}, así:
+\[
+        a = bc + r
+\]
+\[
+        \boxed{\textnormal{mcd}(a,b) = \textnormal{mcd}(b,r)}
+\] \noindent Hasta que \(\mathbf{r = 0}\), que será entonces la ultima \(\mathbf{b}\) el \textbf{M.C.D.}.
+\subsubsection{Identidad de Bezout}
+\noindent Mediante esta identidad podemos calcular el \textbf{M.C.D.} como combinación lineal entre el numerador y el denominador:
+\[
+        \boxed{\textnormal{mcd}(a,b) = a\alpha + b\beta}
+\]
+\begin{table}[h]
+        \begin{tabular}{l|llll}
+                \cline{1-2}
+                5328=66*80 + 48 & \(r = a - 80b\)     &  &  & \\ \cline{1-2}
+                66=48 + 18      & \(r_1 = b - r\)     &  &  & \\ \cline{1-2}
+                48=18*2 + 12    & \(r_2 = r - 2r_1\)  &  &  & \\ \cline{1-2}
+                18 = 12 + 6     & \(r_3 = r_1 - r_2\) &  &  & \\ \cline{1-2}
+                12 = 6*2        & \(r_2 = 2r_3\)      &  &  &
+        \end{tabular}
+\end{table}
+\[
+        r_3 = r_1 - r_2 = 3r_1 -r = 3b -4r = -4(a - 80b) +3b = \boxed{-4a +323b}\Rightarrow \alpha = -4 \hspace{5mm} \beta = 323
+\]
+\subsection{Algoritmos y análisis}
+\noindent Hay 3 factores a tener en cuenta a la hora de analizar un algoritmo:
+\begin{enumerate}
+        \item Factibilidad (si realiza todas las instrucciones)
+        \item Si es finito (Tiene un inicio y un final)
+        \item Eficiencia ( Que se suele pone como \(\mathbf{\mathcal{O}(f(n))}\)
+\end{enumerate}
+\noindent No vamos a profundizar mucho, sin embargo, cabe destacar que los algoritmos cuya \(\mathbf{f(n)}\) sea \(\mathbf{n!}\) son los más lentos, y los \(\mathbf{log_{2}{n}}\) los más rapidos.
+\subsubsection{Invariantes}
+\noindent No profundizaremos mucho, pero se explicará lo básico.\\ Los Invariantes son expresiones \textbf{constantes} que analizan el resultado y el comportamiento del algoritmo, indicando el numero de operaciones que hace y el valor que va a devolver siempre.\\ Si los usaramos a bajo nivel, en \underline{programación}, veríamos que en las operaciones de bit a bit, no se realizan divisiones o multiplicaciones, y solo usa desplazamientos de bits.
+\subsection{Ecuaciones Diofanticas}
+\noindent Son aquellas ecuaciones con dos incógnitas cuya solución solo se encuentra dentro del cuerpo de los enteros \(\mathbf{\mathbb{Z}}\):
+\[
+        \boxed{a\mathrm{X} + b\mathrm{Y} = c}
+\]
+\noindent Solo tienen soluciones cuando \(\mathbf{c}\) es divisible entre el \textbf{M.C.D.} de \(\mathbf{a}\) y \(\mathbf{b}\), si no lo fuera, no habrían infinitas soluciones, y buscamos una solución única o en un intervalo de enteros.
+\[
+        \boxed{\textnormal{mcd}(a,b) = d}
+\]
+\[
+        \boxed{\frac{a}{d}\mathrm{X} + \frac{b}{d}\mathrm{Y} = \frac{c}{d}}
+\]
+\noindent Como hemos podido calcular el \textbf{M.C.D}, ahora podemos extraer una \underline{Identidad de Bezout}, lo que nos dará una solución del sistema, siendo cada coeficiente de \underline{Bezout} por el termino \(\mathbf{\frac{c}{d}}\), lo que satisfacerá el sistema.\\ Sin embargo, esta puede no ser la solución que buscamos, pueden haber ciertas restricciones, asi que para esto tendremos que buscar un valor para \(\mathbf{\mathrm{X}}\) y \(\mathbf{\mathrm{Y}}\) que abarque todo el rango de valores posibles. \\ Para esto debemos de sumarle a la solución particular el coeficiente de la incógnita opuesta, por una variable que llamaremos \(\mathbf{\lambda}\), que en una ecuacion tendrá signo positivo y en la otra .negativo:
+\[
+        \boxed{\begin{cases}
+                        \mathrm{X} = \alpha \frac{c}{d} \pm \frac{b}{d}\lambda \\
+                        \mathrm{Y} = \beta \frac{c}{d}\mp \frac{a}{d}\lambda
+                \end{cases}}
+\]
+\noindent Siendo \(\mathbf{\alpha}\) el coeficiente de la incógnita \(\mathbf{\mathrm{X}}\) para \underline{Bezout} y \(\mathbf{\beta}\) el coeficiente de \(\mathbf{\mathrm{Y}}\).\\ Tras esto podremos facilmente aplicar las restricciones que se nos especifiquen.
+\subsection{Primos}
+\noindent Definimos un número primo, como todo \(\mathbf{\mathbb{N} > 1}\), y se expresan con el conjunto \(\mathbf{\mathbb{P}}\).\par
+\noindent\fbox{{\large Propiedades}} \par
+\noindent Partiendo de \(\mathbf{ p \in \mathbb{P}}\) y \(\exists a \in \mathbb{Z}\) tenemos:
+\begin{itemize}
+        \item \(\mathbf{p}\) y \(\mathbf{a}\) son \underline{coprimos}, cuando \(\textnormal{mcd}(p,a) = 1\) que es lo mismo que decir que no son divisibles entre si.
+        \item Si \(\mathbf{p > 3}\), entonces \(\mathbf{p}\) se puede expresar como \(\mathbf{6\kappa \pm 1}\). Podemos demostrar esto por la división \underline{Euclídea}, de forma que probamos los valores que puede adoptar \(1\) del 0 \(\rightarrow\) 5.
+        \item \(\mathbf{p}\) es primo y divide a un producto, si \(\mathbf{p}\) divide a alguno de los factores del producto.
+        \item Dado un \(\mathbf{p}\) y un conjunto de valores que denominaremos \(\mathbf{\mathrm{A}}\), diremos que \(\mathbf{p}\) divide almenos un elemento del conjunto, aplicando la propiedad anterior.
+\end{itemize}
+\subsubsection{Factorización}
+\noindent Todos los numeros, mayores que 1, son divisibles por un primo tal que se encontrará en el intervalo \([1,\hspace{2mm}\sqrt{\left \lfloor n \right \rfloor}]\), siendo \(\mathbf{n}\) el número a factorizar.
+\subsection{Demostraciones}
+\noindent En este apartado veremos dos metodos para realizar demostraciones, son muy comunes.
+\subsubsection{Metodo de Inducción}
+\begin{enumerate}
+        \item Partimos de un conjunto \(\mathbf{z}\) que cumplen una condición.
+        \item Buscamos el caso base del que partir, es decir, comprobamos que la condición sirve para el primer valor posible.
+        \item Suponemos que existe un \(\mathbf{k}\) que cumple la condición inicial.
+        \item Ahora a partir de un \(\mathbf{k+1}\) tenemos que llegar a la misma expresión del inicio, la condición que debemos demostrar.
+\end{enumerate}
+\noindent Con un ejemplo será más claro:
+\[
+        \sum^{p}_{n=1}(2n-1) = n^2
+\]
+\noindent Dada una expresión como esta,y sabiendo que es valida para cualquier número superior cero comprobamos que se cumple para \(p = 1\)
+\[
+        \sum^{1}_{n=1}(2n-1) = n^2\hspace{2mm}\Rightarrow \hspace{2mm} 2- 1 = 1^2 \hspace{2mm}\Rightarrow \hspace{2mm} 1 = 1
+\]
+\noindent Vemos que se cumple, ahora consideraremos la expresión valida hasta un número \(k\).
+\[
+        \sum^{k}_{n=1}(2n-1) = k^2
+\]
+\[
+        1 + 3 + ... + (2k-1) = k^2
+\]
+\noindent Ahora intentaremos demostrar para \(k +1 \):
+\[
+        \sum^{k+1}_{n=1}(2n-1) = (k+1)^2
+\]
+\[
+        1 + 3 + ... + (2k-1) + (2k + 1) = (k+1)^2
+\]
+\noindent Vemos que en el primer miembro, podemos utilizar la hipotesis para sustituir todos los elementos hasta \(2k -1\):
+\[
+        \boxed{(2k-1) + (2k + 1) = k^2 + 2k +1 = (k+1)^2} \hspace{3mm}\textnormal{QDE}
+\]
+\subsubsection{Reducción al Absurdo}
+\noindent Nos basamos en que dada una proposición, la negamos, y buscamos encontrar una contradicción. Veamos este ejemplo.\par
+\noindent \textbf{Demostremos que dado un producto de enteros \(\mathbf{ab}\) es par, entonces \(\mathbf{a}\) o \(\mathbf{b}\) es par}:
+\[
+        2|ab \Rightarrow 2|b \lor 2|a
+\]
+\noindent Montamos nuestra proposición, vemos que el primer miembro es la \textbf{hipotesis}, y el resto es la \textbf{tesis} que negaremos, que debe de cumplirse.
+\\ Si la negamos, estaremos diciendo que \(b\) y \(a\) son impares. \\Conociendo como se define un numero impar:
+\[
+        \boxed{b = 2k + 1}
+\]
+\[
+        \boxed{a = 2t + 1}
+\]
+\noindent Siendo \(k\) y \(t\) dos numeros cualesquiera positivos y enteros, decimos que el producto de \(a\) y \(b\) es:
+\[
+        \boxed{ab = (2k+1)(2t+1) = 4kt + 2k +2t+1}
+\]
+\noindent Vemos que según la tesis, el producto de \(ab\) es un número impar, lo que es imposible, ya que debe de dividir a un número par. \\ Por lo que queda demostrado que es cierto.
+\subsection{Números Famosos}
+\noindent Aquí veremos algunas series de números que nos serviran para temas futuros.
+\subsubsection{Fibonacci}
+\noindent Para obtener un número de Fibonnaci hay que sumar los dos números posteriores al que buscamos, hasta llegar al caso inicial.
+\[
+        \boxed{F_n = F_{n-1} + F_{n-2} \hspace{5mm} \textnormal{[}F_0 = 0 \hspace{1mm}, F_1 = 1\textnormal{]}}
+\]
+\noindent Es una expresión recursiva, y podemos expresarla como una ecuación:
+\[
+        \boxed{F_n = \frac{1}{\sqrt{5}}\left ( \left ( \frac{1+\sqrt{5}}{2} \right )^n -\left ( \frac{1-\sqrt{5}}{2} \right )^n \right )}
+\]
+\subsubsection{Mersenne}
+\noindent Son aquellos números que representados en \(B_{2)}\) son solo unos:
+\[
+        \boxed{M_n = 2^n - 1}
+\]
+\subsubsection{Fermat}
+\[
+        \boxed{Fe_n = 2^{2^n} +1 \hspace{5mm} n \geq 0}
+\]
+\noindent Tiene la característica que los números de \(Fe_0 \rightarrow Fe_4\) son primos, y los únicos de esta serie.
+\subsubsection{Euclides}
+\[
+        \boxed{e_n = 1+ \prod^n_{k=1}e_k}
+\]
+\noindent Cada elemento de la serie se obtiene de multiplicar todos los anteriores y sumarle 1. Partiendo de que el primer elemento de la serie es \(e_1 = 2\)
