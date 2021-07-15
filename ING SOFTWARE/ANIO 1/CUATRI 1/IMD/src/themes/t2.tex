@@ -44,6 +44,85 @@ Tras resolverlo, obtendremos un \(\alpha\) que al calcular su resto respecto a \
 \]
 \noindent Toda ecuación en congruencia se puede resolver como una ecuación diofantica.
 \subsubsection{Sistemas de Ecuaciones en Congruencias, Teorema Chino del Resto}
+\[
+        \begin{cases}
+                a_1X \equiv b_1(\textnormal{mod}\hspace{2mm}n_1)
+                \\
+                \vdots
+                \\
+                \vdots
+                \\
+                a_kX \equiv b_k(\textnormal{mod}\hspace{2mm}n_k)
+        \end{cases}
+\]
+\noindent Dado un sistema como el planteado arriba, intentaremos crear una sola ecuación en congruencia que abarque a todas las que conformen el sistema.\\Solo se podrá resolver el sistema cuando todas las \(\mathbf{n_k}\) sean coprimos entre si.\\Veamos un ejemplo:
+\[
+        \begin{cases}
+                X \equiv 1(\textnormal{mod}\hspace{2mm}4)
+                \\
+                X \equiv 2(\textnormal{mod}\hspace{2mm}3)
+                \\
+                X \equiv 3(\textnormal{mod}\hspace{2mm}5)
+        \end{cases}
+\]
+\noindent Dado este sistema deberemos de calcular 4 terminos por cada ecuación del sistema:
+\[
+        \boxed{b_k = \frac{b_k}{\textnormal{mcd(}a_k\textnormal{,}n_k\textnormal{)}}}
+\]
+\[
+        \boxed{c_k = \frac{\prod }{n_k}}
+\]
+\[
+        \boxed{d_k = c_k^{-1} (\textnormal{mod}\hspace{2mm}n_k) \Rightarrow c_kX \equiv 1 (\textnormal{mod}\hspace{2mm}n_k)}
+\]
+\noindent Y el rango de la congruencia: \[
+        \boxed{\mathbb{Z}_n \Rightarrow n = \prod_{k=1} n_k}
+\]
+\noindent De esta forma ya tendremos todos los valores que nos interesan, por lo que podremos montar nuestro sistema congruente.\\ Denominaremos \(\mathbf{X}\) a la solución general, \(\mathbf{\rho}\) a la específica y \(\mathbf{N}\) el rango de congruencia.
+\[
+        \boxed{X = X = \sum_{k=1} b_kd_kc_k}
+\]
+\[
+        \boxed{X \equiv \rho (\textnormal{mod}N)}
+\]
+\[
+        \boxed{X = \rho + N \lambda}
+\]
+\[
+        \boxed{\rho = X(\textnormal{mod}N) + N\lambda}
+\]
+\noindent Como podemos ver la solución del sistema, que nos interesa se puede expresar como una ecuación como esta, y modificando el parametro \(\lambda\) podemos calcular todas las posibilidades.\\ En el ejemplo, la solución del sistema es la siguiente:
+\begin{table}[h]
+        \begin{tabular}{lllll}
+                \multicolumn{1}{l|}{}        & \multicolumn{1}{l|}{1}  & \multicolumn{1}{l|}{2}  & \multicolumn{1}{l|}{3}  & \\ \cline{1-4}
+                \multicolumn{1}{l|}{\(n_k\)} & \multicolumn{1}{l|}{4}  & \multicolumn{1}{l|}{3}  & \multicolumn{1}{l|}{5}  & \\ \cline{1-4}
+                \multicolumn{1}{l|}{\(b_k\)} & \multicolumn{1}{l|}{1}  & \multicolumn{1}{l|}{2}  & \multicolumn{1}{l|}{3}  & \\ \cline{1-4}
+                \multicolumn{1}{l|}{\(c_k\)} & \multicolumn{1}{l|}{15} & \multicolumn{1}{l|}{20} & \multicolumn{1}{l|}{12} & \\ \cline{1-4}
+                \multicolumn{1}{l|}{\(d_k\)} & \multicolumn{1}{l|}{3}  & \multicolumn{1}{l|}{2}  & \multicolumn{1}{l|}{3}  & \\
+        \end{tabular}
+\end{table}
+\[
+        N = 3*4*5 = 60
+\]
+\[
+        X = 15*3+ 20*2*2+12*3*3=233
+\]
+\[
+        \boxed{\rho = 233(\textnormal{mod}60) + 60\lambda = 53 + 60\lambda}
+\]
+\noindent\fbox{{\large Propiedades}} \par
+\noindent Aqui veremos 3 propiedades que nos ayudarán a simplificar e indicar si el sistema tiene solución:
+\begin{itemize}
+        \item Compatibilidad: El mcd entre 2 \(n_k\) distintos debe ser divisible entre la diferencia entre sus bases, es decir:
+              \[
+                      \textnormal{mcd}(n_i,\hspace{1mm}n_j) \hspace{2mm}| \hspace{2mm} (b_i-b_j)
+              \]
+              \[
+                      \boxed{(b_i - b_j) \equiv 0 \hspace{2mm}(\textnormal{mod}\hspace{2mm}\textnormal{mcd}(n_i,n_j))}
+              \]
+        \item Reducción, si hay alguna ecuación cuya \(\mathbf{n}\) sea igual a otra, entonces podemos eliminar cualquiera de ellas.
+        \item Expansión, cada ecuación la podemos dividir en sus factores primos, solo modificando el termino del modulo, \(n\).
+\end{itemize}
 \subsection{Función de Euler}
 \noindent Dado una función \(\mathbf{\phi (N)}\), que nos indicará el numero de elementos en base \(N\) que tienen inverso, podemos calcular los valores en base a las siguientes indicaciones:
 \begin{itemize}
@@ -82,4 +161,32 @@ Tras resolverlo, obtendremos un \(\alpha\) que al calcular su resto respecto a \
         x^k\hspace{1mm}\textnormal{mod}\hspace{2mm}p = x^{(p-1)\left \lfloor \frac{k}{p-1} \right \rfloor + k\hspace{1mm}\textnormal{mod}\hspace{2mm}(p-1)}=\boxed{x^{k\hspace{1mm}\textnormal{mod}\hspace{2mm}(p-1)}\textnormal{mod}\hspace{2mm}p}
 \]
 \subsection{Metodo MC, potencias rapidas}
+\noindent Si \(K\) es un entero bastante pequeño en \(X (\textnormal{mod}\hspace{2mm}n)\) entonces podemos calcular el resultado transformando \(X\) a un número binario. \\De forma que Al transformar el numero a binario, elevamos al cuadrado entre cada cifra del numero, y los unos, son multiplicaciones por 2, y eliminamos los ceros, es decir:
+\[
+        \boxed{70_{10)} = 1000110_{2)} = \textnormal{M}\textnormal{C}\textnormal{C}\textnormal{C}\textnormal{C}\textnormal{M}\textnormal{C}\textnormal{M}\textnormal{C} = ((((((((((70*2)^2)^2)^2)^2)*2)^2)*2)^2)*2)}
+\]
+\noindent Tened en cuenta que por cada operación, hay que realizar los modulos.
 \subsection{Criptografía y RSA}
+\noindent El algoritmo RSA aprovecha los numeros primos y la \underline{Función de Euler} para calcular claves numéricas extremadamente grandes que facilitan la encriptación.\\ Si partimos de dos numeros \(p\) y \(q\) que son primos podemos calcular lo siguiente:
+\[
+        \boxed{n = pq}
+\]
+\noindent Siendo \(n\) el peso de mayor agrupación posible.
+\[
+        \boxed{\phi(n) = \phi(p)\phi(q) = (p-1)(q-1)}
+\]
+\[
+        \boxed{e = min_{\textnormal{Primo en \(\phi(n)\)}}}
+\]
+\noindent Esta es la clave publica.
+\[
+        \boxed{d = e^{-1} (\textnormal{mod} \hspace{2mm} \phi(n))}
+\]
+\noindent Esta es la clave privada.\par
+\noindent Para cifrar y descifrar solo tendremos que hacer lo siguiente:
+\[
+        \boxed{\textnormal{Cifrado}\Rightarrow  Y \equiv X^e (\textnormal{mod}\hspace{2mm}n)}
+\]
+\[
+        \boxed{\textnormal{Descrifrado}\Rightarrow X \equiv Y^d (\textnormal{mod}\hspace{2mm}n)}
+\]
