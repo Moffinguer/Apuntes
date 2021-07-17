@@ -175,14 +175,14 @@ Tras resolverlo, obtendremos un \(\alpha\) que al calcular su resto respecto a \
 \[
         \boxed{\phi(n) = \phi(p)\phi(q) = (p-1)(q-1)}
 \]
+\noindent Esta es la clave publica:
 \[
         \boxed{e = min_{\textnormal{Primo en \(\phi(n)\)}}}
 \]
-\noindent Esta es la clave publica.
+\noindent Esta es la clave privada:
 \[
         \boxed{d = e^{-1} (\textnormal{mod} \hspace{2mm} \phi(n))}
 \]
-\noindent Esta es la clave privada.\par
 \noindent Para cifrar y descifrar solo tendremos que hacer lo siguiente:
 \[
         \boxed{\textnormal{Cifrado}\Rightarrow  Y \equiv X^e (\textnormal{mod}\hspace{2mm}n)}

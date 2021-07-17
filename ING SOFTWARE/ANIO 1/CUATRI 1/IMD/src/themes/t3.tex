@@ -8,26 +8,142 @@
 \]
 \noindent\fbox{{\large Propiedades}} \par
 \begin{itemize}
-        \item \(A\bigcap B\) corresponde a la \underline{intersección}, y abarca a todos los elementos que comparten ambos conjuntos.
-        \item \(A\bigcup B\) corresponde a la \underline{unión}, y abarca al total de elementos que contienen ambos conjuntos.
+        \item \(A\cap B\) corresponde a la \underline{intersección}, y abarca a todos los elementos que comparten ambos conjuntos.
+        \item \(A\cup B\) corresponde a la \underline{unión}, y abarca al total de elementos que contienen ambos conjuntos.
         \item \(\left | A \right |\) corresponde al \underline{cardinal}, y son el numero total de elementos que contiene el conjunto.
         \item \(A \subseteq  B\) indica que \(A\) es un subconjunto de \(B\).
         \item \(A\setminus B\) corresponde a los elementos en \(A\) no presentes en \(B\). Se suele escribir como \(\overline{A}\).
         \item \(\overline{\overline{A}} = A\)
-        \item \(\overline{A\bigcup B} = \overline{A}\bigcap \overline{B}\)
-        \item \(\overline{A\bigcap B} = \overline{A}\bigcup  \overline{B}\)
-        \item \(A \bigcup \overline{A} = \O\)
+        \item \(\overline{A\cup B} = \overline{A}\cap \overline{B}\)
+        \item \(\overline{A\cap B} = \overline{A}\cup  \overline{B}\)
+        \item \(A \cup \overline{A} = \O\)
+        \item \(\left | P(A) \right | = 2^{\left | A \right |}\) indica el tamaño máximo del conjunto.
+\end{itemize}
+\noindent\fbox{{\large Diagramas de Venn}} \par
+\vspace{1cm}
+\begin{itemize}
+        \item[] \begin{venndiagram2sets}
+                        \fillA \fillB
+                \end{venndiagram2sets}
+                Unión: \(\mathbf{A \cup B}\)
+
+        \item[]       \begin{venndiagram2sets}
+                        \fillACapB
+                \end{venndiagram2sets}
+                Intersección: \(\mathbf{A \cap B}\)
+        \item[] \begin{venndiagram2sets}
+                        \fillOnlyB
+                \end{venndiagram2sets}
+                Complemento de A: \(\mathbf{\overline{A} = B \setminus A}\)
+        \item[] \begin{venndiagram2sets}
+                        \fillOnlyA
+                \end{venndiagram2sets}
+                Complemento de B: \(\mathbf{\overline{B} = A \setminus B}\)
 \end{itemize}
 \subsection{Principios}
+\noindent Aquí veremos 4 principios que nos servirán para operar más adelante:
 \subsubsection{Principio de Adición}
+\noindent Siempre y cuando dos  o más conjuntos no tengan ningún elemento en común, la cardinalidad de su intersección dará lugar a la suma de sus cardinalidades:
+\[
+        \boxed{A \cap B = \O  \hspace{2mm}\Rightarrow\hspace{2mm} \left | A \cap B \right | = \left | A \right | + \left | B \right |}
+\]
 \subsubsection{Principio de Producto / Ley del Producto}
+\noindent Si hay dos o más conjuntos finitos, en los que multipliques un conjunto con una cardinalidad menor o igual que el consecutivo, entonces el producto entre ambos conjuntos será el producto cartesiano:
+\[
+        \boxed{\left | A \times B \right | = \left | A  \right | \times \left | B  \right |}
+\]
 \subsubsection{Principio de Inclusión y Exclusión}
+\noindent Para obtener la cardinalidad de todos los elementos que abarcan dos o más conjuntos, su intersección, se debe de sumar la cardinalidad de todos los conjuntos a la cardinalidad de la intersección de cada 3 elementos, y restarle la intersección de cada par de conjuntos.
+\\Aquí podemos ver el caso de dos conjuntos:
+\[
+        \boxed{\left | A \cup B \right | = \left | A \right | + \left | B \right | - \left | A \cap B \right |}
+\]
+\noindent Aquí el de 3:
+\[
+        \boxed{\left | A \cup B \cup C \right | = \left | A \right | + \left | B \right |+ \left | C \right |-( \left | A \cap B \right | + \left | A \cap C \right | + \left | C \cap B \right |) + \left | A \cap B \cap C\right |}
+\]
+\noindent Como podemos observar, la generalización podría llegar a ser más compleja, y no la pondré.
 \subsubsection{Principio de Distribución / Dirichlet}
+\noindent Si repartimos \(\mathbf{n}\) elementos entre \(\mathbf{m}\geq 1\) células, entonces:
+\begin{itemize}
+        \item Una célula recibirá hasta \(\left \lceil \frac{n}{m} \right \rceil\) objetos.
+        \item Una célula recibirá hasta \(\left \lfloor \frac{n}{m} \right \rfloor\) objetos.
+\end{itemize}
+\noindent Si consideramos un \(\mathbf{\alpha}\) como una serie de elementos que comprenden un objeto, podemos decir:
+\[
+        n = \sum_{i=1}\alpha_{i}
+\]
+\noindent Y por ende:
+\begin{itemize}
+        \item Podemos decir que \(\forall i\hspace{1mm}\alpha_i < \left \lceil \frac{n}{m} \right \rceil\), y \(\alpha_i \leq \left \lceil \frac{n}{m} \right \rceil -1\) con lo que \(n \leq m \left ( \left \lceil \frac{n}{m}\right \rceil -1\right )\)
+\end{itemize}
+\subsection{Contando Pares}
+\noindent Considerando dos conjuntos \(X\) e \(Y\) que conforman otro conjunto \(S\) llamamos:
+\begin{itemize}
+        \item \(f_Y(S)\) al número de elementos con la coordenada en las ordenadas.
+        \item \(f_X(S)\) al número de elementos con la coordenada en las abcisas.
+        \item \(\sum_{y \in Y} f_y(S) =  \sum_{x \in X} f_x(S)\)
+\end{itemize}
 \subsection{Combinatoria, casos}
 \subsubsection{Variaciones}
-\subsubsection{Permutaciones}
+\noindent Abarca a las distintas formas de agrupar un conjunto, donde el \underline{orden importa}.
+\subsubsection{Permutaciones / Biyecciones}
+\noindent Es un caso de las variaciones donde el cada grupo abarcamos todos los elementos, donde el \underline{orden importa}.
 \subsubsection{Combinaciones}
-\subsubsection{Emparejamientos y Desarreglos}
+\noindent Agrupación de elementos donde el orden no importa
+\par \noindent En general las podemos agrupar en la siguiente tabla:
+\[
+        \hspace*{-2.5cm} \textnormal{Abarca todos los Elementos}
+        \begin{cases}
+                \textnormal{Si e importa el Orden}
+                \begin{cases}
+                        \textnormal{Si}
+                        \begin{cases}
+                                \textnormal{Se repiten elementos}
+                                \begin{cases}
+                                        \textnormal{Si, Permutaciones} = \textnormal{PR}^{t_i}_{m} = \frac{m!}{\prod_{i=1}t_i } \\
+                                        \textnormal{No, Permutaciones} = \textnormal{P}_m = m!
+                                \end{cases}
+                        \end{cases}
+                        \\
+                        \textnormal{No}\begin{cases}
+                                \textnormal{No hay ninguna operación}
+                        \end{cases}
+                \end{cases} \\
+                \textnormal{No e importa el Orden}
+                \begin{cases}
+                        \textnormal{Si}
+                        \begin{cases}
+                                \textnormal{Se repiten elementos}
+                                \begin{cases}
+                                        \textnormal{Si, Variaciones} = \textnormal{VR}_m^n=m^n \\
+                                        \textnormal{No, Variaciones} = \textnormal{V}^n_m = \frac{m!}{(m-n)!}
+                                \end{cases}
+                        \end{cases}
+                        \\
+                        \textnormal{No}\begin{cases}
+                                \textnormal{Se repiten elementos}
+                                \begin{cases}
+                                        \textnormal{Si, Combinaciones} = \textnormal{CR}_m^n=\binom{m+n-1}{n} \\
+                                        \textnormal{No, Combinaciones} = \textnormal{C}^n_m = \binom{m}{n}
+                                \end{cases}
+                        \end{cases}
+                \end{cases}
+        \end{cases}
+\]
+\subsubsection{Emparejamientos, Desarreglos y Circulares}
+\noindent Son un caso particular. \\ Los \underline{emparejamientos}, son una ramificación de las \underline{combinaciones}, donde se calcula el numero de formas que se puede repartir un elemento \(m\) en un conjunto de \(m \times n\).
+\[
+        \boxed{\textnormal{Cm}_m^n= \frac{(mn)!}{(m!)^{n}n!}}
+\]
+\noindent Los \underline{desarreglos}, son un caso particular de las variaciones donde se calcula el numero de formas que se puede repartir un elemento de formas distintas para que quede en la misma posición:
+\[
+        \boxed{\textnormal{D}_n = n!\sum_{k=0}^n\frac{(-1)^k}{k!}}
+\]
+\noindent Las \underline{circulares}, son un caso particular de las \underline{permutaciones}, donde calculamos las formas en las que se puede ordenar un conjunto circular:
+\[
+        \boxed{\textnormal{PC}_n = (n-1)!}
+\]
 \subsection{Número Binómico}
 \subsubsection{Triangulo de Pascal}
 \subsubsection{Binomio de Newton}
