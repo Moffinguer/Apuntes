@@ -1,8 +1,44 @@
-\subsection{Introducción}
 \subsection{Tipos de Recurrencias}
+\noindent Denominamos a la expresión que define una recurrencia como \underline{fórmula explícita}, que generaliza el cálculo de la recurrencia y lo simplifica.
 \subsubsection{Lineales de Coeficientes Constantes}
-\subsubsection{Recurrencias Lineales Homogéneas}
+\noindent Se les denomina a aquellas expresiones donde existe una expresión que denominamos \(f(n)\) que denominaremos como \underline{término independiente}:
+\[
+        a_n = \sum_{n=1}^tA_n \alpha_{n-1} + f(n)
+\]
+\noindent El grado se indica como el término \(A_n\) con mayor \(n\).
+
+\subsubsection{Lineales Homogéneas}
+\noindent Es una recurrencia lineal de coeficiente constante, donde \(f(n)\) vale cero.
 \subsubsection{Otras}
+\noindent No las trataremos, pero son aquellas recurrencias como el \underline{factorial} o el \underline{máximo común divisor} y también las \underline{recurrencias lineales no homogéneas}, que no vimos en mi año.
 \subsection{RLHCC}
 \subsubsection{Primer Grado}
+\noindent Dada la expresión general \(a_n = A_0 a_{n-1}\) y conociendo el valor del caso base \(a_0 = \alpha\), definimos y nos quedaría lo siguiente:
+\[
+        \boxed{a_n = A_0 a_{n-1}}
+\]
+\[
+        \boxed{X = \sqrt[n]{A_0} = r} \hspace{5mm} \boxed{\alpha = A_0 a_0}
+\]
+\[
+        \boxed{a_n = \frac{\alpha}{r^0}r^n}
+\]
 \subsubsection{Segundo Grado}
+\noindent Ahora tenemos dos coeficientes y dos valores para el caso base:
+\[
+        \boxed{a_n = A_0 a_{n-1} + B_0 a_{n-2}} \hspace{5mm} a_0 = \alpha \hspace{3mm} b_0 = \beta
+\]
+\noindent Realizamos los pasos de la de \underline{primer grado} y obtenemos la siguiente expresión:
+\[
+        \boxed{X = \frac{A_0 \pm \sqrt{A_0 +4B_0}}{2} = r_1,r_2}
+\]
+\noindent En caso de que \(r_1 \neq r_2\) debemos de resolver una expresión como esta:
+\[
+        \boxed{a_n = Cr^n_1 +Dr_2^n}
+\]
+\noindent Para resolverla \(a_n\) debe de tomar los valores de \(\alpha\) y \(\beta\) en función del valor de \(n\).\\
+En caso de que \(r_1 = r_2\) debemos de resolverlo de la misma forma, pero con la siguiente expresión:
+\[
+        \boxed{ a_n = (C+Dn)r^n}
+\]
+\noindent De forma que \(r\) es igual a cualquiera de las raices.

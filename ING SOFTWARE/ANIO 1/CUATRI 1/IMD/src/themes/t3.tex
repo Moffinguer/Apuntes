@@ -145,5 +145,28 @@
         \boxed{\textnormal{PC}_n = (n-1)!}
 \]
 \subsection{Número Binómico}
+\noindent Denominamos al número binómico como \(\binom{n}{k}\), tal que \(n\) y \(k\) son números enteros positivos, tal que equivale a \(\frac{n!}{k!(n-k)!}\).\\
+Podemos ver ciertas propiedades que nos servirán a futuro:
+\begin{itemize}
+        \item \(\binom{0}{0} = \binom{n}{0} = \binom{n}{n} = 1\)
+        \item \(\binom{n}{k} = \binom{n}{n-k}\)
+        \item Sumar dos binómicos cuya parte baja sea el mismo número más uno es: \(\binom{n}{k} + \binom{n}{k+1} = \binom{n+1}{k+1}\)
+        \item La suma de todos los binómicos desde 0 hasta la parte superior equivale a una potencia de dos: \(\sum_{k=0}^n \binom{n}{k} = 2^n\)
+\end{itemize}
 \subsubsection{Triangulo de Pascal}
+\def\N{5}
+\tikz[x=0.75cm,y=0.5cm,
+        pascal node/.style={font=\footnotesize},
+        row node/.style={font=\footnotesize, anchor=west, shift=(180:1)}]
+\path
+\foreach \n in {0,...,\N} {
+                (-\N/2-1, -\n) node  [row node/.try]{Fila \n:}
+                \foreach \k in {0,...,\n}{
+                                (-\n/2+\k,-\n) node [pascal node/.try] {
+                                                $\binom{\n}{\k}$
+                                        }}};
 \subsubsection{Binomio de Newton}
+\noindent Aplicando nuestros conocimientos de los números binómicos, somos capaces de escribir una expresión con la que podemos calcular una expresión del tipo \((X+Y)^n\) con \(X\) e \(Y\) reales y \(n\) un entero positivo:
+\[
+        \boxed{\sum_{k=0}^n\binom{n}{k}x^{n-k}y^k = \sum_{k=0}^n\binom{n}{k}x^{k}y^{n-k}}
+\]
