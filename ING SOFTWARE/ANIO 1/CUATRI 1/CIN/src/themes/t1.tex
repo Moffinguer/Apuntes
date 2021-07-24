@@ -14,7 +14,20 @@
 Decimos que una función tiene \underline{multiplicidad simple} cuando la primera derivada cumple esta condición.
 \subsection{Método de Bisección}
 \subsubsection{Cota de Error a priori}
+\noindent Aprovecharemos el \underline{Teorema de Bolzano} para poder obtener el número de iteraciones necesarias para alcanzar la precisión deseada:
+\[
+        \boxed{\varepsilon_n \leq \frac{b-a}{2^n}}
+\]
+\noindent Siendo \(\mathbf{\varepsilon_n}\) un número que nos indica el número de decimales que queremos obtener, \(\mathbf{b}\) y \(\mathbf{a}\) los extremos del intervalo y \(\mathbf{n}\) el número de iteraciones.\\ Podemos simplificarlo de esta forma, para obtener el número de iteraciones:
+\[
+        \boxed{n\geq \left \lceil \log_2{\left ( \frac{b-a}{\varepsilon_n} \right )} \right \rceil}
+\]
 \subsection{Método del Punto Fijo}
 \subsubsection{Cota de Error a posteriori}
+\noindent La diferencia con el anterior metodo de calcular el error, es que no podemos calcularlo hasta que no obtengamos el valor en la iteración deseada. Se obtiene con la siguiente fórmula:
+\[
+        \boxed{\varepsilon_n \leq\frac{\left | f(x_n) \right |}{\textnormal{min}_{x \in [a,b]}\left | f'(x) \right |}}
+\]
+\noindent El único detalle a tener en cuenta es que el denominador debe de ser el valor absoluto de la derivada de \(f(x)\) con \(x\) que pertenezca al intervalo de actuación, y que de el menor valor entre los dos extremos.
 \subsection{Método de Newton}
 \subsubsection{Regla de Fourier}
