@@ -12,6 +12,10 @@
         f(\bar{x}) = 0 \hspace{5mm}f'(\bar{x}) = 0 \hspace{2.5mm} \cdots \hspace{2.5mm} f^n(\bar{x}) \not = 0
 \]
 Decimos que una función tiene \underline{multiplicidad simple} cuando la primera derivada cumple esta condición.
+\subsubsection{Teoremas a Usar}
+\noindent Aprovecharemos el \underline{Teorema de Bolzano} y el \underline{Teorema de Rolle}.\par \vspace{5mm}
+\noindent El primero dice lo siguiente ``\textbf{\textit{\(f(x)\) es continua en un intervalo \([a,b]\) si existe un punto \(c\) tal que \(f(c) = p \hspace{3mm} p \neq 0\) encontrandose \(a < c < b\) y siendo este punto una raiz de la función}}''. Para esto debe de cumplirse que \(f(x)\) sea continua en el intervalo \([a,b]\) y \(f'(x)\) sea derivable y no sea igual a cero en el intervalo \((a,b)\). \par \vspace{3mm}
+\noindent El segundo dice que ``\textbf{\textit{\(f'(x) \neq 0 \) entonces \(x\) es raiz única de \(f(x)\) en el intervalo \([a,b]\)}}''.
 \subsection{Método de Bisección}
 \subsubsection{Cota de Error a priori}
 \noindent Aprovecharemos el \underline{Teorema de Bolzano} para poder obtener el número de iteraciones necesarias para alcanzar la precisión deseada:
@@ -22,6 +26,15 @@ Decimos que una función tiene \underline{multiplicidad simple} cuando la primer
 \[
         \boxed{n\geq \left \lceil \log_2{\left ( \frac{b-a}{\varepsilon_n} \right )} \right \rceil}
 \]
+\subsubsection{Cálculo}
+\noindent Sabemos que trabajamos en un intervalo \([a,b]\) por lo que calcularemos el punto medio y en función del signo del producto de uno de los extremos con el punto medio, crearemos un nuevo intervalo, como el siguiente:
+\[
+        \boxed{P_m = \overline{x_1} = \frac{a+b}{2}
+                \begin{cases}
+                        \text{Si \hspace{3mm}} f(a)f(\overline{x_1}) < 0  \Rightarrow \text{\hspace{3mm}} [a, x_1] \\
+                        \text{Si \hspace{3mm}} f(b)f(\overline{x_1}) < 0 \Rightarrow\text{\hspace{3mm}} [x_1, b]
+                \end{cases}}
+\]
 \subsection{Método del Punto Fijo}
 \subsubsection{Cota de Error a posteriori}
 \noindent La diferencia con el anterior metodo de calcular el error, es que no podemos calcularlo hasta que no obtengamos el valor en la iteración deseada. Se obtiene con la siguiente fórmula:
@@ -29,5 +42,89 @@ Decimos que una función tiene \underline{multiplicidad simple} cuando la primer
         \boxed{\varepsilon_n \leq\frac{\left | f(x_n) \right |}{\textnormal{min}_{x \in [a,b]}\left | f'(x) \right |}}
 \]
 \noindent El único detalle a tener en cuenta es que el denominador debe de ser el valor absoluto de la derivada de \(f(x)\) con \(x\) que pertenezca al intervalo de actuación, y que de el menor valor entre los dos extremos.
+\subsubsection{Cálculo}
+\noindent Este método, al contrario que el anterior, requiere que se cumplan ciertas condiciones:
+\begin{itemize}
+        \item Dada una función \(f(x) = 0\) debemos convertirla a una función del tipo \(g(x) = x\), que a su vez debe de cumplir otras condiciones.
+        \item \(g(x)\) debe de ser continua y derivable en el intervalo \([a,b]\).
+        \item \(g'(x)\) debe de ser continua y derivable en el intervalo \([a,b]\).
+        \item \(\left | g'(x) \leq  q < 1 \right |\hspace{3mm}\forall x \hspace{1mm}[a,b]\) tal que \(q\) es la denominada \underline{constante de Contractividad} y el valor de \(x\) debe ser el menor en el intervalo \([a,b]\).
+        \item \(g([a,b]) \subseteq [a,b]\) los valores de \(g(x)\) en el intervalo \([a,b]\) deben de estar en el intervalo \([a,b]\).
+\end{itemize}
+\noindent Si se cumplen todas estas condiciones, podemos calcular las soluciones tan simple como:
+\[
+        \boxed{\overline{x_{n+1}} = g(x_n)}
+\]
+\noindent El intervalo de la solución podemos declararlo a partir de la \underline{Cota de las Raices Reales} que solo sirve para polinomios, el cual indica que las raices de \(f(x)\) se encuentran en un intervalo:
+\[
+        \boxed{\left | \psi  \right | \in \bigg[- \bigg(1+ \frac{\left | A \right |}{\left | a_0 \right |}\bigg ), 1+ \frac{\left | A \right |}{\left | a_0 \right |}\bigg ]}
+\]
+\noindent Tal que \(a_0\) el coeficiente de del monomio de mayor grado y \(A\) es el coeficiente más grande, obviando a \(a_0\).
 \subsection{Método de Newton}
+
+\begin{tikzpicture}
+        \draw[-,dotted] (2,0) -- (2,3) node[left = 5,above = -55]{\(a\)};
+        \draw[-,dotted] (4,0) -- (4,3) node[left = 5,above = -55]{\(b\)};
+        \draw[-,dotted] (3.2,0) -- (3.2,3) node[above = -30,left = 3]{\(\overline{x}\)};
+        \begin{axis}[
+                        xtick = \empty, ytick = \empty,
+                        xlabel = {\(x\)},
+                        x label style = {at={(1,0)},anchor=west},
+                        ylabel = {\(y\)},
+                        y label style = {at={(0,1)},rotate=-90,anchor=south},
+                        axis lines=center,
+                        enlargelimits=0.2,
+                ]
+                \addplot[color=black,smooth,thick,-,domain = 0:5] {(x)^2 - 5};
+        \end{axis}
+\end{tikzpicture} \par \vspace{5mm}
+\noindent Dada una función \(f(x)\) y un \(x_0\) trazamos una recta tangente y la vamos ``calibrando'' hasta alcanzar el la iteración deseada. Cabe destacar que este es el método más rapido de entre los 3.
+\[
+        \boxed{\overline{x_{n+1}} = \overline{x_n} - \frac{f(\overline{x_n})}{f'(\overline{x_n})}}
+\]
+\noindent El problema aquí radica en como calcular \(\overline{x_0}\), y esto lo haremos con la \underline{Regla de Fourier}, siempre y cuando \(f(x)\) sea continua y derivable, al igual que \(f'(x)\) en el intervalo \([a,b]\). Además de que \(f'(x) \neq 0\) y \(f''(x) \neq 0\) para todo los valores del intervalo.
 \subsubsection{Regla de Fourier}
+\noindent Para calcular \(x_0\), tomaremos ``\(a\)'' o ``\(b\)'' en función de una serie de condiciones.
+\begin{itemize}
+        \item El intervalo debe de ser de tamaño 1.
+        \item Si \(f(x)\) es creciente y concava, o decreciente y convexa \(x_0 = a\).
+        \item \(f(x)\) es creciente y convexa, o decreciente y concava \(x_0 = b\).
+\end{itemize}
+\noindent O lo que es lo mismo:
+\[
+        \boxed{
+                \begin{cases}
+                        f(a) < 0, f(b) > 0 \begin{cases}
+                                                   f'(x) > 0
+                                                   \begin{cases}
+                                        f''(x) > 0 \Rightarrow x_0 = a
+                                        \\
+                                        f''(x) < 0 \Rightarrow x_0 = b
+                                \end{cases}
+                                                   \\
+                                                   f'(x) < 0
+                                                   \begin{cases}
+                                        f''(x) > 0 \Rightarrow \text{Imposible}
+                                        \\
+                                        f''(x) < 0 \Rightarrow \text{Imposible}
+                                \end{cases}
+                                           \end{cases}
+                        \\
+                        f(a) > 0, f(b) < 0
+                        \begin{cases}
+                                f'(x) > 0
+                                \begin{cases}
+                                        f''(x) > 0 \Rightarrow \text{Imposible}
+                                        \\
+                                        f''(x) < 0 \Rightarrow \text{Imposible}
+                                \end{cases}
+                                \\
+                                f'(x) < 0
+                                \begin{cases}
+                                        f''(x) > 0 \Rightarrow x_0 = b
+                                        \\
+                                        f''(x) < 0 \Rightarrow x_0 = a
+                                \end{cases}
+                        \end{cases}
+                \end{cases}}
+\]
