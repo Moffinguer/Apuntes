@@ -1,0 +1,100 @@
+\subsection{Introducción}
+\begin{tikzpicture}
+        % \draw[-,dotted] (2,0) -- (2,3) node[left = 5,above = -55]{\(a\)};
+        % \draw[-,dotted] (4,0) -- (4,3) node[left = 5,above = -55]{\(b\)};
+        % \draw[-,dotted] (3.2,0) -- (3.2,3) node[above = -30,left = 3]{\(\overline{x}\)};
+        \begin{axis}[
+                        xtick = \empty, ytick = \empty ,
+                        y label style = {at={(0,1)},rotate=-90,anchor=south},
+                        axis lines=center,
+                        enlargelimits=0.2,
+                ]
+                \addplot[color=black,smooth,thick,-,domain = 0:10] {cos(deg(x))} node[above = 5]{\(g(x)\)};
+        \end{axis}
+\end{tikzpicture}
+\par \vspace{2mm}
+\noindent Un problema común es la aproximación de una función \(g(x)\) tal que pasa por un conjunto de valores \(\Large{\Upsilon} = \left \{ x_0, x_1, ... \right. \left. ,x_n \right \}\). Para lograr obtener \(g(x)\) debemos de obtener una función \(f(x)\) tal que pase por el conjunto de valores establecido.
+\subsection{Resolución de forma matricial}
+\noindent Considerando un conjunto de puntos de tamaño \(N\) y un conjunto de soluciones de tamaño \(N\) también, podemos construir un sistema de ecuaciones tal que obtenemos un \(P_{N-1}(x)\) tal que el resultado es un polinomio de grado \(N-1\) como máximo. Por ejemplo:
+\[
+        \Large{\Upsilon} = \left \{ x_0, x_1, \right. \left. x_2 \right \}
+\]
+\[
+        \Large{\Phi}= \left \{ y_0, y_1, \right. \left. y_2 \right \}
+\]
+\noindent Vemos que el conjunto de valores es de tamaño \(N = 3\), por lo que el grado máximo posible del polinomio es de grado 2:
+\[
+        P_2(x) = ax^2 + bx + c
+\]
+\noindent Montamos un sistema de ecuaciones de 3 incógnitas:
+\[
+        \begin{cases}
+                P_2(x_0) = y_0
+                \\
+                P_2(x_1) = y_1
+                \\
+                P_2(x_2) = y_2
+        \end{cases}
+\]
+\[
+        \begin{pmatrix}
+                x^2_0 & x_0 & 1 \\
+                x^2_1 & x_1 & 1 \\
+                x^2_2 & x_2 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+                a
+                \\
+                b
+                \\
+                c
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+                y_0
+                \\
+                y_1
+                \\
+                y_2
+        \end{pmatrix}
+\]
+\noindent Resolvemos la matriz y obtenemos los valores de ``a'', ``b'' y ``c'' y por lo tanto \(P_2(x)\).
+\subsection{Resolución por Interpolación de Lagrange}
+\noindent Solo podremos usar este método, siempre y cuando la diferencia entre los \underline{soportes}, los valores del conjunto \(\Large{\Upsilon}\) deben de ser regulares, y todos deben de tener la misma diferencia entre sus distancias.
+\noindent Para calcular el polinomio a partir de este método, debemos de considerar un conjunto de soluciones \(\Large{\Phi}\) y un conjunto de \underline{Polinomios Auxiliares de Lagrange} \(L_n(x)\), para obtener un \(P_n(x)\):
+\[
+        \boxed{P_n(x) = \sum^n_{i=0} y_iL_i(x)}
+\]
+\noindent \hspace{6.2cm} Siendo \(y_i \in \Large{\Phi}\).
+\[
+        \boxed{L_n(x) = \prod^n_{j=0, \hspace{2mm} i \neq j} \frac{x- x_j}{x_i - x_j}}
+\]
+\noindent \hspace{6.2cm} Siendo \(x_i \in \Large{\Upsilon}\).
+\[
+        \boxed{P_n(x) = \sum^n_{i=0} y_i \prod^n_{j=0, \hspace{2mm} i \neq j} \frac{x- x_j}{x_i - x_j}}
+\]
+\subsection{Método de Newton}
+\noindent Este es el método más rapido de los 3 y se calcula a partir de la siguiente expresión:
+\[
+        \boxed{N_n(x) = \sum^n_{i=0} C_i\prod^{i-1}_{j=0}(x-x_j)}
+\]
+\noindent De forma que \(P_n(x)\) es:
+\[
+        \boxed{P_n(x) = \sum^n_{k=0} N_k(x)}
+\]
+\noindent Lo laborioso de este método es calcular los \(C_i\), que son los soportes que se calculan como proposiciones. Por lo que la expresión de \(P_n(x)\) quedaría algo así:
+\[
+        \boxed{P_n(x) = f[x_0] + f[x_0,x_1](x-x_0) + ...+ f[x_0,..., x_n](x-x_0)...(x-x_{n-1})}
+\]
+\noindent Se denominan \underline{proposiciones} y se calculan de la siguiente forma:
+\[
+        \boxed{f[x_0,...,x_n] = \frac{f[x_1,...,x_n] - f[x_0,...,x_{n-1}]}{x_n - x_0}}
+\]
+\noindent Siendo el caso base \(f[x_n] = f(x_n)\)
+\subsubsection{Cota de Error}
+\noindent Se calcula de la siguiente forma:
+\[
+        \boxed{
+        \varepsilon(x) = \frac{\left | f^{n+1}(c) \right |}{(n+1)!}\prod^n_{j=0}\left | x-x_j \right |
+        }
+\]
