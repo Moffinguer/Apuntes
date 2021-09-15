@@ -1,0 +1,46 @@
+\subsection{Introducción}
+\subsection{Limite con dos variables}
+\subsubsection{Continuidad}
+\subsection{Diferenciabilidad}
+\subsubsection{Primer Orden}
+\subsubsection{Segundo Orden}
+\subsubsection{Diferenciales Cruzadas}
+\subsection{Diferenciabilidad en un punto}
+\subsection{Vector Gradiente}
+\subsection{Derivada Direccional}
+\subsection{Condición Suficiente de Diferenciabilidad}
+\subsection{Condición Necesaria de Diferenciabilidad}
+\subsection{Plano Tangente}
+\subsection{Extremos Relativos}
+\noindent Calculamos las derivadas parciales de primer orden de la función y obtenemos con que valores ambas se anulan:
+\[
+        \frac{\partial f(x,y)}{\partial x} = 0 \hspace{0.75cm},\hspace{0.75cm} \frac{\partial f(x,y)}{\partial y} = 0
+\]
+\noindent De aquí obtendremos un conjunto \(\phi = \left \{ \left.  x_0, y_0, ... x_n, y_n\right \} \right.\)\par \noindent Tras esto construiremos una matriz Hessiana, formada por las derivadas parciales de segundo orden, y calcularemos su determinante:
+\[\boxed{HF(x,y) = \begin{pmatrix}
+                        \frac{\partial f(x,y)}{\partial^2 x}           & \frac{\partial f(x,y)}{\partial x \partial y} \\
+                        \frac{\partial f(x,y)}{ \partial y \partial x} & \frac{\partial f(x,y)}{\partial^2 y}
+                \end{pmatrix}}
+\]
+\[
+        |HF(x,y)| =  \frac{\partial f(x,y)}{\partial^2 x} \frac{\partial f(x,y)}{\partial^2 y} - \frac{\partial f(x,y)}{\partial x \partial y}\frac{\partial f(x,y)}{ \partial y \partial x} = \Delta
+\]
+\noindent Tras obtener este determinante, sustituye \(x\) e \(y\) por los valores obtenidos previamente. De esta forma llegaremos a 4 conclusiones:
+\[
+        \Delta
+        \begin{cases}
+                \Delta = 0 \text{\hspace{1cm}No hay información suficiente para indicar si es un Punto Crítico}
+                \\
+                \Delta \neq 0
+                \begin{cases}
+                        \Delta < 0  \text{\hspace{1cm}Punto de Silla}
+                        \\
+                        \Delta > 0
+                        \begin{cases}
+                                \frac{\partial f(x,y)}{\partial^2 x} < 0  \text{\hspace{1cm}Es un máximo relativo}
+                                \\
+                                \frac{\partial f(x,y)}{\partial^2 x} > 0  \text{\hspace{1cm}Es un mínimo relativo}
+                        \end{cases}
+                \end{cases}
+        \end{cases}
+\]
