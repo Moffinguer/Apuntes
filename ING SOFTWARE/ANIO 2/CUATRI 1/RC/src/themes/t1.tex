@@ -57,10 +57,107 @@
                       \item La Frecuencia(\textbf{FDM}): Del ancho de banda total, a cada uno se le asigna una frecuencia en específica, e invariable.
                       \item El Tiempo(\textbf{TDM}): Del ancho de banda total, cada usuario tiene un tiempo en el que puede realizar sus peticiones, es invariable.
               \end{itemize}
-        \item \textbf{Conmutación de paquetes}: Los datos se envian en forma de paquetes. Los paquetes de los usuarios se comparten en la red, cada paquete con un ancho de banda preestablecido. Además los recursos que se usan son los mínimos e indispensables, si hay más recursos que demanda a satisfacer se genera una \textit{congestión}, que tendrá que esperar en una cola de paquetes, que se liberará con el tráfico gradual de cada paquete de uno en uno, \textit{store and forward}, o si los paquetes de varios usuarios no tienen un patrón temporal fijo, el ancho de banda se compartirá, \textit{multiplexación estadística}.\par \noindent En el caso del ``store and forward'', considerando \(L\) como el tamaño de los paquetes, en \textit{bit} y \(R\) el tiempo que tarda cada enlace, en \textit{bps}, podemos calcular el retardo relacionando \(\frac{L}{R}\) como una relación inversamente proporcional.
+        \item \textbf{Conmutación de paquetes}: Los datos se envian en forma de paquetes. Los paquetes de los usuarios se comparten en la red, cada paquete con un ancho de banda preestablecido. Además los recursos que se usan son los mínimos e indispensables, si hay más recursos que demanda a satisfacer se genera una \textit{congestión}, que tendrá que esperar en una cola de paquetes, que se liberará con el tráfico gradual de cada paquete de uno en uno, \textit{store and forward}, o si los paquetes de varios usuarios no tienen un patrón temporal fijo, el ancho de banda se compartirá, \textit{multiplexación estadística}.\par \noindent En el caso del ``store and forward'', considerando \(L\) como el tamaño de los paquetes, en \textit{bit} y \(R\) el tiempo que tarda cada enlace, en \textit{bps}, podemos calcular el retardo relacionando \(\frac{L}{R}\) como una relación inversamente proporcional.\par \noindent Este es el tipo de conmutación que aprovecha la Internet.
 \end{itemize}
 \noindent En definitiva podemos concluir que el uso de una `'conmutación de paquetes`' permite a más usuarios usar la red.
 \subsubsection{Estructura del internet}
 \noindent Internet tiene un punto de acceso, ``NAP'' (una red de alta velocidad como el \textit{Ethernet}), que se ramificará en suminstradores de la red, ``NSP'', situado en la capa 1, y almacenará información referente a links generales que requieren el resto de proveedores, se conectan entre si también.\par Bajando de nivel, a la capa 2, nos encontramos con los distrubidores de servicio regional, ``RSP'', que le proporcionará el servicio final a la capa más cercana a los hosts, nivel 3, los ``ISP'', que intercambiarán con la ``NAP'' rutas y puntos de accesos, que se encargará de recordar.
 \subsection{Rendimiento}
+\subsubsection{Retardos}
+\noindent Los paquetes se encolan en el buffer del router y mediremos la tasa de llegada de paquetes respecto a la salida, ``apilandolos''. Es decir, mientras haya \textit{buffer libre}, los paquetes se encolan, y evidentemente generan un cierto retardo, pero si está el \textit{buffer completo}, se genera una pérdida y el flujo de paquete se detiene hasta que se libere el buffer.\par \vspace{.5cm}
+\noindent Para calcular el retardo total podemos considerar la siguiente expresión:
+\[
+        \boxed{d_{nodal} = d_{proc} + d_{cola} + d_{trans} + d_{prop}}
+\]
+\noindent Los describiremos a continuación:
+\begin{itemize}
+        \item \(\mathbf{d_{nodal}}\): Se refiere al retardo total por cada nodo.
+        \item \(\mathbf{d_{proc}}\): Es el \textit{procesamiento nodal}, se encarga de comprobar errores a nivel de bit y determina el enlace de salida. Se mide en \(\mu s\).
+        \item \(\mathbf{d_{cola}}\): Es el \textit{retardo de cola}, indica el tiempo de espera antes de ser transmitido por el enlace de salida, y su valor varía en función de como de completo esté el buffer. Se mide en \(\mu s\) o en \(ms\). Su expresión es la relación directamente proporcional entre la tasa media de paquetes de llegada, \(a\) medido en ``paquetes por segundo'', y el tamaño del paquete, \(L\) medido en bits. Además de una relación inversamente proporcional entre este producto y el ancho  de banda del enlace \(R\), \(bps\):
+              \[
+                      \boxed{d_{cola} = a \frac{L}{R} = a \hspace{2mm}d_{trans}}
+              \]
+              Tiene 3 casuísticas a analizar:
+              \begin{itemize}
+                      \item Si \(d_{cola} \sim 0 \), el retardo de cola es pequeño.
+                      \item Si \(d_{cola} = 1 \), el retardo de cola es muy grande.
+                      \item Si \(d_{cola} > 1 \), entonces llegan más paquetes de lo que se puede liberar, por lo que el retardo sería infinito.
+              \end{itemize}
+        \item \(\mathbf{d_{trans}}\): Es el \textit{retardo de transmisión}, indica una relación inversamente proporcional entre la longitud del paquete \(L\), en bits, y el ancho  de banda del enlace \(R\), \(bps\). Se mide en \(\mu s\) o en \(ms\), y su expresión es:
+              \[
+                      \boxed{d_{trans} = \frac{L}{R}}
+              \]
+              \noindent Es decir, expresa el tiempo que se tarda en enviar algo en base a los recursos del sistema y de la red.
+        \item \(\mathbf{d_{prop}}\): Es el \textit{retardo de propagación}, indica una relación entre la longitud del medio físico, \(d\) medido en \(m\), por el que viaja el paquete y la velocidad de propagación que tenga el medio, \(s\) que idealmente medirá aproximadamente \(2x10^8\) \(m/s\). Su expresión es la siguiente:
+              \[
+                      \boxed{d_{prop} = \frac{d}{s}}
+              \]
+              \noindent Es decir, expresa el tiempo que se tarda en enviar algo en base al medio y la distancia entre los emisores y receptores.
+\end{itemize}
+%Tengo un dibujo en los apuntes, hacerlo%
+\subsubsection{Pérdidas}
+\noindent El buffer está asociada a un enlace con una capacidad finita, por lo que es común que mientras el buffer se completa o llegue a su máxima capacidad, haya pérdida de paquetes, ``drops'', que serán descartados y enviados a un nodo anexo con el fin de intentar enviarlos nuevamente.
+\par \vspace{.5cm}
+\noindent Se expresa en ``bits / segundo'' y la podemos medir de dos formas:
+\begin{itemize}
+        \item Instantaneamente, medimos los paquetes en un tiempo determinado.
+        \item Promedio, medimos la tasa media de paquetes en un periodo de tiempo.
+\end{itemize}
+\noindent En la teoría la tasa de transferencia entre varios terminales es:
+\[
+        \boxed{min(R_C,R_S, \frac{R}{N})}
+\]
+\noindent Siendo \(R_C\) el canal con el cliente y \(R_S\) el canal con el servidor, por lo que mientras ambos tengan una relación proporcional, el flujo de datos que pase por cada uno de los canales será el mismo, y no se producirán muchos cuellos de botella. Además de \(\frac{R}{N})\) ser el cociente entre el ancho de banda y el numero de conexiones.\par
+\noindent Sin embargo en la realidad \(R_C\) o \(R_S\) se vuelven un cuello de botella, ya que la tasa de transferencia depende del tráfico existente, a pesar de la velocidad de transmisión.
 \subsection{Capas de Protocolos y Modelos de Servicio}
+\noindent Con el fin de organizar una red, para mayor rehusabilidad y mantenimiento, debemos de crear una arquitectura de red modulada que permita un tráfico eficiente.
+\par \vspace{.5cm}
+\noindent En cualquier Modelo, se utiliza la misma lógica, posteriormente veremos los dos modelos más usados. \par \noindent Crearemos tantas capas como servicios querramos implementar, cada una es independiente, sin embargo aprovechará la información proveniente de la capa inmediatamente anterior a esta (independientemente de como esté viajando la información).
+\par \noindent En los extremos de cada capa existen ``entidades'', que recibirán la información proporcionada por las funciones generadas por cada capa, denominados ``servicios''. El acceso a estos servicios se realiza a través de la interfaz \textit{SAP}, ``Service Access Point''.
+\par \noindent En cada nivel se usa un determinado protocolo, para comunicarse con las ``entidades'' de su mismo nivel y enviar la información a la capa siguiente. Además por cada protocolo indicamos las reglas de intercambio de mensajes y su formato, \textit{PDU}, ``Protocol Data Unit''.
+\subsubsection{Organización}
+\noindent Ya sabemos que el mensaje entre cada capa se denomina ``PDU'', esta información solo podrá leerse por aquellas capas situadas al mismo nivel, se denominan ``N-PDU'', pero en la realidad la información pasará a través de ``SAP'' tales que comunicarán una capa con otra, encapsulando la información hasta llegar a otra capa, donde irán desencapsulandolas.
+\subsubsection{Proceso de Encapsulación y Fragmentación}
+\begin{enumerate}
+        \item La información se encapsula, ``PDU''
+        \item Usando un ``ICI'', \textit{Interface Control Information}, de la capa siguiente, es decir, usamos ``N-ICI'', completamos la información del ``PDU'' para especificar el mensaje. Esta agrupación la pasamos por el ``SAP'' para la siguiente capa.
+        \item La nueva capa, la denominaremos ``N'', extraerá la información de ``N-ICI'' del ``SAP'' y responderá acorde a esta. A su vez, esta información nos permitirá formar un ``PCI'' para este nivel actual ``N-PCI'', \textit{Protocol Control Information}.
+        \item Hemos separado la información, del ``SAP'', en un ``N-PCI'' y el resto en varios ``N-SDU'', \textit{Service Data Unit}, a este proceso de este nivel, lo llamamos \textbf{fragmentación}
+        \item Juntamos el ``N-PCI'' y los ``N-SDU'' y formamos nuevamente un ``PDU'', pero para esta capa.
+        \item El proceso se repetirá hasta que no queden más capas.
+\end{enumerate}
+\subsubsection{Proceso de Desencapsulación y Reensamblaje}
+\noindent Es el mismo que el anterior, pero a la inversa, en vez de ir de un nivel alto a uno inferior, vamos de una capa de bajo nivel a una de alto.
+\subsubsection{Tipos de Arquitectura}
+\noindent Depende del conjunto de funciones que querramos implementar, será necesario. Para eso se han creado distintas arquitecturas, aquí veremos dos:
+\begin{itemize}
+        \item \textbf{TCP/IP}: Es la que utiliza Internet y describe funciones, servicios y protocolos.
+        \item \textbf{Modelo de referencia OSI}: Es la que se usa en base al estandar ``ISO'' pero solo describe funciones y servicios.
+\end{itemize}
+\subsubsection{TCP/IP}
+\noindent Se divide en 5 capas:
+\begin{itemize}
+        \item \textbf{Aplicación}: Soporta las aplicaciones de red. Sirve de interfaz con el usuario final. Envia ``A-PDU'', mensajes.
+        \item \textbf{Transporte} Transferencia de datos extremo a extremo entre procesos. Envia ``T-PDU'', segmentos.
+        \item \textbf{Red}: Direccionamiento y enrutado de datagramas de origen a destino. Envia ``R-PDU'', datagramas.
+        \item \textbf{Enlace}: Transferencia de datos entre elementos de red ``ceranos''. Envia ``E-PDU'', tramas
+        \item \textbf{Física}: Transferencia de bits.
+\end{itemize}
+\subsubsection{OSI}
+\noindent Se divide en las mismas capas que el ``TCP/IP'' pero añadiendo dos capas más entre la capa de \textit{aplicación} y \textit{transporte}:
+\begin{itemize}
+        \item \textbf{Presentación}: Permite la interpretación de los datos y los codifica.
+        \item \textbf{Sesión}: Se encarga de la sincronización, restauración y checkeo de datos.
+\end{itemize}
+\noindent La capa de \textbf{Aplicación}, se encargaría de recopilar y hacer lo que hacen estas dos capas extras, pero internet también realiza estas funciones.
+\subsubsection{Implementación}
+\noindent Las capas las podemos dividir en nivel \textit{Software} y \textit{Hardware}, ya que a medida que vamos bajando de nivel, la complejidad aumenta.
+\begin{itemize}
+        \item \textbf{Software}:
+              \begin{itemize}
+                      \item \textit{Programas}: \underline{Aplicación}
+                      \item \textit{Sistema Operativo}: \underline{Transporte y Red}
+              \end{itemize}
+        \item \textbf{Hardware}:
+        \item \underline{Enlace y Física}
+\end{itemize}
