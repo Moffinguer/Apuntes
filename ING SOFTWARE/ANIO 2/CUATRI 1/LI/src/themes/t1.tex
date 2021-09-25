@@ -1,253 +1,153 @@
-\subsection{Cargas}
-\noindent La carga es una unidad cuantizable, a partir de la carga del electrón \(e^{-}\),  siendo posible la carga una unidad de magnitud positiva o negativa. \par \noindent
-Esta unidad afecta a nivel de la Fuerza Electrostática, el Campo Electrostático y sus magnitudes, y podemos considerar que todas las cargas poseen masa. \par \noindent
-Además, dado un sistema, siempre \underline{la suma de todas las cargas va a ser cero}. De este enunciado podemos decir dos principios:
+\subsection{Internet}
+\noindent \underline{Internet} comprende al conjunto de \textit{Hardware} y \textit{Software} que abarca a la red. Está formado por enlaces de conexión que alcanzan a los \underline{hosts}, o sistemas terminales, dispositivos que se conectan a la Internet y ejecutan aplicaciones en red. La podemos denominar como la ``red de redes'', una gran red que abarca al resto de redes que se enlazan entre si, por lo que tiene dos propiedades fundamentales:
 \begin{itemize}
-        \item \underline{Principio de Conservación de la Carga}: La suma de todas las cargas del Universo vale cero, es decir, la carga total es \(\bm{cte}\)
-        \item \underline{Principio de Conservación local de la Carga}: La suma de todas las cargas en un sistema, es \(\bm{cte}\) es decir, vale 0.
+        \item Es pública y accesible por todo el mundo.
+        \item Es poco jerárquica, al estar todo entrelazado no hay una red que se encuentre por encima de otra en la estructura.
 \end{itemize}
-\subsection{Ley de Coulumb}
-\noindent Esta es la ley fundamental que describe la interacción entre dos cargas puntuales en un medio, independientemente del tamaño del cuerpo. Consideramos la carga total del sistema, y no la unitaria por cada sección del cuerpo. \par
-\hspace{4cm}
-\input{src/figures/sphere} \par
-\noindent Cada cuerpo generará su propio campo y si consideramos las cargas puntuales, la fuerza entre ambas cargas será:
-\[
-        \boxed{\vec{F_{12}} = K \hspace{1mm}\frac{q_1q_2}{\left | \vec{r_2} - \vec{r_1} \right |^2}\hspace{2mm}\hat{r} = K \hspace{1mm}\frac{q_1q_2}{\left | \vec{r_2} - \vec{r_1} \right |^3}\hspace{2mm}(\vec{r_2} - \vec{r_1}) \hspace{3mm}N} \hspace{.25cm}
-        \substack{\textnormal{\scriptsize{Siendo esta, el vector fuerza que ejerce la carga}} \\
-                \textnormal{\(q_1\) sobre la carga \(q_2\).}}
-\]
-\[
-        \boxed{\vec{F_{12}} = -\vec{F_{21}}} \hspace{.25cm}
-        \substack{
-                \textnormal{\scriptsize{Y evidentemente, el vector fuerza que ejerce la carga \(q_2\) sobre la carga \(q_1\) }}\\
-                \textnormal{\scriptsize{es opuesta al vector fuerza que ejerce la carga \(q_1\) sobre la carga \(q_2\)}}
-        }
-\]
-\newline
-De esta forma podemos concluir con lo siguiente.
+\noindent Las redes se conectan mediante enlaces, hay millones de dispositivos, que pueden transportan la información mediante un medio físico o no(Fibra, Cobre, Satélite, etc), a una velocidad a la denominaremos \textit{tasa de transmisión}, o conocida también como \underline{ancho de banda}, y usarán los \textit{routers} como medio para enviar paquetes, bloques de datos.
+\par \noindent La red está regida por protocolos y estándares( \textit{RFC}, ``Request For Comments'', \textit{IETF}, ``Internet Engineering Task Force''), con el fin de ofrecer una serie de \textit{servicios}, \textbf{servicios de comunicación} para enviar datos a través de la red a un destinatario o \textbf{aplicaciones distribuidas}, aquellas consumidas por los hosts.
+\subsection{Protocolos}
+\noindent Para controlar el tráfico en la red, disponemos de una serie de algoritmos que se ejecutan en Software, estos son los denominados ``protocolos''. Estos definen el formato y orden de los mensajes en el tráfico entre las entidades de la red, y las medidas a tomar a corde a las situaciones. Podemos destacar el protocolo \textbf{TCP}, \textbf{IP} o el \textbf{Ethernet}.
+\subsection{Equipos, Redes de Acceso, Medios Físicos}
+\noindent Debemos de dividir este problema en 3 partes:
 \begin{itemize}
-        \item Las cargas de igual signo se repelen, mientras que las de signo diferente se atraen.
-        \item Los vectores de posición son respecto a un punto de referencia. Siendo \(\bm{\vec{r_2}}\) el vector del punto destino, y \(\bm{\vec{r_1}}\) el vector del punto de partida.
-        \item \(\bm{K}\) es la constante de Couloumb en el vacío y es lo mismo que \(\bm{K = \frac{1}{4\pi\epsilon_{\textnormal{o}}}}\), siendo \(\bm{\epsilon_{\textnormal{o}}}\) la permitividad en el vacío.
+        \item \textbf{Frontera de la Red}: Aplicaciones.
+        \item \textbf{Redes de Acceso}: Cableados y Medios de Acceso.
+        \item \textbf{Núcleo de la Red}: Routers e Internet.
 \end{itemize}
-\subsection{Campo Electrostático}
-\noindent El campo es la manifestación de la perturbación en el espacio generado por una carga puntual:
-\[
-        \boxed{\vec{E} = \hspace{1mm}\frac{\vec{F_e}}{Q} \hspace{1mm}= \hspace{1mm} Kq\frac{\vec{r} -\vec{r`}}{\left | \vec{r} -\vec{r`} \right |^3} \hspace{3mm}V/m} \hspace{1cm}
-        \substack{\textnormal{Siendo \(\vec{r`}\) el vector entre el punto de referencia y la carga y }
-                \\
-                \textnormal{\(\vec{r}\) es el vector entre el punto de estudio y el punto de referencia}
-        }
-\]
-\\
-Solo podemos calcular el campo cuando la carga \(\bm{q}\) es muy pequeña, o lo que es lo mismo: \(\bm{\lim_{q \to 0} \vec{E} \approx 0}\) \par
-\vspace{0.5cm}
-\noindent Sabiendo como se expresa el campo electrostático, nos interesaría conocer algunos casos puntuales dignos de consideración:
+\subsubsection{Frontera de la Red}
+\noindent Los Hosts ejecutan programas en la ``Frontera'' a través de un modelo, como por ejemplo el \textit{\textbf{Cliente/Servidor}}, en el cual el cliente solicita al servidor, es decir, le realiza una petición y este le responde, o el modelo \textit{\textbf{Peer to Peer}}, que no usa servidores y todos los equipos en la red reciben la respuesta y la petición (no se usa demasiado).
+\subsubsection{Redes de Acceso}
+\noindent Con el fin de conectar un host a un router, en la ``frontera'', deberemos usar redes internas para acceder a este dispositivo. Son las redes domésticas, institucionales y móviles las que aprovechan esto, por lo que hay que protegerlas (decidir si es compartida o privada) y disponer de un medio físico de transmisión de la propia red.
+\vspace{.5cm}
+\par \noindent Los medios físicos transportan información en forma de bits, a través de un enlace físico, estos pueden ser:
 \begin{itemize}
-        \item Dado un plano con dos cargas puntuales en el mismo eje de coordenadas, y queriendo calcular el campo en un punto cualquiera a una distancia equidistante respecto a las dos cargas es igual a:
+        \item \textbf{No Guiados}: La señal se transporta por medio de ondas electromagnéticas, que pueden ser orientadas fijas o programadas para ser unidireccionales u omnidireccionales. Tendremos que tener en cuenta, los problemas que afecten a las ondas a la hora de trabajar con esta clas de conectores(interferencias, reflexión,...)
               \begin{itemize}
-                      \item \(\vec{E_x} = \bm{2\left | \vec{E} \right | \cos{\bm{\alpha}}}\hspace{2mm} \bm{\hat{\imath}}\)
-                      \item \(\vec{E_y} = \bm{2\left | \vec{E} \right | \sin{\bm{\alpha}}} \hspace{2mm} \bm{\hat{\jmath}}\)
+                      \item \textbf{Guiados}: La señal se transporta a través de un medio sólido (par trenzado, coaxial, fibra óptica, etc)
+                            \begin{itemize}
+                                    \item \textit{Par Trenzado}: Formado por dos cables de cobre aislados, y cuya categoría indica la velocidad de transporte.
+                                    \item \textit{Cable Coaxial}: Es bidireccional ya que en función del tipo puede ser de ``banda base'', unidireccional, o de ``banda ancha'',multidireccional.
+                                    \item \textit{Fibra Óptica}: Aprovecha la energía lumínica y la velocidad de la luz para transmitir información. No requiere de repetidores que amplien la señal, a no ser que sean distancias muy largas
+                            \end{itemize}
+                      \item \textit{Microondas}: Tiene alta direccionalidad.
+                      \item \textit{WLAN}: Es omnidireccional
+                      \item \textit{Satélite}: Tiene un retraso de \(270 ms\) pero como no nos conectamos directamente, no llega a ser un problema, en cortas distancias.
               \end{itemize}
-        \item Las cargas actúan como sumideros.
-        \item El campo generado por una carga eléctrica se emite de forma radial y constante, y su número indica su intensidad.
 \end{itemize}
-\subsection{Distribución de Cargas}
-\noindent Hemos considerado un cuerpo cualquiera con carga, como una carga puntual que genera un \(\bm{\vec{E}}\), ya que la carga se distribuía de forma continua. Sin embargo en la realidad no es así, y dependiendo del cuerpo que tengamos, su forma y tamaño afectarán al cálculo del campo. Para esto, deberemos calcular sección por sección del cuerpo de estudio con el fin de obtener una aproximación del campo total. En esta parte veremos \underline{la distribución de cargas por unidad de longitud} que la denotaremos por:
-\[ \boxed{\lambda = \frac{Q}{l}} \hspace{2cm} \textnormal{Siendo \(\bm{Q}\) la carga y \(\bm{l}\) la unidad de longitud.}\]
-Estudiaremos un caso muy particular, el campo generado por una barra metálica \\ infinítamente larga.\par
-\vspace{0.5cm}
-\hspace{4.5cm}
-\begin{tikzpicture}
-        \node[above = -10, right =15]{\(\left | \partial{l} \right |\)};
-        \draw[draw=black, fill=black] (0,0) rectangle ++(7,0.1);
-\end{tikzpicture}
-\vspace{0.5cm}
+\noindent A la vez podemos dividir a las  redes en dos categorías:
+\begin{itemize}
+        \item \textbf{Acceso Fijo}: Pueden ser cableadas o usando cableado telefónico, como \textbf{ADSL}.
+        \item \textbf{Acceso Movil}.
+\end{itemize}
+\noindent De entre los tipos de redes podemos destacar:
+\begin{itemize}
+        \item Modems.
+        \item DSL, ``Digital Subscriber Line''.
+        \item HFC, ``Hybrid Fiber Cable''.
+        \item FTTH, ``Fiber To The Home''
+\end{itemize}
+\subsubsection{Componentes típicos en una Red de Acceso}
+\noindent Como un caso particular, en las redes domésticas, la conexión a internet se realiza a través de un modem que se conecta al ISP, proveedor de servicios de internet, y este transmitirá una señal a un router, con una ip pública única, a la que se conectarán el resto de dispositivos de la red a través de una conexión NAT.
+\subsection{Conmutación de Paquetes/Circuitos y la Arquitectura de Internet}
+\noindent El núcleo de la red se conforma por una red entrelazada, una malla, de routers conectados entre si que transmiten datos a través de la red mediante:
+\begin{itemize}
+        \item \textbf{Conmutación de circuitos}: Circuito dedicado, con la red telefónica. Usan el protocolo ``Peer to Peer'', y se comunican a través de llamadas de la red telefónica. Los recursos no se comparten y tiene un buen rendimiento, debido a que cada usuario se le reserva un ancho de banda, puede ser una división en función de:
+              \begin{itemize}
+                      \item La Frecuencia(\textbf{FDM}): Del ancho de banda total, a cada uno se le asigna una frecuencia en específica, e invariable.
+                      \item El Tiempo(\textbf{TDM}): Del ancho de banda total, cada usuario tiene un tiempo en el que puede realizar sus peticiones, es invariable.
+              \end{itemize}
+        \item \textbf{Conmutación de paquetes}: Los datos se envian en forma de paquetes. Los paquetes de los usuarios se comparten en la red, cada paquete con un ancho de banda preestablecido. Además los recursos que se usan son los mínimos e indispensables, si hay más recursos que demanda a satisfacer se genera una \textit{congestión}, que tendrá que esperar en una cola de paquetes, que se liberará con el tráfico gradual de cada paquete de uno en uno, \textit{store and forward}, o si los paquetes de varios usuarios no tienen un patrón temporal fijo, el ancho de banda se compartirá, \textit{multiplexación estadística}.\par \noindent En el caso del ``store and forward'', considerando \(L\) como el tamaño de los paquetes, en \textit{bit} y \(R\) el tiempo que tarda cada enlace, en \textit{bps}, podemos calcular el retardo relacionando \(\frac{L}{R}\) como una relación inversamente proporcional.\par \noindent Este es el tipo de conmutación que aprovecha la Internet.
+\end{itemize}
+\noindent En definitiva podemos concluir que el uso de una `'conmutación de paquetes`' permite a más usuarios usar la red.
+\subsubsection{Estructura del internet}
+\noindent Internet tiene un punto de acceso, ``NAP'' (una red de alta velocidad como el \textit{Ethernet}), que se ramificará en suminstradores de la red, ``NSP'', situado en la capa 1, y almacenará información referente a links generales que requieren el resto de proveedores, se conectan entre si también.\par Bajando de nivel, a la capa 2, nos encontramos con los distrubidores de servicio regional, ``RSP'', que le proporcionará el servicio final a la capa más cercana a los hosts, nivel 3, los ``ISP'', que intercambiarán con la ``NAP'' rutas y puntos de accesos, que se encargará de recordar.
+\subsection{Rendimiento}
+\subsubsection{Retardos}
+\noindent Los paquetes se encolan en el buffer del router y mediremos la tasa de llegada de paquetes respecto a la salida, ``apilandolos''. Es decir, mientras haya \textit{buffer libre}, los paquetes se encolan, y evidentemente generan un cierto retardo, pero si está el \textit{buffer completo}, se genera una pérdida y el flujo de paquete se detiene hasta que se libere el buffer.\par \vspace{.5cm}
+\noindent Para calcular el retardo total podemos considerar la siguiente expresión:
 \[
-        \boxed{\vec{E}(P) \hspace{1mm} = \hspace{1mm}\frac{1}{4\pi\epsilon_o}\int^{b}_{a} \lambda \frac{\hat{r}}{r^2}\hspace{1mm} \mathrm{d}l \hspace{1mm} = K\lambda \int^{b}_{a}\frac{\vec{r}}{r^3} \mathrm{d}l\hspace{1mm} = K\lambda \int_{a}^{b} \frac{y}{h}\vec{\jmath} -\frac{x}{h} \vec{\imath} \hspace{2mm}\mathrm{d}l}
+        \boxed{d_{nodal} = d_{proc} + d_{cola} + d_{trans} + d_{prop}}
 \]
-Siendo \(\bm{h = \sqrt[]{x^2+y^2}}\) y las incógnitas \(\bm{x}\) e \(\bm{y}\) como la distancia de un punto cualquiera en la barra para las coordenadas X e Y respectivamente. Los valores \(\bm{a}\) y \(\bm{b}\) de la integral, no son más que dos extremos cualquiera de la barra cargada.
-\subsection{Ley de Gauss}
-\begin{wrapfigure}{r}{3cm}
-        \input{src/figures/gauss}
-\end{wrapfigure}
-\noindent La ley de Gauss define el flujo de \(\bm{\vec{E}}\) a través de una superficie cerrada.\par
-\noindent Podemos considerar un caso general, donde dado un espacio cualquiera, con tamaño y forma indefinidos el flujo del campo eléctrico se denota por:
-\[
-        \phi =\lim_{\Delta S \to 0}\sum_{i=0}^{\infty}\vec{E_i}\hspace{1mm}\Delta S = \int_{S}\vec{E}\hspace{1mm}\mathrm{d} \vec{S} = \boxed{\oint_{S} \vec{E} \hspace{1mm}\mathrm{d} \vec{S} = \frac{Q_\textnormal{int}}{\epsilon_o}}
-\]
-Dada esta expresión podemos deducir que el flujo total es la suma, infinitesimal de cada una de las secciones sobre la que ejerce el campo eléctrico sobre la superficie, y que el flujo \(\bm{\phi}\) es proporcional a la carga interna \(\Rightarrow \boxed{\bm{\phi} \hspace{1mm} \bm{\propto} \hspace{1mm} \bm{q}}\) \par
-\vspace{1cm}
-\hspace{-.5cm}
-Por lo tanto podemos estudiar el valor del campo \(\bm{\vec{E}}\) en casos de extrema simetría.
-Para esto consideraremos una nueva magnitud \(\bm{\sigma}\) que denota la \underline{distribución superficial de carga}. \(\boxed{\sigma = \frac{Q}{S}}\)
-\par \vspace{.5cm} \hspace{-.5cm}No confundir la superficie del cuerpo de estudio con la superficie Gaussiana, esta es variable y depende de quien la estudie.
-\subsubsection{Plano Infinito}
-\input{src/figures/plain}\par
-\noindent Dado el diagrama propuesto, todos los puntos situados en el mismo plano, poseen la misma \\Distribución Superficial de Carga, y por ende todos los puntos poseen el mismo \(\vec{E}\).
-\[\vec{E} = \vec{E_1} + \vec{E_2} = 2\vec{E}\]
-\subsubsection{Cilindro en un plano infinito}
-\noindent Si situaramos un cilindro en un plano infinitamente largo, observamos que el flujo corresponde a la suma del flujo que pasa por cada una de las tapas y la cubierta lateral del cilindo. De esta forma, debido a que la cubierta lateral es paralela al vector normal al campo, el flujo que pasa por ahí es nulo. Por ende:
-\[
-        \oint \vec{E}\hspace{1mm}\mathrm{d} \vec{S} = \oint_{SL}\vec{E}\hspace{1mm}\mathrm{d} \vec{S} +\oint_{S^+}\vec{E}\hspace{1mm}\mathrm{d} \vec{S}+\oint_{S^-}\vec{E}\hspace{1mm}\mathrm{d} \vec{S} =
-        2 \oint_{S^+} \vec{E}\hspace{1mm}\mathrm{d} \vec{S} \Rightarrow \phi =2\left | \vec{E} \right |\left | \vec{S} \right | = 2ES
-\]
-\[
-        2ES = \frac{Q_{\textnormal{int}}}{\epsilon_o} \Rightarrow E = \frac{\left | \sigma \right |}{2\epsilon_o} \Rightarrow \boxed{\vec{E} = \frac{\sigma}{2\epsilon_o}\hspace{1mm}\hat{n}}
-\]
-Posteriormente veremos que si el cuerpo está cargado y analizamos el campo \(\bm{\vec{E}}\), este valdrá 0, y por tanto su potencial es \(cte\) aunque no sepamos cuanto pueda valer. \textbf{El vector \(\bm{\hat{n}}\) es el vector normal a la superficie}.
-\subsubsection{Esfera cargada}
-\noindent Aplicando la Ley de Gauss y considerando \(\bm{R}\) el radio de la superficie Gaussiana, y \(\bm{r}\) el radio de la esfera:
-\[
-        \oint \vec{E} \hspace{1mm} \mathrm{d}\vec{S} \Rightarrow \left | \vec{E} \right | 4\pi R^2 = \hspace{1mm} \frac{Q_{\textnormal{int}}}{\epsilon_o}
-\]
-\[
-        \boxed{\vec{E}  = \hspace{1mm} \frac{Q_{\textnormal{int}}}{\epsilon_o4\pi R^2} \hspace{1mm}\hat{n} \hspace{1mm} = \frac{\sigma r^2}{\epsilon_o R^2} \hspace{1mm}\hat{n}}
-\]
-
-\subsection{Balance de Energías}
-\begin{wrapfigure}{r}{5cm}
-        \input{src/figures/energy}
-\end{wrapfigure}
-\noindent Debido a que la fuerza electrostática es una fuerza conservativa, no importa la ruta recorrida, sino las posiciones inicial y final para calcular el trabajo requerido para mover la carga de un punto \textbf{A} al \textbf{B}.\par
-\vspace{0.5cm}
-\hspace{-.725cm}
-De esta forma podemos aplicar \underline{El Teorema de las Fuerzas Vivas} por lo que \(\boxed{W_{A \to B} = \Delta E_c = \frac{1}{2} m (V_B -V_A) \hspace{2mm}J}\)
-\par
-\vspace{0.5cm}
-\hspace{-.6cm}
-Por lo tanto el trabajo requerido para mover una carga de un punto A a otro B, es igual a \(\ \Rightarrow \boxed{W_{A \to B} =-\Delta E_p = -q \Delta V}\) \par
-\vspace{0.5cm}
-\noindent Por convenio diremos que  \(\bm{E_c}\) es la energía cinética, \(\bm{E_p}\) es la energía potencial (ambas en Julios \textbf{J}) y \(\bm{V}\) es el potencial eléctrico, en Vatios \textbf{V}
-\[
-        \textnormal{En funcion del signo} \rightarrow
-        \begin{cases}
-                \textnormal{Si \(\bm{W > 0}\), \(\bm{q}\) se mueve a favor del campo} \\
-                \\
-                \textnormal{Si \(\bm{W < 0}\), \(q\) requiere de un \(\bm{W_{\textnormal{ext}}}\) para moverse.}
-                \\
-                \textnormal{Si la carga se queda quieta al recorrer ese trayecto, diremos que}
-                \\
-                \textnormal{\(\bm{W_\textnormal{ext} = -W}\)}
-        \end{cases}
-\]
-\noindent Gracias al conocimiento del trabajo, podemos decir que las unidades del Campo Eléctrico pueden ser tanto \textbf{N/C} como \textbf{V/m}
-\subsection{Superficies Equipotenciales}
-\noindent Estos son aquellos espacios donde la diferencia de potencial \(\bm{\Delta V}\) vale siempre cero, es decir, tienen el mismo potencial en todos los puntos. \\
-Los espacios que satisfacen esta situación son aquellos situados paralelamente, en sentido del campo eléctrico. \\ Es decir:
-\[
-        \boxed{\Delta V = E \mathrm{d} \cos{\alpha} \Rightarrow \mathrm{d}V = - \vec{E}\mathrm{d}\vec{r}}
-\]
-\begin{wrapfigure}{r}{5cm}
-        \input{src/figures/equipot}
-\end{wrapfigure}
-Dada esta expresión, dos puntos son equipotenciales cuando \(\bm{\cos{\bm{\alpha}} = 0}\). Como se puede ver en el diagrama, todos los puntos paralelos, en función de las líneas de campo, son equipotenciales entre si.
-\subsection{Conductores}
-\noindent Las cargas en un conductor tenderán a moverse, mientras circula un campo \(\bm{\vec{E}}\), hasta que la carga neta del sistema se estabilice y quede en equilibrio, alrededor de unos \(10^{-14}\) segundos.\\\\
-Estos materiales poseen una serie de propiedades, estudiandolos internamente, estas son:\\\\
-\hspace{3cm}\textbf{Propiedades:}
-\begin{enumerate}
-        \item \(\bm{\vec{E}}\) en el interior es nulo (sino, las cargas no tenderían a equilibrarse)
-        \item  El potencial es \(cte\) en todo el conductor, interior y superficie, es decir, todo el conductor es una superficie equipotencial.
-        \item La carga neta tenderá a acumularse en la superficie del conductor, esto se puede demostrar con \underline{la Ley de Gauss}:
+\noindent Los describiremos a continuación:
+\begin{itemize}
+        \item \(\mathbf{d_{nodal}}\): Se refiere al retardo total por cada nodo.
+        \item \(\mathbf{d_{proc}}\): Es el \textit{procesamiento nodal}, se encarga de comprobar errores a nivel de bit y determina el enlace de salida. Se mide en \(\mu s\).
+        \item \(\mathbf{d_{cola}}\): Es el \textit{retardo de cola}, indica el tiempo de espera antes de ser transmitido por el enlace de salida, y su valor varía en función de como de completo esté el buffer. Se mide en \(\mu s\) o en \(ms\). Su expresión es la relación directamente proporcional entre la tasa media de paquetes de llegada, \(a\) medido en ``paquetes por segundo'', y el tamaño del paquete, \(L\) medido en bits. Además de una relación inversamente proporcional entre este producto y el ancho  de banda del enlace \(R\), \(bps\):
               \[
-                      \boxed{\oint \vec{E} \mathrm{d} \vec{S} = \frac{Q_{\textnormal{int}}}{\epsilon_{\textnormal{o}}} \Rightarrow \vec{E} = 0 \Leftrightarrow  Q_{\textnormal{int}} = 0}
+                      \boxed{d_{cola} = a \frac{L}{R} = a \hspace{2mm}d_{trans}}
               \]
-        \item El campo \(\bm{\vec{E}}\) en la superficie, hará que la carga se mueva a los bordes, por lo que \(\bm{\vec{E} \not \perp \vec{S}}\)
-        \item \(\bm{\vec{E}}\) en la superficie vale \(\bm{\vec{E} = \frac{\sigma}{\epsilon_o}\hat{n}}\)
+              Tiene 3 casuísticas a analizar:
+              \begin{itemize}
+                      \item Si \(d_{cola} \sim 0 \), el retardo de cola es pequeño.
+                      \item Si \(d_{cola} = 1 \), el retardo de cola es muy grande.
+                      \item Si \(d_{cola} > 1 \), entonces llegan más paquetes de lo que se puede liberar, por lo que el retardo sería infinito.
+              \end{itemize}
+        \item \(\mathbf{d_{trans}}\): Es el \textit{retardo de transmisión}, indica una relación inversamente proporcional entre la longitud del paquete \(L\), en bits, y el ancho  de banda del enlace \(R\), \(bps\). Se mide en \(\mu s\) o en \(ms\), y su expresión es:
+              \[
+                      \boxed{d_{trans} = \frac{L}{R}}
+              \]
+              \noindent Es decir, expresa el tiempo que se tarda en enviar algo en base a los recursos del sistema y de la red.
+        \item \(\mathbf{d_{prop}}\): Es el \textit{retardo de propagación}, indica una relación entre la longitud del medio físico, \(d\) medido en \(m\), por el que viaja el paquete y la velocidad de propagación que tenga el medio, \(s\) que idealmente medirá aproximadamente \(2x10^8\) \(m/s\). Su expresión es la siguiente:
+              \[
+                      \boxed{d_{prop} = \frac{d}{s}}
+              \]
+              \noindent Es decir, expresa el tiempo que se tarda en enviar algo en base al medio y la distancia entre los emisores y receptores.
+\end{itemize}
+%Tengo un dibujo en los apuntes, hacerlo%
+\subsubsection{Pérdidas}
+\noindent El buffer está asociada a un enlace con una capacidad finita, por lo que es común que mientras el buffer se completa o llegue a su máxima capacidad, haya pérdida de paquetes, ``drops'', que serán descartados y enviados a un nodo anexo con el fin de intentar enviarlos nuevamente.
+\par \vspace{.5cm}
+\noindent Se expresa en ``bits / segundo'' y la podemos medir de dos formas:
+\begin{itemize}
+        \item Instantaneamente, medimos los paquetes en un tiempo determinado.
+        \item Promedio, medimos la tasa media de paquetes en un periodo de tiempo.
+\end{itemize}
+\noindent En la teoría la tasa de transferencia entre varios terminales es:
+\[
+        \boxed{min(R_C,R_S, \frac{R}{N})}
+\]
+\noindent Siendo \(R_C\) el canal con el cliente y \(R_S\) el canal con el servidor, por lo que mientras ambos tengan una relación proporcional, el flujo de datos que pase por cada uno de los canales será el mismo, y no se producirán muchos cuellos de botella. Además de \(\frac{R}{N})\) ser el cociente entre el ancho de banda y el numero de conexiones.\par
+\noindent Sin embargo en la realidad \(R_C\) o \(R_S\) se vuelven un cuello de botella, ya que la tasa de transferencia depende del tráfico existente, a pesar de la velocidad de transmisión.
+\subsection{Capas de Protocolos y Modelos de Servicio}
+\noindent Con el fin de organizar una red, para mayor rehusabilidad y mantenimiento, debemos de crear una arquitectura de red modulada que permita un tráfico eficiente.
+\par \vspace{.5cm}
+\noindent En cualquier Modelo, se utiliza la misma lógica, posteriormente veremos los dos modelos más usados. \par \noindent Crearemos tantas capas como servicios querramos implementar, cada una es independiente, sin embargo aprovechará la información proveniente de la capa inmediatamente anterior a esta (independientemente de como esté viajando la información).
+\par \noindent En los extremos de cada capa existen ``entidades'', que recibirán la información proporcionada por las funciones generadas por cada capa, denominados ``servicios''. El acceso a estos servicios se realiza a través de la interfaz \textit{SAP}, ``Service Access Point''.
+\par \noindent En cada nivel se usa un determinado protocolo, para comunicarse con las ``entidades'' de su mismo nivel y enviar la información a la capa siguiente. Además por cada protocolo indicamos las reglas de intercambio de mensajes y su formato, \textit{PDU}, ``Protocol Data Unit''.
+\subsubsection{Organización}
+\noindent Ya sabemos que el mensaje entre cada capa se denomina ``PDU'', esta información solo podrá leerse por aquellas capas situadas al mismo nivel, se denominan ``N-PDU'', pero en la realidad la información pasará a través de ``SAP'' tales que comunicarán una capa con otra, encapsulando la información hasta llegar a otra capa, donde irán desencapsulandolas.
+\subsubsection{Proceso de Encapsulación y Fragmentación}
+\begin{enumerate}
+        \item La información se encapsula, ``PDU''
+        \item Usando un ``ICI'', \textit{Interface Control Information}, de la capa siguiente, es decir, usamos ``N-ICI'', completamos la información del ``PDU'' para especificar el mensaje. Esta agrupación la pasamos por el ``SAP'' para la siguiente capa.
+        \item La nueva capa, la denominaremos ``N'', extraerá la información de ``N-ICI'' del ``SAP'' y responderá acorde a esta. A su vez, esta información nos permitirá formar un ``PCI'' para este nivel actual ``N-PCI'', \textit{Protocol Control Information}.
+        \item Hemos separado la información, del ``SAP'', en un ``N-PCI'' y el resto en varios ``N-SDU'', \textit{Service Data Unit}, a este proceso de este nivel, lo llamamos \textbf{fragmentación}
+        \item Juntamos el ``N-PCI'' y los ``N-SDU'' y formamos nuevamente un ``PDU'', pero para esta capa.
+        \item El proceso se repetirá hasta que no queden más capas.
 \end{enumerate}
-\vspace{0.5cm}
-En la realidad, un conductor no es completamente puro, no siempre, por lo que si este se encontrase en un campo eléctrico externo, \(\bm{\vec{E}}\) interna tenderá a cero, mientras que las cargas internas se moverán a favor del campo externo.
-\subsubsection{Jaula de Faraday}
-\noindent Son estructuras que son cargadas con carga eléctrica hasta el punto del \underline{Campo de Ruptura}, un estado en el cual el material servirá como aislante frente a campos eléctricos externos.
-\subsubsection{Capacidad de un Conductor}
-\noindent La expresión de la capacidad \(\bm{\mathcal{C}}\) que se mide en \textbf{Faradios}, \(\bm{F}\), no es más que el cociente entre la carga del sistema entre su potencial:
-\[
-        \boxed{\mathcal{C} = \frac{Q}{V}}
-\]
-Esta expresión se consigue a partir de la integración del potencial en un punto de la superficie del conductor, considerando que la \underline{distribución superficial de carga \(\bm{\sigma}\)} es igual al cociente entre la derivada de la carga y la superficie. Es decir:
-\[
-        \sigma = \frac{\mathrm{d}q}{\mathrm{d}S}
-\]
-\[
-        V(p) = \int \frac{\sigma K}{r} \mathrm{d}S \approx Q = V \mathcal{C}
-\]
-\subsection{Condensador}
-\noindent Un condensador es un elemento formado por dos conductores de influencia total, es decir, poseen la misma carga pero de signos distintos. Un caso particular es el condensador de placas planas y paralelas.
-\newpage
-\subsubsection{Condensador de Placas Planas y Paralelas}
-\begin{wrapfigure}{l}{0cm}
-        \input{src/figures/condensador}
-\end{wrapfigure}
-\noindent Asumiendo que \(\bm{E = \frac{\sigma}{\epsilon_{\textnormal{o}}}}\) es el valor dentro de las dos placas, y \(\bm{d}\) la distancia entre ambas placas, siendo muy pequeña:
-\[
-        \mathcal{C}  = \frac{Q}{\Delta V} = \frac{Q}{Ed} = \boxed{\frac{\epsilon_{\textnormal{o}S}}{d}}
-\]
-Posteriormente veremos como, dado un ambiente diferente al vacío, \(\bm{\epsilon_{\textnormal{o}}}\) puede valer otra cosa en función de otra variable.
-\subsection{Energía Almacenada en un Condensador}
-\noindent Partiendo de que tenemos dos condensadores, uno cargado y otro vacío, ambos con la misma carga pero signos opuestos, las cargas se moverán en función del campo eléctrico que afecta al sistema, redistribuyendo las cargas de forma que cuanta más carga eléctrica se mueva, el potencial eléctrico aumenta proporcionalmente. De esta forma podemos calcular el trabajo, o energía, que se almacena entre las placas:
-\[
-        \mathrm{d}W = V(q)\mathrm{d}q
-\]
-\[
-        W = \int_{0}^{Q} V(q)\mathrm{d}q = \int_{0}^{Q} \frac{q}{\mathcal{C}}\mathrm{d}q = \frac{q^2}{2\mathcal{C}} \Big|^Q_0 =\frac{Q^2}{2\mathcal{C}}
-\]
-A veces se denota por la letra \(\bm{\mathcal{\mu}}\), y evidentemente se mide en Julios.
-\[
-        \boxed{\bm{\mathcal{\mu}} = \frac{Q^2}{2\mathcal{C}} = \mathcal{C}\frac{\Delta V^2}{2}}
-\]
-Analizandolo de una forma espacial, la energía almacenada no es más que una expresión que relaciona la permitividad del medio y el volumen del campo entre ambas placas:
-\[
-        \boxed{\bm{\mathcal{\mu}} = E^2 \frac{\epsilon_\textnormal{o}}{2}Sd}
-\]
-Siendo \(\bm{Sd}\) el volumen entre ambas placas, y \(\bm{\epsilon_\textnormal{o}}\) la permitividad en el vacío, la cual podemos ajustar a cualquier medio.
-\subsubsection{Aislantes}
-\noindent Al introducir un aislante entre dos placas cualesquiera, \(\bm{\mathcal{C}}\) aumenta, ya que los aislantes se polarizan cuando se someten a un campo eléctrico.\\\\ \textbf{\(\bm{\vec{E}}\) separa las cargas, agrupándolas por su signo y en función de la orientación del propio \(\bm{\vec{E}}\).}
-\\\\
-Es decir, las cargas se polarizan, en la superficie, y estas tenderán a ser la misma que la polarizada cuanto más cerca estén de la superficie. Pasado un tiempo, la variación de la polarización se invertirá:
-\[
-        E = \frac{\bm{\sigma_+}-\bm{\sigma_-}}{\epsilon_{\textnormal{o}}}
-\]
-\subsubsection{Permitivad relativa}
-\noindent La permitivad relativa \(\bm{\kappa }\) indica la facilidad con la que la corriente fluye a través de un medio:
-\[
-        \boxed{\epsilon_\textnormal{R} = \kappa \epsilon_\textnormal{o}}
-\]
-Siendo \(\bm{\epsilon_\textnormal{R}}\) la permitividad en un medio \(\bm{R}\) y \(\bm{\kappa}\) la permitividad relativa
-\subsection{Asociación de condensadores}
-\subsubsection{En serie}
-\begin{wrapfigure}{r}{6cm}
-        \begin{circuitikz}[]
-                \draw (-2,0) to[short, l=\(\bm{Q^-}\)] (-1,0)to[C, l_=\(\mathcal{C}\)] (0.5,0)to[short, l=\(0\)] (2,0) to[C, l_=\(\mathcal{C}\)] (3,0) to[short, l=\(\bm{Q^-}\)]  (4,0);
-        \end{circuitikz}
-\end{wrapfigure}
-\noindent \textbf{Por cada uno de los condensadores hay una caída de tensión, pero la intensidad es la misma en todo, por lo que la carga es} \(\bm{cte}\)\\\\
-\[
-        \boxed{\mathcal{C}_T = \mathcal{C}_{\textnormal{eq}} = \frac{1}{\sum^k_{n=1}\frac{1}{\mathcal{C}_n}}}
-\]
-\[
-        \boxed{V_T = \sum^n_{i=1}V_n}
-\]
-\[
-        \boxed{Q_n = Q_1 = ... = Q_k = cte}
-\]
-
-\subsubsection{En paralelo}
-\begin{wrapfigure}{r}{1cm}
-        \begin{circuitikz}
-                \draw (0,0) to[C=\(\mathcal{C}\)] (2,0);
-                \draw (0,-2) to[C=\(\mathcal{C}\)] (2,-2);
-                \draw (0,-4)  to[C=\(\mathcal{C}\)] (2,-4);
-                \draw (0,0)--(0,-6) (2,0)--(2,-6);
-        \end{circuitikz}
-\end{wrapfigure}
-\noindent \textbf{Por cada uno de los condensadores la tensión es la misma, es \(\bm{cte}\), pero la carga no, por lo que la intensidad depende de cada capacitor}:
-\[
-        \boxed{\mathcal{C}_T = \mathcal{C}_\textnormal{eq} = \sum^k_{n=1}\mathcal{C}_n}
-\]
-\[
-        \boxed{V_n = V_1 = ... = V_k = cte}
-\]
-\[
-        \boxed{Q_T = \sum^k_{n=1}Q_n}
-\]
+\subsubsection{Proceso de Desencapsulación y Reensamblaje}
+\noindent Es el mismo que el anterior, pero a la inversa, en vez de ir de un nivel alto a uno inferior, vamos de una capa de bajo nivel a una de alto.
+\subsubsection{Tipos de Arquitectura}
+\noindent Depende del conjunto de funciones que querramos implementar, será necesario. Para eso se han creado distintas arquitecturas, aquí veremos dos:
+\begin{itemize}
+        \item \textbf{TCP/IP}: Es la que utiliza Internet y describe funciones, servicios y protocolos.
+        \item \textbf{Modelo de referencia OSI}: Es la que se usa en base al estandar ``ISO'' pero solo describe funciones y servicios.
+\end{itemize}
+\subsubsection{TCP/IP}
+\noindent Se divide en 5 capas:
+\begin{itemize}
+        \item \textbf{Aplicación}: Soporta las aplicaciones de red. Sirve de interfaz con el usuario final. Envia ``A-PDU'', mensajes.
+        \item \textbf{Transporte} Transferencia de datos extremo a extremo entre procesos. Envia ``T-PDU'', segmentos.
+        \item \textbf{Red}: Direccionamiento y enrutado de datagramas de origen a destino. Envia ``R-PDU'', datagramas.
+        \item \textbf{Enlace}: Transferencia de datos entre elementos de red ``ceranos''. Envia ``E-PDU'', tramas
+        \item \textbf{Física}: Transferencia de bits.
+\end{itemize}
+\subsubsection{OSI}
+\noindent Se divide en las mismas capas que el ``TCP/IP'' pero añadiendo dos capas más entre la capa de \textit{aplicación} y \textit{transporte}:
+\begin{itemize}
+        \item \textbf{Presentación}: Permite la interpretación de los datos y los codifica.
+        \item \textbf{Sesión}: Se encarga de la sincronización, restauración y checkeo de datos.
+\end{itemize}
+\subsubsection{Implementación}
+\noindent
