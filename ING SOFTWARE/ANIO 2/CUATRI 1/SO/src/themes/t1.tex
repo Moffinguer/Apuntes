@@ -54,3 +54,125 @@
         \item \textbf{Supervisor}: Con este modo, el procesador puede ejecutar cualquier instrucción. Para pasar de \textit{supervisor} a \textit{usuario}, no es necesaria cumplir ninguna condición.
         \item \textbf{Usuario}: Solo puede ejecutar las \textit{instrucciones no privilegiadas}, aquellas que no accedan a recursos del \textit{hardware} ni recursos del \textit{software} externos al actual. Para acceder al modo \textit{supervisor}, es necesaria la ejecución de una interrupción, y esto ocurrirá \underline{si y solo si, cuando el proceso que quiera ejecutar pertenezca al \textit{kernel}}.
 \end{itemize}
+\subsection{Memoria}
+\noindent La memoria funciona como un array de bits, guardando en direcciones consecutivas, podemos acceder a través de un índice que empieza desde el 0, y puede transmitir en potencias de 2 hasta 8 bytes.
+\subsubsection{Paginación}
+\noindent Es una técnica que se implementa por Hardware, a través del ``MLU'' que divide las direcciones lógicas en partes, a través de un \textit{traductor} que accede a una tabla \textit{de paginación}.
+\par \vspace{.2cm}\noindent La memoria se reordena al usar este traductor, dividiendo la memoria en dos partes:
+\begin{itemize}
+        \item \textbf{Página} pasa a ser \textbf{marco}, que almacena la dirección física, e indica la dirección donde se guarda la información.
+        \item \textbf{Desplazamiento}, se mantiene igual pero solo puede tener un tamaño de \(2^k\)bits.
+\end{itemize}
+\subsubsection{Mapa de Bits}
+\noindent Esto es la tabla de traducciones, que asocia el contenido de cada marco con una página. Dentro de este mapa existen ciertos bits, que informan sobre el estado y contenido de este mapa. Entre estos destacamos el bit \(P\) que si vale cero, indica que el marco no está asignado. Se usa para poder usar un proceso sin necesidad de que tenga todos los marcos cargados, a lo que denominamos \textbf{Memoria Virtual}.
+\subsubsection{Memoria Virtual}
+\noindent Por defecto, todos los marcos no están cargados, lo que lanzará una excepción y enviará la página a un marco libre. Si no hay marcos libres, se ejecutará un algoritmo para verificar qué pagina no está en uso, a futuro, y la cargará en este nuevo espacio.
+\subsection{Acceso a Dispositivos}
+\noindent Para los SO, los dispositivos no son más que cajas negras que pueden transmitir información, reciben órdenes e informan sobre su estado.
+\par \noindent Existen los \textit{controladores}, interfaces electrónicas del dispositivo, que controla el funcionamiento y recibe órdenes del procesador. Podemos crearlos específicos para un dispositivo.
+\subsubsection{Adaptadores}
+\noindent Son dispositivos que sirven como interfaces para comunicar un dispositivo con otro. Esta interfaz proporciona:
+\begin{itemize}
+        \item \textbf{Características mecánicas}: Como el número de pines.
+        \item \textbf{Características eléctricas}: Como la velocidad o el número de bits.
+        \item \textbf{Protocolos}
+\end{itemize}
+\noindent Podemos acceder a estos dispositivos a través de un mapeo de de los registros, buffers de lectura/escritura, que lanzaran interrupciones acorde al número de dispositivos que haya. De esta forma informan de los cambios de estado a través de:
+\begin{itemize}
+        \item \textit{Moficando el valor del registro}
+        \item \textit{Con interrupciones}
+\end{itemize}
+\noindent Y se gestionen mediante sondeos, que no deben de hacerse con procesadores, y como ya hemos dicho, interrupciones.
+\subsubsection{Arquitectura I/O}
+\begin{itemize}
+        \item \textbf{Driver}: Es un componente del Kernel, que controla dispositivos.
+        \item \textbf{Sistema de Archivos}: Crea una capa de abstracción de un array de sectores, que permite el uso de archivos en cualquier lugar.
+        \item \textbf{Biblioteca de Funciones}: Almacena API`s y pequeños programas concretos.
+\end{itemize}
+\subsection{Unidades de Almacenamiento}
+\subsubsection{Unidades Magnéticas}
+\noindent A través de un adaptador interfaz ``SATA'', ``USB'', ``SAS''... se conecta a un adaptador controlador, que se conectará a la RAM, volatil, y a un almacenamiento por placas magnéticas, permantente.
+\par \noindent Solo transmite información por sectores (dividido en placas ferromagnéticas y pistas concéntricas, cada cara puede leerse y escribirse), y es muy lento.
+\[
+        \boxed{T_a = T_m + nT_c + T_h + T_r + T_x}
+\]
+\noindent Siendo:
+\begin{itemize}
+        \item \(T_m\) es el tiempo de arranque.
+        \item \(nT_c\) es el número de pistas a saltar por un factor de tiempo medio para saltar entre cada pista.
+        \item \(T_h\) es un factor de inercia.
+        \item \(T_r\) tiempo de rotación.
+        \item \(T_x\) tiempo de lectura por sector.
+\end{itemize}
+\noindent Existen ciertas optimizaciones como por ejemplo, \textit{transferir bloques consequitivos}, reduciendo el tiempo de lectura notablemente, \textit{leer los sectores en el orden que pasan} o \textit{reservar bloques en caché}.
+\subsubsection{SSD}
+\noindent Sustituye al disco magnético, en vez de usar placas magnéticas usa un array de memorias flash.
+\par \noindent Al hacer operaciones de escritura o lectura, debemos de considerar un factor, cada 100.000 borrados la celda flash debería de modificarse, porque no borra completamente su contenido. Y ya que al borrar información, debemos de borrar una página de memorias flash, debemos de tener en cuenta que los datos persistentes que no deberían de borrarse, se almacenan en un buffer temporal y se vuelven a escribir. Se usan ciertas optimizaciones para evitar tener que cambiarlas continuamente:
+\begin{itemize}
+        \item \textbf{Wear Leveling}: Hay sectores que se escriben con mucha frecuencia, por lo que usando un Wear Leveling \textit{dinámico}, establecemos una relación entre las direcciones físicas con las lógicas, de forma que no reescribe en las direcciones lógicas directamente sino en las físicas, evitando escrituras masívas.\par \noindent Por otro lado, el \textit{estático}, hace lo mismo, pero reestructurando los sectores, los mueve.
+        \item \textbf{Trim}: Un comando implantado en el Kernel (Linux 2, Windows XP, ...) que resuelve el problema de tener que borrar y escribir un sector inmediatamente, haciendolos irrelevante, por lo que si son borrados no ocurre nada, y la actualización y borrado son más rapidos.
+\end{itemize}
+\subsection{Interfaz de Usuario}
+\noindent Podemos catalogarlos en dos tipos:
+\begin{itemize}
+        \item \textbf{Terminales Externos}: A través de un emulador, nos conectamos a otro dispositivo.
+        \item \textbf{Consolas}: Dispositivos que se conectan directamente con la máquina y permiten su interacción directa con él. Se conforma por 3 componentes independientes: \textit{Pantalla}, \textit{teclado}, \textit{ratón}.
+\end{itemize}
+\subsubsection{GPU}
+\noindent Siendo este el \textit{adaptador de pantalla}, guarda información en memoria, el procesador o la memoria principal (siendo esta la más común), tras analizar el estado de la pantalla, \textit{memoria de vídeo}.\par \noindent Dependiendo de como se use esta memoria, se puede analizar la información de dos formas (relacionadas con la calidad que se quiera presentar por pantalla):
+\begin{itemize}
+        \item \textbf{Modo Texto}: Se guarda el color, brillo, opacidad... de los caracteres, a partir de un array de caracteres.
+        \item \textbf{Modo gráfico}: Se escanea un array de pixeles, y se guarda información sobre el RGB, código que expresa colores.
+\end{itemize}
+\subsubsection{Teclado}
+\noindent Posee integrado un microcontrolador capaz de exlorar el array de caracteres del teclado varias veces por segundo, almacenando información sobre el estado de las teclas (pulsadas o levantadas), guardando entonces eventos al teclear o usar atajos de teclado.
+\subsubsection{Ratón}
+\noindent Funciona igual que el teclado, posee un microcontrolador que genera un evento por cada click que se hace, y otro por cada vez que se cancela el click, se levanta el botón. \par \noindent En vez de guardar información sobre el tipo de tecla, como el teclado, se guarda información del ángulo de un vector posición, que se mide en ``Mickies''.
+\subsection{Arranque del Sistema}
+\noindent Todos los componentes ``hardware'' del sistema se deben de inicializar en el arranque, y siguen el mismo procedimiento:
+\begin{enumerate}
+        \item El procesador genera un proceso de inicialización que se transfiere a una dirección de memoria determinada.
+        \item Si el sistema operativo, no se encuentra en ROM, llama al \textit{cargador de hardware}, sino, irse al punto 5.
+        \item El \textit{firmware} o cargador de hardware (UEFI o BIOS), realiza un encendido mínimo y verifica controladores conectados, además de leer el \textit{cargador de software}.
+        \item El cargador de software carga el kernel y le transfiere el control una vez cargado.
+        \item Se inicializa el kernel y realiza ciertas funciones:
+              \begin{enumerate}
+                      \item Crea procesos de sesión y estructuras de datos.
+                      \item Checkea el sistema.
+                      \item Carga dispostivos en el kernel.
+              \end{enumerate}
+\end{enumerate}
+\subsection{Terminología de Redes}
+\begin{itemize}
+        \item \textbf{Adaptador de red}: Dispositivo que permite conectar el ordenador a la red.
+        \item \textbf{Dirección MAC}: Dirección única que permite identificar al adaptador de red en una red local.
+        \item \textbf{Switch}: Dispositivo que permite conectar varios segmentos de red en un punto, permitiendo controlar el tráfico de red.
+        \item \textbf{Router}: Dispositivo que es capaz de conectar varias redes.
+        \item \textbf{Gateway}: Dispositivo que se usa para conectar redes con distintos protocolos.
+        \item \textbf{Dirección IP}: Dirección que identifica a cada ordenador de una red. Existen dos tipos, \textit{IPv4} e \textit{IPv6}, pero trabajaremos con la primera. \par \noindent Se usa el formato ``CIDR'', \(xxx\).\(xxx\).\(xxx\).\(xxx\)/\(n\), siendo \(xxx\) un número de 3 dígitos y \(n\) el número de bits usados para la máscara de red. Hay hasta \(32-n\) bits para los hosts, que deben de estar a cero. \par \noindent Además podemos catalogar las redes IPv4 en 3 tipos:
+              \begin{itemize}
+                      \item  \textbf{Clase A}: 24 bits para los hosts, (10.0.0.0 \(\rightarrow\)) 10.255.255.255).\item  \textbf{Clase B}: 20 bits para los hosts, (172.16.0.0 \(\rightarrow\)) 172.31.255.255).\item \textbf{Clase C}: 16 bits para los hosts, (192.168.0.0 \(\rightarrow\)) 192.168.255.255).
+              \end{itemize}
+\end{itemize}
+\subsection{Conceptos Básicos de SSOO}
+\subsubsection{Llamadas al Sistema}
+\noindent No son más que peticiones que se hacen al núcleo del SO par aobtener algún servicio, a través de un proceso. Normalmente lo vemos representado como las API, conjunto de llamadas al sistema que ejecutan programas, que se pueden implementar a través de:
+\begin{itemize}
+        \item \textit{Interrupciones}: Se accede mediante una interrupción, que pasará el sistema a modo supervisor, y podremos acceder a una dirección de memoria en función del hardware. Finalmente se restaurá el estado previo a la llamada.
+        \item \textit{Instrucciones Específicas}: No importa la dirección de entrada y se ejecutan directamente en modo supervisor, sin embargo debe de hacer todas las comprobaciones que haría el modo supervisor.
+        \item \textit{Rutinas}: No son factibles, debido a que es complicado calcular la dirección de memoria que estarían las rutinas y no pueden pasar al modo supervisor.
+\end{itemize}
+\subsubsection{Usuarios}
+\noindent No son más que personas autorizadas a usar el sistema, que determinarán que derechos tendrán sobre un proceso que acceda al sistema.\par \noindent Se les identifica con un UID, y si se agrupan en grupos, con un GID
+\subsubsection{Archivos}
+\noindent Conjunto de información guardado, estructurado de forma jerárquica en directorios, que residen en dispositivos.
+\subsubsection{Intérprete de Comandos}
+\noindent Programa interactivo que lee comandos del usuario via terminal y lo traduce a llamadas del sistema.
+\subsubsection{Interfaces Gráficas de Usuario}
+\noindent Programa interactivo que realiza la misma función que un intérprete de comandos pero de forma gráfica, GUI.
+\subsection{Modelos de Diseño}
+\subsubsection{Modelo Monolítico}
+\noindent Todo el sistema se encuentra alojado en un único espacio de memoria, que no desorganizado. Por lo que todos los procesos y estructuras de datos son accesibles y manipulables entre si. Usa un módulo que controla los servicios, llamado \textbf{despachador}, una única rutina que hace las llamadas. UNIX es monolítico.
+\subsubsection{Modelo en Estratos}
+\subsubsection{Modelo Micronúcleo}
+\subsubsection{Ejemplos}

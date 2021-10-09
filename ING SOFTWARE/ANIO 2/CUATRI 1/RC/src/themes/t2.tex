@@ -1,0 +1,60 @@
+\subsection{Creación de Aplicaciones en Red}
+\noindent Crear una aplicación en red no es más que desarrollar un programa que se ejecutan en distintos dispositivos, \underline{sistemas finales}.
+\par \noindent Estos programas se comunican a través de la red, como los navegadores.
+\par \vspace{.3cm}
+\noindent No debemos de ahcer programas para el núcleo de la red, ya que su finalidad es encaminar los paquetes de la forma más rápida y eficiente posible, por lo que no necesitamos ningún programa extra.
+\subsection{Arquitecturas}
+\subsubsection{Arquitectura Cliente-Servidor}
+\noindent Tenemos evidentemente dos componentes:
+\begin{itemize}
+        \item \textbf{Servidor}: Siempre está encendido y posee una IP fija, un identificador único, ya que si varía nunca sabríamos la dirección del servidor. Agruparlos creamos \textit{granjas de servidores}
+        \item \textbf{Cliente}: Se conectan con el \textit{servidor}. Los clientes no se comunican entre ellos directamente.
+\end{itemize}
+\subsubsection{Arquitectura Peer To Peer}
+\noindent No están siempre encendidos, y sus sistemas finales se comunican entre si de forma aleatoria, debido a esto sus ip cambian cada vez que se comunican entre ellos.
+\par \noindent Son escalables, pero no de muy facil mantenimiento.
+\subsubsection{Arquitectura Híbrida}
+\noindent Tenemos un servidor centralizado que nos permite conocer la IP del usuario de forma inmediata, conectandose a una conexión ``peer to peer''.
+\subsection{Implementación}
+\noindent Aprovechará los servicios de la capa de \textit{Transporte}.
+\subsubsection{Definicion}
+\noindent Esta capa define:
+\begin{itemize}
+        \item \textit{Mensaje a intercambiar}.
+        \item \textit{Sintaxis del mensaje}: Número de Campos, espacios, etc...
+        \item \textit{Semántica del mensaje}: Qué significa cada campo.
+        \item \textit{Reglas sobre como responder y recibir los mensajes}, los ICP.
+\end{itemize}
+\subsubsection{Comunicación entre procesos}
+\noindent Los procesos son programas que se ejecutan en un dispositivo e implementa un protocolo. Hay dos tipos de comunicación:
+\begin{itemize}
+        \item \textbf{Mensajes PDU}: Los equipos se comparten la información usando mensajes PDU.
+        \item \textbf{Comunicación entre procesos}: Hay dos o más procesos que se ejecutan paralelamente en un equipo, los proporcionan el SO.
+\end{itemize}
+\noindent Y dos tipos de procesos:
+\begin{itemize}
+        \item \textbf{Cliente}: Proceso que inicia la comunicación.
+        \item \textbf{Servidor}: Proceso que espera a ser contactado.
+\end{itemize}
+\subsection{Sockets}
+\noindent Los sockets son los puntos de acceso a través de los cuales se accede al servicio, para que el nivel de aplicación pueda enviar mensajes al nivel de transporte, es decir, es un ``SAP''.
+\par \vspace{.2cm }\noindent Cada protocolo de aplicación se identifica con un número de puerto, que es usado para identificar el proceso cliente y servidor.\par \noindent \textbf{Es decir, un socket queda identificado por una dirección IP y un número de puerto}.
+\subsection{LocalHost}
+\noindent Localhost, con una dirección IP particular, \(127.0.0.1\), aunque puede variar, permite identificar al dispositivo final del sistema, el que esté usando una persona en ese momento.\par \noindent Puede probar aplicaciones en red, para un dispositivo final, sin necesidad de estar conectado a la red, y además de comunicarse con procesos dentro de ese equipo sistema final, usando sockets.
+\subsection{Perdida de Datos}
+\noindent Dependiendo de la aplicación, podemos tolerar un porcentaje de perdida de información, un \textit{tiempo de retardo} corto para ser efectiva o una \textit{tasa de transferencia} con una pérdida minima.
+\par \noindent Evidentemente debemos de mantener una seguridad en el envio del mensaje, lo que puede provocar, si se viola, una perdida de la información.
+\subsection{Servicios}
+\subsubsection{TCP}
+\begin{itemize}
+        \item \textbf{Orientado a Conexión}: Requiere de un acuerdo entre los procesos cliente y servidor antes de iniciar la transferencia.
+        \item \textbf{Transporte Fiable}: Solo entre procesos \textit{emisor} y \textit{receptor}.
+        \item \textbf{Control de Flujo}: El \textit{emisor} no satura al \textit{receptor}
+        \item \textbf{Control de Congestión}: Se evita la creción de cuellos de botella, controlando un uso equitativo del \textit{ancho de banda}.
+        \item No \textbf{provee} de sincronización, ancho de banda o seguridad.
+\end{itemize}
+\subsubsection{UDP}
+\begin{itemize}
+        \item \textbf{Transporte Ligero}: No está orientado a la conexión y no es seguro entre procesos entre \textit{emisor} y \textit{receptor}
+        \item No \textbf{provee} de un acuerdo previo entre procesos, seguridad, sincronización o control del flujo. Se usa para telefonía movil.
+\end{itemize}
