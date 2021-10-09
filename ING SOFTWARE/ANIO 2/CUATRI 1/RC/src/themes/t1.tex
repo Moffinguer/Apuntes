@@ -95,6 +95,30 @@
               \noindent Es decir, expresa el tiempo que se tarda en enviar algo en base al medio y la distancia entre los emisores y receptores.
 \end{itemize}
 %!Tengo un dibujo en los apuntes, hacerlo%
+\begin{tikzpicture}
+        \draw [-] (-1,0) -- (1,0) -- (1,1) -- (-1,1) -- (-1,0) node[above = 15, right = 20]{\(A\)};
+        \draw [->] (0,0) -- (0,-5) node[above = -15]{\(t\)};
+        \draw [-] (0,0) -- (2, -1);
+        \draw [-] (0,-1) -- (2, -2);
+        \draw [-] (2,-2.5) -- (4, -3.5);
+        \draw [-] (2,-3.5) -- (4, -4.5);
+        \draw[dotted] (4,-4.5) -- (2, -4.5);
+        \draw [->] (2,0) -- (2, -5) node[above = -15]{\(t\)};
+        \draw [-] (3,0) -- (5,0) -- (5,1) -- (3,1) -- (3,0) node[above = 15, right = 20]{\(B\)};
+        \draw [->] (4,0) -- (4, -5) node[above = -15]{\(t\)};
+        \node[] at (2,.5) (a) [cylinder, shape border rotate=90, draw, minimum height=10mm, minimum width=15mm]{};
+        \node[] at (2,.5) {\(R_1\)};
+        \node[] at (2,1) {x};
+        \draw[snake=brace] (2.2,-2) -- (2.2,-2.5) node[above = 10,right = 1] {\(d_{proc}\)};
+        \draw[snake=brace, mirror snake] (-0.2,0) -- (-0.2,-1) node[above = 5, left = 7] {\(d_{trans} = \frac{L}{R}\)};
+        \draw[dotted] (0,-5) -- (4, -5);
+        \draw[dotted] (0,0) -- (2, 0);
+        \draw[snake=brace] (2.2,0) -- (2.2,-1) node[above = 5,right = 3] {\(d_{prop} = \frac{d}{s}\)};
+        \node[] at (1,-1) {\(L\) bits};
+        \node[] at (3,-3.5) {\(L\) bits};
+        \node[] at (1,-4.7) {\(d\)};
+        \node[] at (3,-5.2) {\(R\)};
+\end{tikzpicture}
 \subsubsection{Pérdidas}
 \noindent El buffer está asociada a un enlace con una capacidad finita, por lo que es común que mientras el buffer se completa o llegue a su máxima capacidad, haya pérdida de paquetes, ``drops'', que serán descartados y enviados a un nodo anexo con el fin de intentar enviarlos nuevamente.
 \par \vspace{.5cm}
@@ -119,8 +143,8 @@
 \noindent Ya sabemos que el mensaje entre cada capa se denomina ``PDU'', esta información solo podrá leerse por aquellas capas situadas al mismo nivel, se denominan ``N-PDU'', pero en la realidad la información pasará a través de ``SAP'' tales que comunicarán una capa con otra, encapsulando la información hasta llegar a otra capa, donde irán desencapsulandolas.
 \subsubsection{Proceso de Encapsulación y Fragmentación}
 \begin{enumerate}
-        \item La información se encapsula, ``PDU''
-        \item Usando un ``ICI'', \textit{Interface Control Information}, de la capa siguiente, es decir, usamos ``N-ICI'', completamos la información del ``PDU'' para especificar el mensaje. Esta agrupación la pasamos por el ``SAP'' para la siguiente capa.
+        \item La información se encapsula, ``PDU''.
+        \item Usando un ``ICI'', \textit{Interface Control Information}, de la capa siguiente, es decir, usamos ``N-ICI'', completamos la información del ``(N+1)-PDU'' para especificar el mensaje. Esta agrupación la pasamos por el ``N-SAP'' para la siguiente capa, usando un ``N-IDU''.
         \item La nueva capa, la denominaremos ``N'', extraerá la información de ``N-ICI'' del ``SAP'' y responderá acorde a esta. A su vez, esta información nos permitirá formar un ``PCI'' para este nivel actual ``N-PCI'', \textit{Protocol Control Information}.
         \item Hemos separado la información, del ``SAP'', en un ``N-PCI'' y el resto en varios ``N-SDU'', \textit{Service Data Unit}, a este proceso de este nivel, lo llamamos \textbf{fragmentación}
         \item Juntamos el ``N-PCI'' y los ``N-SDU'' y formamos nuevamente un ``PDU'', pero para esta capa.

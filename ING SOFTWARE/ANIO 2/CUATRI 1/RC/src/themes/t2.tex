@@ -58,3 +58,64 @@
         \item \textbf{Transporte Ligero}: No está orientado a la conexión y no es seguro entre procesos entre \textit{emisor} y \textit{receptor}
         \item No \textbf{provee} de un acuerdo previo entre procesos, seguridad, sincronización o control del flujo. Se usa para telefonía movil.
 \end{itemize}
+\subsection{DNS}
+\noindent Es un protocolo de la capa de \textit{aplicación} que se encarga de generar identificadores que se encargen de diferenciar un sitio de otro, usando una \textit{base de datos distribuida}, la cual permitirá el acceso rápido a través de una jerarquía, en función de la frecuencia de búsqueda de estas direcciones, es decir, usa alias para relacionar las direcciones de las páginas con las búsquedas.
+\subsubsection{Funcionamiento}
+\begin{itemize}
+        \item Enviamos una ``DNS-PDU'' al servidor DNS, la cual la reciribirá si hay un receptor, a través de un canal no protegido, UDP.
+        \item El servidor enviará una respuesta al cliente de vuelta, si no hubiera un receptor anteriormente, se enviará tantas veces como sea necesario
+\end{itemize}
+\noindent Dentro de sus funcionalidades encontramos, la traducción de IP a alias o la asociación de un alias o varios a una IP. Por desgracia no podemos hacerla centralizada, la base de datos DNS, ya que no permitiría su escabilidad y daría problemas en caso de caida.
+\par \noindent Hemos dicho que usa UDP como medio de transporte, normalmente usando el puerto 53.
+\subsubsection{Memoria Caché}
+\noindent Al igual que un ordenador, los servidores DNS, guardan en memoria de acceso rápido direcciones y alias que se usen con frecuencia, de forma que no es necesario buscarlas nuevamente, ya que se encuentran en un acceso fácil. En caso de no encontrarla, mandan la petición a otros servidores por encima de este, hasta que alguno lo encuentre, o no haya más servidores, en cuyo caso, se realizará la búsqueda inmediatamente.
+\subsection{HTTP y Web}
+\subsubsection{Páginas Web}
+\noindent Las páginas web están formadas por una fichero HTML, que contiene objetos referenciados a los elementos que componen el fichero HTML, tales como imágenes, archivos JS, etc...
+\par \noindent Cuando enviemos al servidor una petición para recoger una página, recopilaremos tantos objetos como referencias haya en el HTML, más una más por el propio fichero HTML.
+\par \noindent Aqui, un ejemplo de un fichero HTML:
+\lstset{language=HTML,keywordstyle=\color{blue},
+        commentstyle=\color{green},
+        stringstyle=\color{cyan},basicstyle={\small\ttfamily}}
+\begin{lstlisting}
+<!DOCTYPE html>
+<html>
+        <head>
+        <!-- Este es un comentario en la cabecera-->
+                <title>Hello World<\title>
+        <\head>
+        <body>
+        <!-- Este es un comentario en el cuerpo-->
+                <h1>Hello World but in boddy<\h1>
+                <img src="hola.jpg"\>
+        <\body>
+<\html>
+\end{lstlisting}
+\subsubsection{Protocolo HTTP}
+\noindent Protocolo, \textit{HyperText Transfer Protocol} a nivel de aplicación que al contrario que DNS, usa TCP para mantener un canal seguro. Usa el puerto 80 para comunicarse con el servidor, y usa la arquitectura \textbf{Cliente-Servidor} para responder a las consultas de los que accedan a sus recursos.
+\begin{itemize}
+        \item \textbf{Cliente}:Navegador que solicita objetos a un servidor Web.
+        \item \textbf{Servidor}: Dispositivo que envia objetos pedidos por el cliente.
+\end{itemize}
+\noindent Los servidores no guardan información de peticiones anteriores, son \textit{sin extado} y podemos dividir las conexiones en dos tipos:
+\begin{itemize}
+        \item \textit{No persistente}: El cliente solicitará una petición al servidor, este aceptará la petición en caso de encontrarse, tras un tiempo, tras encontrar el servidor, se enviará un \textbf{mensaje de petición} por el cliente, con la petición de obtener el objeto HTML principal, y lo intentará recibir. Tras esto realizará una petición por un objeto del HTML, se le denomina \textbf{mensajes de respuesta} a aquellos mensajes que contengan el resto de objetos de la página. Finalmente se cerrará. Estos pasos se repetirán mientras aún no haya objetos transmitidos.
+              \[
+                      \boxed{TR = 2 RTT + TTP}
+              \]
+              \noindent Siendo \(RTT\) como \textit{el tiempo de ida y vuelta} en una petición al servidor, el tiempo que se tarda en enviar y recibir un mensaje de petición, y \(TTO\) el tiempo de \textit{transmisión de Bytes por objeto}.
+              \par \noindent Podemos observar que este sistema es más lento, no permite paralelización y cargará uno a uno todos los elementos del HTML.
+        \item \textit{Persistente}: El servidor mantendrá abierta la conexión tras enviar la respuesta de haber encontrado el objeto HTML, y el tiempo total será la suma de \(RTT\) por cada objeto más lo que tarde en enviarse cada objeto, se le denominará a esto \textit{solicitud de descarga del objeto}.
+              \[
+                      \boxed{\sum^n_{i=0}RTT_n + K}
+              \]
+\end{itemize}
+\noindent Los mensajes HTTP pueden ser:
+\begin{itemize}
+        \item \textbf{Peticiones}: Enviadas por el cliente, formadas por un texto ASCII, y transporta HTTP-PCI para solicitar los HTTP-UD. Pueden ser GET, POST, HEAD, PUT o DELETE.
+        \item \textbf{Respuestas}: Enviada por el servidor, y transporta los HTTP-UD.
+\end{itemize}
+\subsection{Cookies}
+\noindent No son más que elementos que guardan el estado del servidor, de forma que un servidor es capaz de identificar un usuario incluso si accede desde otros dispositivos.
+\subsection{Servidor Proxy}
+\subsection{Socket}
