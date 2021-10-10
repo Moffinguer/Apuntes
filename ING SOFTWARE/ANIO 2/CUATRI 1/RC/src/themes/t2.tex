@@ -118,4 +118,8 @@
 \subsection{Cookies}
 \noindent No son más que elementos que guardan el estado del servidor, de forma que un servidor es capaz de identificar un usuario incluso si accede desde otros dispositivos.
 \subsection{Servidor Proxy}
+\noindent Los Proxy tienen la finalidad de satisfacer la petición del cliente sin involucrar al servidor web original, ya que cuenta con memoria caché que almacena diversas páginas webs.
+\par \noindent Se configura del lado del cliente, de forma que todas las peticiones HTTP son enviadas a través de este proxy.
+\par \noindent Si el proxy solicita una página web que está en caché, se devuelve el objeto al cliente, pero si se realiza al servidor, el proxy guarda en memoria esta página web. Sin embargo no solo el proxy tiene caché, pero el navegador también, por lo que podemos reducir enormemente el tiempo de respuesta con estas dos herramientas.
 \subsection{Socket}
+\noindent Una interfaz del equipo local, creada por una aplicación y controlada por el SO (una “puerta”) por la que el proceso de aplicación puede tanto enviar como recibir mensajes de otros procesos o equipos remotos.
