@@ -172,7 +172,18 @@
 \noindent Programa interactivo que realiza la misma función que un intérprete de comandos pero de forma gráfica, GUI.
 \subsection{Modelos de Diseño}
 \subsubsection{Modelo Monolítico}
-\noindent Todo el sistema se encuentra alojado en un único espacio de memoria, que no desorganizado. Por lo que todos los procesos y estructuras de datos son accesibles y manipulables entre si. Usa un módulo que controla los servicios, llamado \textbf{despachador}, una única rutina que hace las llamadas. UNIX es monolítico.
+\noindent Todo el sistema se encuentra alojado en un único espacio de memoria, que no desorganizado. Por lo que todos los procesos y estructuras de datos son accesibles y manipulables entre si. Usa un módulo que controla los servicios, llamado \textbf{despachador}, una única rutina que hace las llamadas. Linux es monolítico.
 \subsubsection{Modelo en Estratos}
+\noindent Capas separadas para generar una mayor capa de abstracción, resolviendo cada una tareas específicas. Entre el usuario y el Hardware distinguimos 4 capas, llendo de mayor a menor nivel de cercania al hardware, tenemos:
+\begin{itemize}
+        \item \textbf{Capa 0}:Proporciona Hardware Multiprogramado.\item \textbf{Capa 1}: Dota a cada proceso de su propio estado de memoria.\item \textbf{Capa 2}: Dota a cada proceso de su propia consola virtual.\item \textbf{Capa 3}: Cada proceso es capaz de usar dispositivos de entrada y salida sobre otros.
+\end{itemize}
+\noindent Vemos que es facil de depurar pero perdemos la compartición de memoria.
 \subsubsection{Modelo Micronúcleo}
+\noindent Dividimos el nucleo en sectores, manteniendo las interrupciones y la comunicación entre procesos en el \textit{microkernel} y el resto de funcionalidades en modulos externos, menos aquellas funcionalidades que requieran de multiprogramación.
+\par \noindent Ofrece una gran robustez y facilidad de depuración, pero es extremadamente lento. El único SO, que ha logrado implementar este modelo es el descontinuado Minix.
 \subsubsection{Ejemplos}
+\begin{itemize}
+        \item En el caso de \textbf{Linux}, al ser Monolítico, requiere de su gran comunidad para mantenerse, y su núcleo carga los módulos necesarios para realizar las tareas, por lo que es extremadamente rápido.
+        \item \textbf{Windows} es también Monolítico, y separa los procesos de aplicaciones del propio kernel, sin embargo manteniendo las aplicaciones de usuario en el lado  de los procesos de servicio.
+\end{itemize}
