@@ -109,11 +109,12 @@
               \[
                       \boxed{\sum^n_{i=0}RTT_n + K}
               \]
+              %!Pintar el dibujo sobre el intercambio de datos%
 \end{itemize}
 \noindent Los mensajes HTTP pueden ser:
 \begin{itemize}
-        \item \textbf{Peticiones}: Enviadas por el cliente, formadas por un texto ASCII, y transporta HTTP-PCI para solicitar los HTTP-UD. Pueden ser GET, POST, HEAD, PUT o DELETE.
-        \item \textbf{Respuestas}: Enviada por el servidor, y transporta los HTTP-UD.
+        \item \textbf{Peticiones}: Enviadas por el cliente, formadas por un texto ASCII, y transporta HTTP-PCI para solicitar los HTTP-UD. Pueden ser GET, POST, HEAD, PUT o DELETE. HTTP-PCI está formado por la cabecera, y el HTTP-UD por la url y el cuerpo del mensaje.
+        \item \textbf{Respuestas}: Enviada por el servidor, y transporta los HTTP-UD. HTTP-PCI está formado por la cabecera y HTTP-UD por el mensaje.
 \end{itemize}
 \subsection{Cookies}
 \noindent No son más que elementos que guardan el estado del servidor, de forma que un servidor es capaz de identificar un usuario incluso si accede desde otros dispositivos.
