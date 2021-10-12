@@ -1,18 +1,99 @@
 \subsection{Funcion de los Sistemas de Archivos}
+\noindent La intención de un sistema de archivos, no es más que la de ser capaz de implementar archivos y directorios sobre la estructura de sectores de las unidades, con la capacidad de leer y modificar estos.
+\par \noindent Hay varios servicios que se es capaz de usar:
+\begin{itemize}
+        \item Modificar sobre archivos enteros.
+        \item Modificar el contenido de archivos.
+        \item Crear, montar o borrar archivos en otras unidades.
+        \item Protección y compartir archivos.
+\end{itemize}
 \subsubsection{Particiones}
+\noindent Podemos dividir una unidad física en unidades lógicas, y existen dos tipos de \textbf{tablas de partición}:
+\begin{itemize}
+        \item \textbf{MBR}: Usada por la \textit{BIOS}, usa 4 particiones, 3 primarias y una extendida, y admite particiones de hasta 2TB.
+        \item \textbf{GPT}: Común de la \textit{UEFI}, permite hasta 128 particiones de hasta 2ZiB cada una.
+\end{itemize}
 \subsubsection{Volumenes}
+\noindent No son más que las unidades lógicas en las que dividimos una partición, y ocupan una partición e incluso hasta una unidad física entera. \par \noindent En función del sistema operativo se accede de forma distinta, en \textit{Windows} mediante una letra asignada a la unidad, y en \textit{UNIX} a través de un árbol de directorios.
+\par \noindent Está compuesto, típicamente, por un cargador del SO, una estructura para gestionar el espacio libre o los bloques defectuosos y un directorio raiz.
 \subsubsection{Directorio}
+\noindent Es una estructura de datos del sistema de archivos que contiene información sobre los archivos en su interior. Poseen una estructura jerárquica y guardan información como el UID y el GID, su nombre, fechas de creación; modificación o ultimo acceso, su tamaño, etc...
+\par \noindent Como todo volumen posee al menos un directorio, aquel que engloba a todos los demás se le denomina \textit{directorio raiz}.
 \subsubsection{Archivos}
+\noindent Una secuencia de bytes que se pueden leer o modificar, bloque a bloque o uno a uno.
 \subsubsection{Gestión del Espacio}
+\noindent La información no se asigna sector a sector, sino en bloques, así la gestión es más eficiente. Sin embargo esto genera un problema, ¿cómo saber cuales son los bloques ocupados?, pero se soluciona con un gestor de espacio que almacena los bloques no ocupados y los separa de los otros, o con un \textit{mapa de bits} que indica el estado del bloque.
+\par \noindent En caso de que haya bloques defectuosos, no debemos de asignar archivos ahí, por lo que los agrupamos todos juntos y los separamos de los demás.
 \subsection{FAT}
+\noindent Este es el sistema de archivos más simple posible, es antiguo y lo usan principalmente memorias USB.
 \subsubsection{Organización}
+\noindent Dividimos el volumen en 5 bloques:
+\begin{itemize}
+        \item  \textbf{Sector 0}: Se encarga del arranque del sistema, cargador de software con un MBR.\item  \textbf{Sector 1}: Contiene información útil para acelerar ciertas operaciones.\item  \textbf{Copia 1}\item  \textbf{Copia 2}\item \textbf{Bloques}: Amacena los bloques del directorio raiz y los defectuosos, en las dos primeras posiciones, el resto están libres.
+\end{itemize}
 \subsubsection{Contenido}
+\noindent Cada bloque del disco tiene una referencia en una tabla, esta entrada en la tabla tiene 3 posibles valores (FREE, BAD, EOF), indicando si está libre, defectuoso o si es el último bloque del archivo.
+\par \noindent Guardamos la siguiente información:
+\begin{itemize}
+        \item Nombre del archivo: 8 bytes
+        \item Extensión: 3 bytes
+        \item Atributos: 1 bytes
+        \item Reservado: 10 byte
+        \item Hora de modificación: 2 bytes
+        \item Fecha de modificación: 2 bytes
+        \item Número del primer bloque: 2 bytes
+        \item Tamaño archivo: 4 bytes
+\end{itemize}
 \subsubsection{Acceso}
+\noindent Consideremos un fichero que se llama F1 y guarda bloques en los espacios 3, 10 y 12.
+\par \noindent En la tabla de referencia, guardamos el primer bloque (con valor 3), tras esto nos movemos a la posición 3 en la memoria y guardamos el valor 10, finalmente nos movemos a la posición 10 y guardamos el valor 12, como no quedan más direcciones de memoria a las que asignar bloques, la posición 12 queda marcada como EOF.
+\par \noindent Para transferir una posición N de un fichero, debemos de saber el tamaño del bloque (4KB), y calcularemos el bloque lógico:
+\[
+        \boxed{B_L = \frac{N}{4KB} = X}
+\]
+\noindent Este valor \(X\) indica la posición en el bloque físico, el valor que hemos almacenado ahí. Para indicar los sectores a transferir deberíamos entonces sumar el bloque físico más el consecutivo en la dirección todo respecto a \(S\), el primer sector en bloque:
+\[
+        \boxed{S + 2*M[X] + S + 2*M[X] + 1}
+\]
 \subsection{Ext2}
+\noindent Estructura usada por los sistemas UNIX
 \subsubsection{Organización}
+\noindent El volumen es organizado en una estructura de \(N + 1\) bloques, siendo el primero el del sector de arraque y el resto son grupos de bloques, que cada uno almacena una serie de información en bloques más pequeños:
+\begin{itemize}
+        \item \textbf{SuperBloque}: Contiene la versión del bloque, el número de veces que se ha montado, un número mágico (EF53) y el tamaño de los bloques consecutivos.
+        \item \textbf{Descriptores}: Contiene las direcciones donde comienzan el resto de bloques siguientes.
+        \item \textbf{Mapa de Bits}: Guarda el estado de cada archivo
+        \item \textbf{Mapa de Bits Nodos-I}
+        \item \textbf{Tabla de Nodos-I}: Contiene la misma información que un FAT, pero con añadidos, el UID y GID del propietario, el número de enlaces, número de bloques indirectos
+        \item \textbf{Bloques}: Guardan información como el nombre del registro, ya que almacena información sobre los directorios, y sus nodos-i.
+\end{itemize}
 \subsubsection{Contenido}
+\noindent Para aumentar su capacidad, utiliza tablas de enlazamiento indirecto, hasta 3 veces, por lo que a parte de generar un mayor espacio, si existen N bloques, habrán \(N^3\) bloques generados por el direccionamiento indirecto, al coste de un tiempo más lento para encontrar archivos.
+
 \subsubsection{Acceso}
+\noindent La forma de direccionar archivos, es el mismo que con FAT.
 \subsubsection{Enlace Directo y Simbólico}
+\noindent Hemos mencionado antes que se guardan contadores con información sobre el número de enlaces, que no es más que links, que podemos crear para duplicar un archivo sin necesidad de que ocupe el doble de memoria, sin embargo esto puede generar problemas, ya que borrar el archivo principal rompe cualquier enlace posterior.
+\par \noindent Con este motivo, se crean los enlace simbolicos
 \subsection{Reserva}
+\noindent Se le denomina así a la caché del disco, no es más que un espacio de la memoria de facil acceso, rápido, usando tablas de hash
 \subsubsection{Modos de Reserva}
+\begin{itemize}
+        \item \textbf{Escritura Directa}: El bloque se actualiza inmediatamente tras la escritura, sin embargo no se beneficia de la reserva.
+        \item \textbf{Escritura Diferida}: Se actualiza una copia en memoria, y no podemos decir con seguridad la seguridad.
+\end{itemize}
 \subsection{RAID}
+\noindent Usando varios discos en paralelo conseguimos simular un disco mejor. Al ser un array de discos, tendremos ciertos problemas a resolver, pero también podemos utilizar paralelización para aumentar su velocidad.
+\par \noindent Podemos implementarlos mediante hardware o software.
+\subsubsection{RAID 0}
+\noindent Es el más simple de todos, y se basa en el uso de N discos, apilados de forma consecutiva, de forma que la información la podemos dividir en sectores de K bloques.
+\par \noindent Es bastante rápido, sin embargo si uno de las pilas se rompe, el sistema cae completamente.
+\subsubsection{RAID 1}
+\noindent Es una mejora del anterior, no aprovecha la velocidad de leer en paralelo, pero hay mayor seguridad al apilar los los bloques, y copiar los datos de uno a otro.
+\subsubsection{RAID 4}
+\noindent Hay N pilas, y una extra, se le llama disco de paridad, y guarda una coppia de cada sector.
+\subsubsection{RAID 5}
+\noindent En vez de haber una pila extra, los sectores del disco de paridad se distribuyen aleatoriamente a lo largo de los discos.
+\subsubsection{RAID 6}
+\noindent Usa el algoritmo ``Reed-Solomon'' para detectar y corregir errores.
+\subsection{COW}
