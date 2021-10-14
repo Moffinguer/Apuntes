@@ -97,3 +97,49 @@
 \subsubsection{RAID 6}
 \noindent Usa el algoritmo ``Reed-Solomon'' para detectar y corregir errores.
 \subsection{COW}
+\noindent Método de copia, que se basa en almacenar una copia en el mismo espacio de memoria lógico. Es aplicable a toda clase de estructuras de almacenamiento, \textit{volúmenes} o \textit{archivos}. %!!Esto no lo entiendo, se guarda donde?%.
+\par \noindent De forma general ocurre lo siguiente:
+\begin{itemize}
+        \item La estructura queda bloqueada.
+        \item Se genera un COW.
+        \item Si\dots
+              \begin{itemize}
+                      \item Se \textit{lee}, se busca en el COW, si no está actualizada, en la estructura original.
+                      \item Se \textit{escribe}, se hace sobre el COW.
+              \end{itemize}
+\end{itemize}
+\noindent Un COW puede eliminarse, lo cual descartará cualquier cambio realizado, pero también fusionarse con la estructura con el fin de guardar los cambios permanentemente.
+\subsubsection{Archivos}
+\noindent Usamos tablas de bloques para gestionar el espacio, por lo que solamente sabiendo el índice podemos saber donde está guardado el archivo y su COW, y como comparten un mismo espacio de memoria podría dar lugar a problemas de \textit{incoherencia}. A este sistema lo solemos denominar como \textbf{bloques sombra}.
+\par \noindent Al escribir sobre el archivo, seguirá haciendolo sobre el COW y la lectura también. En caso de \textbf{deshacer} los cambios, será necesario borrar la información referente en los nodos-i y los bloques indirectos, si se desea hacerlos \textbf{permanentes}, se borra el bloque original y se asigna al COW.
+\subsubsection{Usuarios}
+\noindent A nivel de usuario, en vez de usar tablas, lo que hacemos es almacenar un identificador con el archivo, una clave, lo que nos permitirá buscar el archivo rápidamente. En caso de añadir archivos o modificarlos, crearemos una COW, que no se hará persistente hasta que se lo indiquemos. En caso de hacerlos persistentes, fusionamos el COW con el original y borraremos el COW, después de hacer el cambio. Si se desea deshacerlo, solo debemos de borrar el COW.
+\par \noindent Los COW se guardan en otro archivo.
+\subsubsection{Volúmenes}
+\noindent Funciona mediante el uso de claves y es exactamente igual que con los usuarios, con la diferencia de que los COW se guardan en otro volumen.
+\subsection{Journaling}
+\noindent En caso de que el sistema se caiga en mitad de una operación, el sistema de archivos podría quedar insconsistente, por lo que debemos de tener algún sistema por el cual podemos ``reconstruir'' el sistema de archivos.
+\par \noindent Como solución agruparemos todas las operaciones en una \textbf{transacción}, donde si falla una operación se cancelan todas. Podemos implementarlo mediante COW o con logs.
+\vspace{.5cm}
+\par \noindent \textbf{ANTES} de cada transacción, crearemos un archivo ``.log'', donde guardaremos el estado del valor original, para evitar que en caso de que se cancele o falle, podamos recuperarlo sin posibilidad de perder datos o no poder restablecer los cambios.
+\par\noindent Miraremos el valor de log, con el fin de indicar si se ha realizado correctamente o no. Si no ha fallado, se borra el log, sino, usaremos el log y restableceremos el estado del sistema.
+\subsection{Sistema de Archivos Distribuidos}
+\noindent No es más que el concepto de usar dispositivos en la nube o en servidores para almacenar datos.
+\par \noindent Las principales unidades remotas son:
+\begin{itemize}
+        \item \textbf{Unidades de Bloques}: Existe un servidor que funciona como una unidad física, que recibirá peticiones a nivel de driver, y poseerá una estructura de archivos decidida por el cliente.
+        \item \textbf{Sistemas de Archivos Lógicos}: Un servidor creará una estructura de archivos, y recibirá peticiones a nivel de administrador de archivos.
+\end{itemize}
+\subsubsection{Unidades de Bloques}
+\noindent El nivel de administración se encuentra del lado del cliente y se comunicará con un gestor de disco virtual que simulará uno real. Se permitirá operaciones de escritura y lectura simultaneas, siempre y cuando no se realicen sobre el mismo registro.
+\subsubsection{Sistemas de Archivos Lógicos}
+\noindent La administración queda completamente del lado del servidor, el cliente hace poco.
+\subsubsection{Virtual File System}
+\noindent Conocido simplemente como VFS, es una forma de implementar distintos sistemas de archivos en una máquina y puedan convivir. Se usa un sistema de archivos virtual, el cual, en función de las necesidades del usuario cargará la estructura de archivos que este quiera, para un volumen concreto.
+\subsection{Autentificación de Usuario}
+\noindent Mediante el uso de claves o identificadores, buscamos la seguridad de los usuarios. El método más interesante a estudiar es el ``AaaS'', usando un sistema físico externo, o el que RSA, el cual se basa en generar dos claves (Pública y Privada) con el fin de que una sola persona pueda codificar (Pública) y solo el receptor pueda decodificarla (Privada).
+\subsection{Control de Acceso}
+\noindent En el momento en el que el usuario queda registrado debemos de encontrar alguna forma por la cual sepamos a que recursos esté permitido acceder. Como los usuarios ejecutan instrucciones sobre ``objetos'', a estos derechos los llamaremos \textbf{derechos de acceso}, que se aplican a la operación sobre un objeto, o \textbf{dominio de protección}, el cual abarca al conjunto de derechos de acceso de un usuario. Estos dominios son transferibles, modificables y solapables con otros.
+\subsubsection{Matriz de Control de Acceso}
+\noindent Montando una matriz doble, por la cual guardamos los permisos de cada dominio por archivo, y sobre cada dominio por los demás, somos capaces de solventar este problema, sin embargo es inpracticable debido al tamaño y los recursos que tomaría.
+\par \noindent Como solución alternativa podemos utilizar una lista abreviada, usando comodines.
