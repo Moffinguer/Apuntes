@@ -1,0 +1,14 @@
+\subsection{Conceptos Previos}
+\noindent Un hipervisor no es más que un software que se implementa entre la capa de hardware y la del Sistema operativo, la cual simula un sistema operativo, o varios, con su propio hardware.
+\subsection{Hipervisores tipo I}
+\noindent Lo ejecutamos directamente sobre un anfitrión, por lo que simulan memoria de video, dispositivos y procesadores, simulando un espacio físico virtual.
+\par \noindent En este tipo, el hipervisor es el que coge un fragmento de la memoria del anfitrión y recoge los eventos del teclado y ratón con el fin de poder simular el comportamiento de una máquina real.
+\par \noindent Podemos simularlos de dos formas:
+\begin{itemize}
+        \item \textbf{Estático}: Guardará el espacio ocupado por igual en físico que en virtual.
+        \item \textbf{Dinámico}: Ocupa lo necesario, pero es más lento y requiere de indices para acceder a archivos compartidos.
+\end{itemize}
+\noindent En el caso de la red podemos utilizar ``adaptadores puente'' simulando una tarjeta adaptador de red, con su propia IP y MAC, o una ``NAT'', con una IP privada que se obtiene mediante un router simulado.
+\subsection{Hipervisores tipo II}
+\subsection{Paravirtualizadores}
+\subsection{Hipervisores Hibridos}
