@@ -1,0 +1,25 @@
+\subsection{Servicios de Nivel de Transporte}
+\noindent Esta capa ofrece una comunicación lógica entre aplicaciones en hosts diferentes, y es capaz de comunicarse con las capas adyacentes (Aplicación y Red). \par \noindent Dos de los protocolos usados normalmente son TCP y el UDP, ambos usan los servicios de la capa de Red, con el protocolo IP.
+\subsubsection{TCP}
+\noindent Se encarga de ofrecer un servicio fiable y ordenado, controlando el flujo y que no haya cuellos de botella.
+\subsubsection{UDP}
+\noindent No ofrece un servicio fiable ni de garantía. Es un protocolo simple y fácil de implementar, ya que no es nada costoso.
+\subsubsection{Comparación}
+\noindent Considerando que la capa de Red y la de Transporte están interrelacionadas, es asumible que se confundan. \par \noindent Sin embargo, mientras que la capa de Red ofrece servicios relacionando las direcciones Ip, mientras que la transporte permite que procesos en un mismo host puedan utilizar los servicios de la capa de red gracias a los puertos de red.
+\subsection{Multiplexión y Demultiplexión}
+\subsubsection{Multiplexión al Enviar}
+\noindent Recolecta datos de múltiples ockets, creando T-PDU con T-PCI que se usará para demultiplexar. Es decir, a partir de diversos T-PDU, usa un T-PCI.
+\subsubsection{Demultiplexión al Recibir}
+\noindent Entrega T-UD de los segmentos T-PDU recibidos al socket correcto.
+\subsubsection{Funcionamiento}
+\noindent Partimos de un datagrama R-PDU con un tamaño de 32 bits, y por cada 16 bits guardamos la \textit{dirección Ip de origen} y \textit{la de destino}.
+A este datagrama le añadimos un segmento T-PDU con el \textit{puerto de origen} y el \textit{puerto de destino}.
+\par \noindent \textbf{En el host destino, las Ip y los puertos indican a que socket enviar la información}.
+\[
+        \boxed{R_PDU = R_PCI + T_PCI + T_UD}
+\]
+\noindent Existen dos posibles casos, en función del protocolo que usemos. Si es \textbf{sin conexión}, el proceso que reciba el R-PDU será capaz de detectar quién le ha enviado la información y devolverle el mensaje.
+\par \noindent En caso de que usemos el protocolo TCP, la información se transmite en una tupla con las \textit{direcciones ip y los puertos, destino y origen}, con una conexión TCP distinta por cada cliente que pueden funcionar simultaneamente.
+\subsection{Transporte sin Conexión: UDP}
+\subsection{Principios de la Transferencia Fiable}
+\subsection{Transporte orientado a la conexión: TCP}
