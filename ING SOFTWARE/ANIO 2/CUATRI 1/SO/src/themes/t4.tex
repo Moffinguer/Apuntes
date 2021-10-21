@@ -1,0 +1,13 @@
+\subsection{Dificultades en el Despliegue}
+\noindent Comparando una máquina virtual con un socket, podemos observar un problema fundamental: \textbf{una máquina virtual tiene que virtualizar desde el hardware hasta sus aplicaciones, mientras que un socket solo las aplicaciones}.
+\par\noindent Usar varias máquinas virtuales es una solución, pero evidentemente no es factible, ocuparían mucho más espacio.
+\subsection{Contenedores: Sockets}
+\noindent Guardan en un repositorio las aplicaciones que necesite, y las máquinas que los vayan a ejecutar, tendrán programas capaces de desplegarlos, cada uno de forma aislada.
+\par\noindent \textit{Docker}, \textit{Podman} o \textit{Linux Containers} son opciones viables.
+\subsection{Escalabilidad y Tolerancia a Fallos}
+\subsubsection{Escalabilidad}
+\noindent Propiedad que indica la capacidad que tiene el sistema de ampliarse o decrementarse sin muchos cambios. Solo podemos hacerlo, al \textit{replicar aplicaciones sin estado}, que no tengan datos o si lo están, estén guardados de forma externa.
+\subsubsection{Tolerancia a Fallos}
+\noindent Propiedad que indica la robustez que tiene un sistema a cambios, sin posibilidad a errores. Si podemos desplegar un contenedor, sin romper el resto, será que tenemos un sistema robusto.
+\subsection{Servicios en la Nube}
+\noindent Hoy en día hay distintos tipos de implementaciones, \textbf{sobre hardware}, \textbf{hardware como servicio}, \textbf{infraetructura como servicio}, \textbf{plataforma como servicio} o \textbf{software como servicio}.
