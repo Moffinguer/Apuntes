@@ -1,0 +1,190 @@
+\subsection{Sistema de Ecuaciones Lineales}
+\noindent Considerando que un sistema de ecuaciones lineales se puede representar como \(\mathbf{Ax = b}\) podemos decir entonces que esta expresión equivale a:
+\[
+        \spalignsys{
+                ax +  by + cz + \cdots = k ;
+                \cdots + \cdots +  \cdots +  \cdots = \cdots ;
+                \cdots + \cdots +  \cdots +  \cdots =  \cdots ;
+                \cdots + \cdots +  \cdots +  \cdots = \cdots ;
+        }
+\]
+\noindent Que es lo mismo que:
+\[
+        \begin{pmatrix}
+                ax     & by     & cz     & \cdots \\
+                \vdots & \ddots & \cdots & \cdots \\
+                \vdots & \cdots & \ddots & \cdots \\
+                \vdots & \cdots & \cdots & \ddots
+        \end{pmatrix}
+        \begin{pmatrix}
+                x \\
+                y \\
+                z \\
+                \vdots
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+                k      \\
+                \vdots \\
+                \vdots \\
+                \vdots
+        \end{pmatrix}
+\]
+\subsubsection{Método de Eliminacion de Gauss}
+\noindent Aplicando transformaciones elementales simplificamos la matriz \((A|b)\) de forma que sea triangular superior:
+\[
+        \begin{pmatrix}
+                1  & 2 & |3 \\
+                -1 & 1 & |3 \\
+                1  & 1 & |3
+        \end{pmatrix}
+        \xrightarrow[]{F_{21}(1) \hspace{1mm} F_{31}(-1)}
+        \begin{pmatrix}
+                1 & 2  & |3 \\
+                0 & 3  & |6 \\
+                0 & -1 & |0
+        \end{pmatrix}
+        \xrightarrow[]{F_{32}(\frac{1}{3})) \hspace{1mm} F_2(\frac{1}{3})}
+        \begin{pmatrix}
+                1 & 2 & |3 \\
+                0 & 1 & |2 \\
+                0 & 0 & |2
+        \end{pmatrix}
+\]
+\[
+        \spalignsys{
+                x +  2y = 3 ;
+                3y = 6 ;
+                0 = 2 ;
+        }
+\]
+\noindent En este caso no tiene solución.
+\subsubsection{Discusión}
+\noindent Existen 3 tipos de sistemas de ecuaciones:
+\begin{itemize}
+        \item Incompatible: No tiene soluciones.
+        \item Compatible:
+              \begin{itemize}
+                      \item Determinado: Tiene una sola solución.
+                      \item Indeterminado: Tiene infinitas soluciones.
+              \end{itemize}
+\end{itemize}
+\noindent Para determinar cual es, sin resolverla, aplicamos el método de Rouché-Fröbenius:
+\par Si el Rango(\(A\)) \( \neq \) Rango(\(A|b\)) entonces es \underline{Incompatible}.
+\par Si el Rango(\(A\)) es igual al número de incógnitas, es \underline{Determinado}.
+\par Si el Rango(\(A\)) es menor al número de incógnitas es \underline{Indeterminado}.
+\subsection{Matrices Elementales}
+\noindent Llamamos a estas a las matrices que surgen de operar con sus filas (\(F\)) o columnas \(C\).
+\begin{itemize}
+        \item \(F_{ij} \Rightarrow   F_i \leftrightarrow F_j\)
+        \item \(F_i(\lambda) \Rightarrow   F_i \leftarrow \lambda F_i\)
+        \item \(F_{ij}(\lambda) \Rightarrow F_i \leftarrow F_i + F_j \lambda \)
+\end{itemize}
+\subsubsection{Propiedades}
+\begin{enumerate}
+        \item Mover dos filas o columnas implica en multiplicar la matriz por (-1).
+        \item Multiplicar una fila o columna por un número, implica multiplicar la matriz por ese valor.
+        \item \(F_{ij} = F^{-1}_{ij}\)
+        \item \(F^{-1}_i(\lambda) = F_i(\frac{1}{\lambda})\)
+        \item \(F^{-1}_{ij}(\lambda) = F_{ij}(-\lambda)\)
+\end{enumerate}
+\subsection{Método de Gauss-Jordan}
+\noindent Se basa en el método de Gauss, partiendo de una matriz I, unitaria, debemos de encontrar otra tal que su producto nos devuelva la solución que buscamos.
+\subsubsection{Matriz Inversa}
+\noindent Para calcularla debemos de hacer transformaciones elementales de la matriz \(A|I\) tal que \(A\) se convierta en I, haciendo transformaciones elementales para obtener una matriz triangular superior y luego diagonal. Es decir:
+\[
+        A^{-1} = FI
+\]
+\subsection{Método LU}
+\noindent \textbf{Para poder aplicar este algoritmo, y sus derivados, debemos de cerciorarnos que \(A\) es una matriz definida positiva, cada una de sus submatrices, partiendo desde el elemento en la primera columna, primera fila, y de ahí expandiendo, es positiva}.
+\[
+        Ax = b \hspace{1cm} A = LU
+\]
+\noindent Considerando \(A\) como la matriz con la que partimos, las matrices \(L\) y \(U\) son matrices diagonales inferior y superior, respectivamente. Considerando esto, podemos usar el método de Gauss para obtener la matriz \(U\) y para \(L\), aplicamos el siguiente sistema de ecuaciones:
+\[
+        \boxed{
+                \spalignsys{
+                        Ly = b ;
+                        Ux = y_0;
+                }}
+\]
+\noindent Siendo \(x\) la solución del sistema. ¿Cómo hayar \(L\)? A partir de las transformaciones elementales que hemos hecho, le hacemos la inversa, y se las aplicamos a una matriz unitaria, veamos este ejemplo:
+\[
+        \begin{pmatrix}
+                2  & -1 & 0 & 1  \\
+                2  & -2 & 0 & 2  \\
+                -2 & 0  & 1 & -2 \\
+                -1 & 1  & 0 & 0
+        \end{pmatrix}
+        \xrightarrow[]{F_{21}(-1) \hspace{1mm} F_{31}(1) \hspace{1mm} F_{41}\left ( \frac{1}{2} \right )}
+        \begin{pmatrix}
+                2 & -1          & 0 & 1           \\
+                0 & -1          & 0 & 1           \\
+                0 & -1          & 1 & -1          \\
+                0 & \frac{1}{2} & 0 & \frac{1}{2}
+        \end{pmatrix}
+        \xrightarrow[]{F_{32}(-1) \hspace{1mm} F_{42}\left ( \frac{1}{2} \right )}
+        \begin{pmatrix}
+                2 & -1 & 0 & 1  \\
+                0 & -1 & 0 & 1  \\
+                0 & 0  & 1 & -2 \\
+                0 & 0  & 0 & 1
+        \end{pmatrix}
+\]
+\noindent Ahora tenemos la siguiente ecuacion:
+\[F_{42}\left ( \frac{1}{2} \right )F_{32}(-1)F_{41}\left ( \frac{1}{2} \right )F_{31}(1)F_{21}(-1)A = U\]
+
+\[
+        L = (F_{42}\left ( \frac{1}{2} \right )F_{32}(-1)F_{41}\left ( \frac{1}{2} \right )F_{31}(1)F_{21}(-1))^{-1}\]
+\[L = F_{21}(1)F_{31}(-1)F_{41}\left ( \frac{-1}{2} \right ) F_{32}(1)F_{42}\left ( \frac{-1}{2} \right ) I\]
+\noindent Con todo esto, ya seríamos capaces de plantear los sistemas de ecuaciones.
+\subsubsection{Método de Cholesky}
+\noindent Es una derivación del método LU, solo se puede usar cuando la matriz es simétrica \(A = A^t\), en cuyo caso \(A = KK^t\)
+\par \noindent De esta forma, ahora la ecuación que tendremos que resolver es la siguiente:
+\[
+        \boxed{
+                \spalignsys{
+                        Ky = b ;
+                        K^tx = y_0;
+                }}
+\]
+\noindent Para obtener \(K\) debemos de obtener \(L\) y multiplicarla por una matriz formada por los elementos de la diagonal de U, con su raiz cuadrada:
+\[
+        \begin{pmatrix}
+                4 & 2  & 0  \\
+                2 & 3  & -2 \\
+                0 & -2 & 3
+        \end{pmatrix}
+        \xrightarrow[]{F_{21}\left ( \frac{-1}{2} \right ) \hspace{1mm} F_{32}(1)}
+        \begin{pmatrix}
+                4 & 2 & 0  \\
+                0 & 2 & -2 \\
+                0 & 0 & 1
+        \end{pmatrix}
+        = U
+\]
+\[
+        L = \begin{pmatrix}
+                1           & 0  & 0 \\
+                \frac{1}{2} & 1  & 0 \\
+                0           & -1 & 1
+        \end{pmatrix}
+\]
+\[
+        K = \begin{pmatrix}
+                1           & 0  & 0 \\
+                \frac{1}{2} & 1  & 0 \\
+                0           & -1 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+                2 & 0        & 0 \\
+                0 & \sqrt{2} & 0 \\
+                0 & 0        & 1
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+                2 & 0         & 0 \\
+                1 & \sqrt{2}  & 0 \\
+                0 & -\sqrt{2} & 1
+        \end{pmatrix}
+\]
