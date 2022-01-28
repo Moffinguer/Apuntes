@@ -1,0 +1,30 @@
+\subsection{Equivalencias}
+\noindent Podemos decir que un conjunto es equivalente a otro si ambos son consistentes:
+\[
+        \boxed{\left \{ \left. \left \{ \left. p \right \} \right. \right \} \right. \approx \left \{ \left. \left \{ p\left.  \right \} \right. ,\left \{ \left. q \right \} \right.\right \} \right.}
+\]
+\[
+        \boxed{\left \{ \left. \left \{ \left. p \right \} \right. \right \} \right. \not \approx \left \{ \left. \left \{ p\left.  \right \} \right. ,\left \{ \left. \neg p \right \} \right.\right \} \right.}
+\]
+\subsubsection{Complementario}
+\[
+        \boxed{I(L) = 1 \hspace{5mm} I(L^c) = \neg I(L) = 0}
+\]
+\subsection{Técnicas de Eliminación}
+\subsubsection{Eliminación de Tautologías}
+\noindent Un conjunto de cláusulas puede reducirse solo a aquellas cláusulas que generan una tautología, eliminando las demás:
+\[
+        \boxed{\left \{ \left. \left \{ \left. p,q \right \} \right.,\left \{ \left. p,q, \neg p \right \} \right. \right \} \right. \approx \left \{ \left. \left \{ \left. p,q \right \} \right. \right \} \right.}
+\]
+\subsubsection{Eliminación Unitaria}
+\noindent Si existe una cláusula con un solo literal podemos eliminar todos aquellos literales que sean su complementario, y eliminar aquellas cláusulas con el mismo literal:
+\[
+        \boxed{\left \{ \left. \left \{ \left. p,q,r \right \} \right.,\left \{ \left. p,\neg q \right \} \right.,\left \{ \left. \neg p \right \} \right. ,\left \{ \left. r,u \right \} \right. \right \} \right.\approx \left \{ \left. \left \{ \left. q, \neg r \right \} \right., \left \{ \left. \neg q \right \} \right.,\left \{ \left. r,u \right \} \right. \right \} \right. \approx \left \{ \left. \left \{ \left. \neg r \right \} \right.,\left \{ \left. r,u \right \} \right. \right \} \right. \approx \left \{ \left. \left \{ \left. u \right \} \right. \right \} \right.}
+\]
+\subsubsection{Eliminación de Literales Puros}
+\noindent Si existe en el conjunto, un literal y no existe su complementario, podemos eliminar todos las cláusulas que contengan este literal:
+\[
+        \boxed{\left \{ \left. \left \{ \left. p,q \right \} \right. ,\left \{ \left. p, \neg q \right \} \right.,\left \{ \left. r,q \right \} \right. \left \{ \left. r, \neg q \right \} \right. \right \} \right. \approx \left \{ \left. \left \{ \left. r,q \right \} \right.,\left \{ \left. r, \neg q \right \} \right. \right \} \right. \approx \left \{ \left. \left \{ \left.  \right \} \right. \right \} \right.}
+\]
+\subsubsection{Regla de División}
+\noindent En caso de que no podamos usar ninguna de estas reglas anteriores aplicaremos esta regla, mediante la cual indicaremos si un conjunto es consistente si añadiendo una cláusula con un solo literal, que pertenezca a este conjunto, podemos aplicar \textit{eliminación Unitaria} siempre y cuando probemos con este literal y su complementario.
