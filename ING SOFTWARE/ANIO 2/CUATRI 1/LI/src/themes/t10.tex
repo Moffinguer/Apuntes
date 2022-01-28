@@ -1,0 +1,18 @@
+\subsection{Forma Normal Prenexa}
+\noindent Considerando que la FNP, \textbf{forma normal prenexa}, es la formula por la cual se obtiene la forma clausal, se quiere obtener una fórmula tal que los operadores \underline{universales} y \underline{existenciales} se eliminen o queden lo más externalizados posibles. Nosotros trabajamos con fórmulas cerradas, por lo que realizaremos el siguiente algoritmo:
+\begin{itemize}
+        \item[1)] Rectificar la fórmula, es decir, si existe alguna variable que se esté repitiendo con otro operador, cambiar el nombre de la variable.
+        \item[2)] Eliminar los \textbf{bicondicionales}.
+        \item[3)] Eliminar los \textbf{condicionales}.
+        \item[4)] Interiorizar las negaciones usando Morgan.
+        \item[5)] Exteriorizar los operadores de LPO, de forma que siempre y cuando sean no libres.
+\end{itemize}
+\subsubsection{Ejemplo}
+\[
+        \boxed{\neg \exists_x \left [ P(x) \rightarrow \forall_x P(x) \right ]\approx \neg \exists_x \left [ \neg P(x) \lor \forall_y P(y) \right ] \approx \forall_x \exists_y \left [ P(x) \land \neg P(y) \right ]}
+\]
+\subsection{Skolem}
+\noindent Ahora que tenemos la FNP, podemos aplicar Skolem, eliminando los cuantificadores, de forma que sustituiremos las variable correspondientes a los cuantificadores \textbf{Existenciales} por funciones, con tantos argumentos como operadores universales tengan delante, si no poseen ninguno se sustituye por una constante.
+\[
+        \boxed{\text{Skol}\left ( \forall_x \exists_y \left [ P(x) \land \neg P(y) \right ] \right ) \approx \forall_x \left [ P(x) \land \neg P(f(x)) \right ]}
+\]

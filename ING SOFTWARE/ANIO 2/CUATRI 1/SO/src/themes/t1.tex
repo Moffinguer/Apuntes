@@ -25,10 +25,10 @@
 \end{enumerate}
 \noindent El tiempo que tarda un proceso, no tiene relación con el tiempo que consume del procesador, por lo que las operaciones que dependan del sistema, se harán a través de herramientas del sistema.
 \subsubsection{Hilos}
-\noindent Denominamos a los \textit{hilos} como secuencias de procesos que comparten el mismo espacio de memoria. \par Estos nacen debido a la \textit{paralelización} de procesos, cuando tenemos varios procesadores podemos intentar ejecutar varios procesos a la vez, sin embargo si estos procesos dependen del estado de los otros, al no poder compartir recursos entre ellos, usamos un espacio de memoria reservado para un conjunto de procesos, de forma que ahora pueden comunicarse entre si. Solo no es rentable cuando se ejecutan operaciones de cálculo.
+\noindent Denominamos a los \textit{hilos} como secuencias de procesos que comparten el mismo espacio de memoria. \par \noindent Estos nacen debido a la \textit{paralelización} de procesos, cuando tenemos varios procesadores podemos intentar ejecutar varios procesos a la vez, sin embargo si estos procesos dependen del estado de los otros, al no poder compartir recursos entre ellos, usamos un espacio de memoria reservado para un conjunto de procesos, de forma que ahora pueden comunicarse entre si. Solo no es rentable cuando se ejecutan operaciones de cálculo.
 \subsection{Conceptos básicos sobre Hardware}
 \subsubsection{Organización básica de un Ordenador}
-\noindent El \textit{ordenador} es un conjunto de procesadores, unidos a una memoria y a diversos controladores, que a su vez están conectados a un bus de datos. \par Cada procesador accede a su parte de la memoria, \textbf{no pueden leerse y escribir a la vez}, pero al resto de la memoria que no está asignada a los procesadores, se podrá acceder de esta forma simultaneamente.
+\noindent El \textit{ordenador} es un conjunto de procesadores, unidos a una memoria y a diversos controladores, que a su vez están conectados a un bus de datos. \par \noindent Cada procesador accede a su parte de la memoria, \textbf{no pueden leerse y escribir a la vez}, pero al resto de la memoria que no está asignada a los procesadores, se podrá acceder de esta forma simultaneamente.
 \subsubsection{Interrupciones}
 \noindent Es una alteración en la secuencia de ejecución de las instrucciones del procesador. Tiene distintas causas:
 \begin{itemize}
@@ -151,7 +151,7 @@
         \item \textbf{Gateway}: Dispositivo que se usa para conectar redes con distintos protocolos.
         \item \textbf{Dirección IP}: Dirección que identifica a cada ordenador de una red. Existen dos tipos, \textit{IPv4} e \textit{IPv6}, pero trabajaremos con la primera. \par \noindent Se usa el formato ``CIDR'', \(xxx\).\(xxx\).\(xxx\).\(xxx\)/\(n\), siendo \(xxx\) un número de 3 dígitos y \(n\) el número de bits usados para la máscara de red. Hay hasta \(32-n\) bits para los hosts, que deben de estar a cero. \par \noindent Además podemos catalogar las redes IPv4 en 3 tipos:
               \begin{itemize}
-                      \item  \textbf{Clase A}: 24 bits para los hosts, (10.0.0.0 \(\rightarrow\)) 10.255.255.255).\item  \textbf{Clase B}: 20 bits para los hosts, (172.16.0.0 \(\rightarrow\)) 172.31.255.255).\item \textbf{Clase C}: 16 bits para los hosts, (192.168.0.0 \(\rightarrow\)) 192.168.255.255).
+                      \item  \textbf{Clase A}: 24 bits para los hosts, (10.0.0.0 \(\rightarrow\) 10.255.255.255).\item  \textbf{Clase B}: 20 bits para los hosts, (172.16.0.0 \(\rightarrow\) 172.31.255.255).\item \textbf{Clase C}: 16 bits para los hosts, (192.168.0.0 \(\rightarrow\) 192.168.255.255).
               \end{itemize}
 \end{itemize}
 \subsection{Conceptos Básicos de SSOO}
