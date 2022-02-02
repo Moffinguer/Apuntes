@@ -20,7 +20,36 @@ Así obtendremos el radio espectral, que será el autovalor de mayor valor, abso
         \boxed{\rho(\lambda) = \left \{ \left | \lambda \right | : \lambda \text{\hspace{2mm} autovalor de \hspace{2mm}} Q \right \}}
 \]
 \subsection{Descomposición}
-¿Cómo calculamos la matriz \(Q\)?,
+¿Cómo calculamos la matriz \(Q\)?, simple, cualquier matriz cuadrada se puede descomponer en la suma de dos matrices (una de ellas es invertible):
+\[
+        A = M + N \hspace{2em} Ax = b
+\]
+\[
+        \left (  M + N\right )x = b
+\]
+\[
+        Mx = b - Nx
+\]
+\[
+        x = M^{-1}b + M^{-1}Nx = C +Qx
+\]
+De esta forma, de forma general podemos obtener la solución en la iteración enésima:
+\[
+        \boxed{\hat{x}_{n} = Qx_{n-1} + C}
+\]
+Podemos calcular el error con \(Q^n\), cuanto más cercana a cero sea esa matriz, entonces más precisa es la solución. \par Es decir, calculamos el radio espectral de:
+\[
+        \boxed{\rho(-M^{-1}N) = 0}
+\]
+Ahora, considerando que las matrices \(M\) y \(N\), las podemos seguir descomponiendo, podemos descomponer \(A\) en 3 matrices (triangular superior e inferior y la diagonal)
+\[
+        A = D + U + L
+\]
 \subsubsection{Método de Jacobi}
+\[
+        \boxed{\hat{x_n} = Jx_{n-1} + C} \hspace{3em} J = -D^{-1}(L+U) \hspace{2em} C = D^{-1}b
+\]
 \subsubsection{Método de Gauss-Seidel}
-\subsubsection{Método de Relajación S.O.R}
+\[
+        \boxed{\hat{x_n} = \text{GS}x_{n-1} + C} \hspace{3em} \text{GS} = -(D+L)^{-1}U \hspace{2em} C = (D+L)^{-1}b
+\]

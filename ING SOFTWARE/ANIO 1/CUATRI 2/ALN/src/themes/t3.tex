@@ -1,0 +1,73 @@
+\subsection{Introducción}
+En la realidad, los valores de nuestro sistema no son conocidos o exactos, lo que afecta a nuestro sistema, para esto condicionaremos el sistema (para obtener un error muy bajo)
+\par Cuando peor condicionado esté el sistema, más grande será el error.
+\subsection{Espacio Vectorial}
+Sobre un cuerpo \(\mathbb{K}\) (\(\mathbb{R} \) o \(\mathbb{C} \)), es un cuerpo \(\mathcal{V}\) que tiene dos operaciones (suma y producto). Siendo \((u,v \in \mathcal{V})\), podemos usar estas propiedades:
+\begin{itemize}
+        \item Suma:
+              \begin{itemize}
+                      \item Propiedad Conmutativa
+                      \item Propiedad Asociativa
+              \end{itemize}
+        \item Producto:
+              \begin{itemize}
+                      \item \((\alpha, \beta)(v+u) = \alpha v + \alpha u + \beta v + \beta u\)
+                      \item  \((\alpha\beta)u = u(\alpha\beta)\)
+              \end{itemize}
+\end{itemize}
+\subsubsection{Ejemplos}
+Por parte de los vectores, se pueden escribir así:
+\[
+        \mathbb{R}^n = \left \{ n\left ( u_1,..., u_n \right ) : u_1,...,u_n \in \mathbb{R} \right \}
+\]
+Por parte de las matrices:
+\[
+        \mathcal{M}_n(\mathbb{R}) = \left \{ A_{\left ( aij \right )} \text{\hspace{2mm}matrices cuadradas de orden \(n\) con \hspace{2mm}} aij \in \mathbb{R} \right \}
+\]
+\subsection{Normas Vectoriales y Matriciales}
+\subsubsection{Vectores}
+Es un \textbf{espacio vectorial} \(\mathcal{V}\) sobre \(\mathbb{R}\) tal que \(\left \| \cdot  \right \|: \mathcal{V} \rightarrow\left [ 0, \infty \right )\) cumple:
+\begin{itemize}
+        \item \(\left \| u \right \| = 0 \Leftrightarrow  u = 0\)
+        \item Propiedad homogénea: \(\left \| \lambda u \right \| = \left | \lambda \right |\left \| u \right \|\)
+        \item \(\left \| u + v \right \| \leq  \left \| u \right \| + \left \| v \right \|\)
+\end{itemize}
+De esta forma podemos calcular también la distancia entre dos vectores:
+\[
+        d(u,v) = \left \| u - v \right \|
+\]
+Es un \textbf{espacio normado}, un espacio vectorial \(\mathcal{V}\) dotado de una forma:
+\begin{itemize}
+        \item \(\left \| u \right \|_{\infty} = \text{max}\left \{ \left | u_1 \right |, ..., \left | u_n \right | \right \} \)
+        \item \(\left \| u \right \|_k=\sqrt[k]{\sum_{n=1} u_n^k}\)
+        \item Norma euclídea: \(\left \| u \right \|_2=\sqrt[2]{\sum_{n=1} u_n^2}\)
+\end{itemize}
+\subsubsection{Matrices}
+Una \textbf{norma matricial}, se define en un espacio de matrices, normas sobre \(\mathcal{M}_n(\mathbb{R})\) que cumplen:
+\begin{itemize}
+        \item \(\left \| AB \right \| \leq  \left \|  A\right \|\left \|  B\right \|\)
+        \item Norma matricial con la vectorial: \(\left \| Au \right \| \leq \left \| A \right \| \left \| u \right \|\)
+\end{itemize}
+Ejemplos de normas son:
+\begin{itemize}
+        \item \(\left \| A \right \| = \text{max}_{u \neq 0} \frac{\left \| Au \right \|}{\left \| u \right \|}\)
+        \item \underline{La máxima suma de las \textbf{columnas}} \(\left \| A \right \|_\infty = \text{max} \sum_{j=1} \left | a_{ij} \right |\)
+        \item \underline{La máxima suma de las \textbf{filas}} \(\left \| A \right \|_1 = \text{max} \sum_{i=1} \left | a_{ij} \right |\)
+        \item \textbf{\underline{Norma espectral}}: \(\left \| A \right \|_2 = \sqrt{\rho(A^tA)}\)
+        \item \textbf{\underline{Norma de Frobenius}}, es la suma de todos los elementos de la matriz, al cuadrado: \(\sqrt{\sum_{i=1}\sum_{j=1} a_{ij}^2}\).\par O la suma de los elementos de la matriz traspuesta por si misma: \(\sqrt{\delta(A^t,A)}\) \par Es similar a la norma espectral.
+\end{itemize}
+\subsection{Número de Condición de una Matriz}
+Dado un sistema \(Ax=b\), con \(A\) invertible y \(b \neq 0\), \(b\) se modificará por \(b_p\):
+\[
+        \spalignsys{
+                Ax = b \hspace{2em} x_0 = A^{-1}b;
+                Ax_p = b_p \hspace{2em} x_p = A^{-1}b_p;
+        }
+\]
+La solución de \(x_p\) tendrá un error, \(\varepsilon = \left \| b - b_p \right \|\), que llamaremos \textbf{cota de error relativo}. \par Si:
+\[\xi \simeq 0 \Rightarrow  \left \| x_0 - x_p \right \| = \left \| A^{-1} \left ( b -b_p \right )\right \| \leq \left \| A^{-1} \right \| \left \| b - b_p \right \|\]
+\underline{Esto significa que nos interesa que \(\left \| A^{-1} \right \|\) sea lo más pequeño posible, ya que \(\left \| b - b_p \right \|\) será muy pequeño}
+
+\subsection{Transformaciones y Condicionamiento}
+\subsection{Transformaciones Householder}
+\subsection{Método QR}
