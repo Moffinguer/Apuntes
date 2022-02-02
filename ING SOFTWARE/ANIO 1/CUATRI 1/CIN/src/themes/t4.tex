@@ -1,19 +1,19 @@
 \subsection{Introducción}
-\noindent Dada una función \(f(x)\), podríamos aproximar el valor de una función usando el polinomio de Taylor:
+ Dada una función \(f(x)\), podríamos aproximar el valor de una función usando el polinomio de Taylor:
 \[
         f(x) = e^x =\sum^n_{k=0} \frac{x^k}{k!}
 \]
-\noindent Como podemos observar, esta función la podemos represntar como una serie de \(n\) elementos, existen varios tipos, pero nosotros trabajaremos con las más simples:
+ Como podemos observar, esta función la podemos represntar como una serie de \(n\) elementos, existen varios tipos, pero nosotros trabajaremos con las más simples:
 \begin{itemize}
         \item Series de potencias \(\sum^{\infty}_{n=0} a_n x^n\)
         \item Series geométricas \(\sum^{\infty}_{n=0} x^n\)
 \end{itemize}
 \subsection{Convergencia}
-\noindent Una serie infiníta de términos converge en un valor concreto \(x = c\). Una función puede converger o no. Para calcular la convergencia de una serie utilizamos distintos criterios y a la vez podemos calcular el valor concreto en el que converge:
+ Una serie infiníta de términos converge en un valor concreto \(x = c\). Una función puede converger o no. Para calcular la convergencia de una serie utilizamos distintos criterios y a la vez podemos calcular el valor concreto en el que converge:
 \[
         \boxed{S_n(x) =A_0 \frac{a_0}{1-a_n}}
 \]
-\noindent Siendo \(A_0\) el coeficiente del sumatorio, \(a_0\) el primer término de la sucesión y \(a_n\) el término general.
+ Siendo \(A_0\) el coeficiente del sumatorio, \(a_0\) el primer término de la sucesión y \(a_n\) el término general.
 \subsubsection{Criterio del Cociente}
 \[
         \boxed{\lim_{n \rightarrow + \infty} \Big |\frac{a_n + 1}{a_n} \Big|
@@ -35,10 +35,10 @@
         }
 \]
 \subsubsection{Criterio de Leibniz}
-\noindent Solo es aplicable en series alternadas y diremos que la serie es convergente, siempre y cuando:
+ Solo es aplicable en series alternadas y diremos que la serie es convergente, siempre y cuando:
 \begin{itemize}
         \item \(0\leq a_n+1 \leq a_n\) con \(a_n\) decreciente.
         \item  \(\lim_{n\rightarrow +\infty} a_n=0\)
 \end{itemize}
 \subsection{Intervalo y Radio de Convergencia}
-\noindent Aplicaremos el \underline{Teorema de Cauchy-Hadamard} que dice: \par \noindent \textit{Dada una serie del tipo \(\sum^{+\infty}_{n=0}a_n(x-x_0)^n\) diremos que converge en un intervalo \(I_c\) cuando \(I_c \in (x_0 - r, x_0 + r)\) siendo \(r\) el radio de convergencia, que se calcula como \(r > \frac{x}{|x- x_0|}\)}
+ Aplicaremos el \underline{Teorema de Cauchy-Hadamard} que dice: \par  \textit{Dada una serie del tipo \(\sum^{+\infty}_{n=0}a_n(x-x_0)^n\) diremos que converge en un intervalo \(I_c\) cuando \(I_c \in (x_0 - r, x_0 + r)\) siendo \(r\) el radio de convergencia, que se calcula como \(r > \frac{x}{|x- x_0|}\)}

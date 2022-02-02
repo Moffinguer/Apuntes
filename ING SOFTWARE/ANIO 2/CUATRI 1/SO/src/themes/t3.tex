@@ -1,22 +1,22 @@
 \subsection{Conceptos Previos}
-\noindent Un hipervisor no es más que un software que se implementa entre la capa de hardware y la del Sistema operativo, la cual simula un sistema operativo, o varios, con su propio hardware.
+Un hipervisor no es más que un software que se implementa entre la capa de hardware y la del Sistema operativo, la cual simula un sistema operativo, o varios, con su propio hardware.
 \subsection{Hipervisores tipo I}
-\noindent Lo ejecutamos directamente sobre un anfitrión, por lo que simulan memoria de video, dispositivos y procesadores, simulando un espacio físico virtual.
-\par \noindent En este tipo, el hipervisor es el que coge un fragmento de la memoria del anfitrión y recoge los eventos del teclado y ratón con el fin de poder simular el comportamiento de una máquina real.
-\par \noindent Podemos simularlos de dos formas:
+Lo ejecutamos directamente sobre un anfitrión, por lo que simulan memoria de video, dispositivos y procesadores, simulando un espacio físico virtual.
+\par  En este tipo, el hipervisor es el que coge un fragmento de la memoria del anfitrión y recoge los eventos del teclado y ratón con el fin de poder simular el comportamiento de una máquina real.
+\par  Podemos simularlos de dos formas:
 \begin{itemize}
         \item \textbf{Estático}: Guardará el espacio ocupado por igual en físico que en virtual.
         \item \textbf{Dinámico}: Ocupa lo necesario, pero es más lento y requiere de indices para acceder a archivos compartidos.
 \end{itemize}
-\noindent En el caso de la red podemos utilizar ``adaptadores puente'' simulando una tarjeta adaptador de red, con su propia IP y MAC, o una ``NAT'', con una IP privada que se obtiene mediante un router simulado.
-\par \noindent En este tipo, el procesador se simula, de forma que las instrucciones que requieran de ser privilegiado, serán enviadas, en función del estado del usuario en ese momento, pero todo desde el \textit{hipervisor}
+En el caso de la red podemos utilizar ``adaptadores puente'' simulando una tarjeta adaptador de red, con su propia IP y MAC, o una ``NAT'', con una IP privada que se obtiene mediante un router simulado.
+\par  En este tipo, el procesador se simula, de forma que las instrucciones que requieran de ser privilegiado, serán enviadas, en función del estado del usuario en ese momento, pero todo desde el \textit{hipervisor}
 \begin{itemize}
         \item \textbf{Si ya estaba en modo supervisor}: Lo que mandará será una excepción al hipervisor y este ejecutará la instrucción.
         \item \textbf{Si no lo estaba}: Se producirá una interrupción que le cederá el control al hardware del sistema anfitrión, que le cederá el control posteriormente al hipervisor.
 \end{itemize}
-\noindent Por lo que podemos ver, entonces el procesador tendrá dos modos, \textit{no root} y \textit{root}, que se cambiarán para ejecutan las instrucciones de acorde a los casos anteriores.
-\par \noindent Además, cada hipervisor viene creado con una estructura de control llamada ``VMCS'', que es capaz de guardar el estado de la máquina en todo momento, indicar que dispositivos están conectados a esta (\textit{device passthrough}, adaptadores, GPU, etc...) y los simulados. Además de poseer un \textbf{IOMMU}, una unidad de manejo de memoria que conecta un bus de IO con la memoria principal.
-\par \noindent El proceso para ejecutar un hipervisor es el siguiente:
+Por lo que podemos ver, entonces el procesador tendrá dos modos, \textit{no root} y \textit{root}, que se cambiarán para ejecutan las instrucciones de acorde a los casos anteriores.
+\par  Además, cada hipervisor viene creado con una estructura de control llamada ``VMCS'', que es capaz de guardar el estado de la máquina en todo momento, indicar que dispositivos están conectados a esta (\textit{device passthrough}, adaptadores, GPU, etc...) y los simulados. Además de poseer un \textbf{IOMMU}, una unidad de manejo de memoria que conecta un bus de IO con la memoria principal.
+\par  El proceso para ejecutar un hipervisor es el siguiente:
 \begin{itemize}
         \item El hipervisor se inicia.
         \item Se crea un VMCS por cada máquina virtual.
@@ -24,19 +24,19 @@
         \item Se transfiere el control al hipervisor por cada instrucción privilegiada.
         \item Se cierra el hipervisor.
 \end{itemize}
-\noindent Para concluir, podemos decir que esta clase de hipervisores deben de instalarse sobre procesadores que permitan \textit{virtualización por hardware} o que cualquier instrucción privilegiada en modo usuario, lanze una \textit{excepción}.
+Para concluir, podemos decir que esta clase de hipervisores deben de instalarse sobre procesadores que permitan \textit{virtualización por hardware} o que cualquier instrucción privilegiada en modo usuario, lanze una \textit{excepción}.
 \subsection{Hipervisores tipo II}
-\noindent Al contrario que la anterior, este tipo de hipervisores se ejecuta sobre el SO anfitrión, en conjunto con procesos de usuario. Imita todo lo que hace el hipervisor anterior salvo en la \textit{simulación del procesador}.
-\par\noindent En este modelo, las instrucciones \textbf{se ejecutan una a una}, y el hipervisor analiza previamente la secuencia de instrucciones hasta encontrar una instrucción condicional, dependiendo de las instrucciones que contenga se hará lo siguiente:
+Al contrario que la anterior, este tipo de hipervisores se ejecuta sobre el SO anfitrión, en conjunto con procesos de usuario. Imita todo lo que hace el hipervisor anterior salvo en la \textit{simulación del procesador}.
+\par En este modelo, las instrucciones \textbf{se ejecutan una a una}, y el hipervisor analiza previamente la secuencia de instrucciones hasta encontrar una instrucción condicional, dependiendo de las instrucciones que contenga se hará lo siguiente:
 \begin{itemize}
         \item \textbf{Privilegiadas}: El hipervisor ejecuta estas instrucciones.
         \item \textbf{No privilegiadas}: Se ejecutan directamente.
 \end{itemize}
 \subsubsection{Ventajas y Contras}
-\noindent Comparandolo con el anterior, este es más \textit{ineficiente} ya que analiza más instrucciones pero es más \textit{flexible}.
+Comparandolo con el anterior, este es más \textit{ineficiente} ya que analiza más instrucciones pero es más \textit{flexible}.
 \subsection{Paravirtualizadores}
-\noindent Estos hipervisores se ahorran cualquier problema con el procesador, y lo sustituyen por una API que llamará al sistema anfitrión, pero para que esto ocurra el SO invitado debe de estar compilado previamente, ya que si no, no podrá analizar todas las instrucciones previamente.
-\par\noindent Como solución, se implementa una capa de abstracción, una interfaz entre el kernel y el hardware (VMI), que funciona de forma independiente.
-\par\noindent Es bastante eficiente, tanto como una máquina física, pero no ofrece transparencia, gracias a su API.
+Estos hipervisores se ahorran cualquier problema con el procesador, y lo sustituyen por una API que llamará al sistema anfitrión, pero para que esto ocurra el SO invitado debe de estar compilado previamente, ya que si no, no podrá analizar todas las instrucciones previamente.
+\par Como solución, se implementa una capa de abstracción, una interfaz entre el kernel y el hardware (VMI), que funciona de forma independiente.
+\par Es bastante eficiente, tanto como una máquina física, pero no ofrece transparencia, gracias a su API.
 \subsection{Hipervisores Hibridos}
-\noindent Hoy en día se combinan los tres tipos, ya que casi todos los SO son \textit{monolíticos}. Se basan en una implementación de un \textbf{Hipervisor del tipo II}, y como casi todos los dispostivos soportan virtualización en el hardware, ya tendremos el \textbf{hipervisor de tipo I} implementado. En cuanto a los \textbf{paravirtualizadores}, aprovechan que las marcas crean drivers y módulos y por ende podemos aprovechar sus api para el sistema.
+Hoy en día se combinan los tres tipos, ya que casi todos los SO son \textit{monolíticos}. Se basan en una implementación de un \textbf{Hipervisor del tipo II}, y como casi todos los dispostivos soportan virtualización en el hardware, ya tendremos el \textbf{hipervisor de tipo I} implementado. En cuanto a los \textbf{paravirtualizadores}, aprovechan que las marcas crean drivers y módulos y por ende podemos aprovechar sus api para el sistema.

@@ -1,17 +1,17 @@
 \subsection{Introducción}
-\noindent La combinación lineal de funciones \(\sin{x}\) y \(\cos{x}\) genera funciones periódicas y series trigonométricas.
-\par \noindent Diremos que una función es periódica cuando \(y = f(x + \kappa) = f(x)\) siendo \(\kappa\) el periodo de la función, o sea, el valor mínimo que verifica la periodicidad.
+ La combinación lineal de funciones \(\sin{x}\) y \(\cos{x}\) genera funciones periódicas y series trigonométricas.
+\par  Diremos que una función es periódica cuando \(y = f(x + \kappa) = f(x)\) siendo \(\kappa\) el periodo de la función, o sea, el valor mínimo que verifica la periodicidad.
 \subsection{Suma Parcial}
-\noindent Esta es la expresión general para las funciones que representan a las series de Fourier:
+ Esta es la expresión general para las funciones que representan a las series de Fourier:
 \[
         \boxed{\sum^{\infty}_{k=0}(a_k \cos{(\kappa w x)} + b_k \sin{(kwx)})}
 \]
-\noindent El periodo lo podemos definir como \(T = 2\pi\) y \(w = 1\), lo que nos generará una función T-periódica, o en este caso, ``pi-Periódica'', lo que generará una serie Trigonométrica:
+ El periodo lo podemos definir como \(T = 2\pi\) y \(w = 1\), lo que nos generará una función T-periódica, o en este caso, ``pi-Periódica'', lo que generará una serie Trigonométrica:
 \[
         \boxed{S(x) = \frac{a_0}{2}+\sum^{\infty}_{n=1}(a_n \cos{( nw x)} + b_n \sin{(nwx)})}
 \]
-\noindent Denominaremos a \(a_0\), \(b_n\) y \(a_n\) como los coeficientes de Fourier y se podrán calcular.
-\par \noindent \textbf{En caso de que \(f(x)\) sea una función no periódica, la converirémos a ``pi-periódica''}
+ Denominaremos a \(a_0\), \(b_n\) y \(a_n\) como los coeficientes de Fourier y se podrán calcular.
+\par  \textbf{En caso de que \(f(x)\) sea una función no periódica, la converirémos a ``pi-periódica''}
 \subsection{Los coeficientes de Fourier}
 \[
         \boxed{a_0 = \frac{2}{T} \int^{T/2}_{-T/2}f(x)\mathrm{d} x}
@@ -23,7 +23,7 @@
         \boxed{a_0 = \frac{2}{T} \int^{T/2}_{-T/2}f(x)\sin{(xnw)}\mathrm{d} x}
 \]
 \subsubsection{Paridad}
-\noindent Para agilizar los cálculos podemos utilizar la simetría de las funciones:
+ Para agilizar los cálculos podemos utilizar la simetría de las funciones:
 \[
         \begin{cases}
                 \text{\(f(x)\) es par} \Rightarrow f(x) = f(-x)    & S(x) = \frac{a_0}{2} +\sum^{\infty}_{n=1}a_n \cos{(nxw)}
@@ -32,12 +32,12 @@
         \end{cases}
 \]
 \subsection{Teorema de Dirichlet}
-\noindent Mediante este problema comprobamos, \underline{solo en convergencia puntual}, el valor en el que converge la serie en un punto concreto siempre y cuando se cumplan dos condiciones:
+ Mediante este problema comprobamos, \underline{solo en convergencia puntual}, el valor en el que converge la serie en un punto concreto siempre y cuando se cumplan dos condiciones:
 \begin{itemize}
         \item \(f(x)\) es continua o tiene un número finito de discontinuidades.
         \item \(f(x)\) tiene un número finito de extremos extrictos.
 \end{itemize}
-\noindent Con todo esto, concluimos que:
+ Con todo esto, concluimos que:
 \[
         \begin{cases}
                 f(x) \text{\hspace{1cm}Si \(x\) está en un punto continuo}

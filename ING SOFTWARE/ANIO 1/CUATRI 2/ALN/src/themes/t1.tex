@@ -1,5 +1,5 @@
 \subsection{Sistema de Ecuaciones Lineales}
-\noindent Considerando que un sistema de ecuaciones lineales se puede representar como \(\mathbf{Ax = b}\) podemos decir entonces que esta expresión equivale a:
+Considerando que un sistema de ecuaciones lineales se puede representar como \(\mathbf{Ax = b}\) podemos decir entonces que esta expresión equivale a:
 \[
         \spalignsys{
                 ax +  by + cz + \cdots = k ;
@@ -8,7 +8,7 @@
                 \cdots + \cdots +  \cdots +  \cdots = \cdots ;
         }
 \]
-\noindent Que es lo mismo que:
+Que es lo mismo que:
 \[
         \begin{pmatrix}
                 ax     & by     & cz     & \cdots \\
@@ -31,7 +31,7 @@
         \end{pmatrix}
 \]
 \subsubsection{Método de Eliminacion de Gauss}
-\noindent Aplicando transformaciones elementales simplificamos la matriz \((A|b)\) de forma que sea triangular superior:
+Aplicando transformaciones elementales simplificamos la matriz \((A|b)\) de forma que sea triangular superior:
 \[
         \begin{pmatrix}
                 1  & 2 & |3 \\
@@ -58,9 +58,9 @@
                 0 = 2 ;
         }
 \]
-\noindent En este caso no tiene solución.
+En este caso no tiene solución.
 \subsubsection{Discusión}
-\noindent Existen 3 tipos de sistemas de ecuaciones:
+Existen 3 tipos de sistemas de ecuaciones:
 \begin{itemize}
         \item Incompatible: No tiene soluciones.
         \item Compatible:
@@ -69,12 +69,12 @@
                       \item Indeterminado: Tiene infinitas soluciones.
               \end{itemize}
 \end{itemize}
-\noindent Para determinar cual es, sin resolverla, aplicamos el método de Rouché-Fröbenius:
-\par Si el Rango(\(A\)) \( \neq \) Rango(\(A|b\)) entonces es \underline{Incompatible}.
-\par Si el Rango(\(A\)) es igual al número de incógnitas, es \underline{Determinado}.
-\par Si el Rango(\(A\)) es menor al número de incógnitas es \underline{Indeterminado}.
+Para determinar cual es, sin resolverla, aplicamos el método de Rouché-Fröbenius:
+\par \hspace{1em} Si el Rango(\(A\)) \( \neq \) Rango(\(A|b\)) entonces es \underline{Incompatible}.
+\par \hspace{1em} Si el Rango(\(A\)) es igual al número de incógnitas, es \underline{Determinado}.
+\par \hspace{1em} Si el Rango(\(A\)) es menor al número de incógnitas es \underline{Indeterminado}.
 \subsection{Matrices Elementales}
-\noindent Llamamos a estas a las matrices que surgen de operar con sus filas (\(F\)) o columnas \(C\).
+Llamamos a estas a las matrices que surgen de operar con sus filas (\(F\)) o columnas \(C\).
 \begin{itemize}
         \item \(F_{ij} \Rightarrow   F_i \leftrightarrow F_j\)
         \item \(F_i(\lambda) \Rightarrow   F_i \leftarrow \lambda F_i\)
@@ -89,18 +89,18 @@
         \item \(F^{-1}_{ij}(\lambda) = F_{ij}(-\lambda)\)
 \end{enumerate}
 \subsection{Método de Gauss-Jordan}
-\noindent Se basa en el método de Gauss, partiendo de una matriz I, unitaria, debemos de encontrar otra tal que su producto nos devuelva la solución que buscamos.
+Se basa en el método de Gauss, partiendo de una matriz I, unitaria, debemos de encontrar otra tal que su producto nos devuelva la solución que buscamos.
 \subsubsection{Matriz Inversa}
-\noindent Para calcularla debemos de hacer transformaciones elementales de la matriz \(A|I\) tal que \(A\) se convierta en I, haciendo transformaciones elementales para obtener una matriz triangular superior y luego diagonal. Es decir:
+Para calcularla debemos de hacer transformaciones elementales de la matriz \(A|I\) tal que \(A\) se convierta en I, haciendo transformaciones elementales para obtener una matriz triangular superior y luego diagonal. Es decir:
 \[
         A^{-1} = FI
 \]
 \subsection{Método LU}
-\noindent \textbf{Para poder aplicar este algoritmo, y sus derivados, debemos de cerciorarnos que \(A\) es una matriz definida positiva, cada una de sus submatrices, partiendo desde el elemento en la primera columna, primera fila, y de ahí expandiendo, es positiva}.
+\textbf{Para poder aplicar este algoritmo, y sus derivados, debemos de cerciorarnos que \(A\) es una matriz definida positiva, cada una de sus submatrices, partiendo desde el elemento en la primera columna, primera fila, y de ahí expandiendo, es positiva}.
 \[
         Ax = b \hspace{1cm} A = LU
 \]
-\noindent Considerando \(A\) como la matriz con la que partimos, las matrices \(L\) y \(U\) son matrices diagonales inferior y superior, respectivamente. Considerando esto, podemos usar el método de Gauss para obtener la matriz \(U\) y para \(L\), aplicamos el siguiente sistema de ecuaciones:
+Considerando \(A\) como la matriz con la que partimos, las matrices \(L\) y \(U\) son matrices diagonales inferior y superior, respectivamente. Considerando esto, podemos usar el método de Gauss para obtener la matriz \(U\) y para \(L\), aplicamos el siguiente sistema de ecuaciones:
 \[
         \boxed{
                 \spalignsys{
@@ -108,7 +108,7 @@
                         Ux = y_0;
                 }}
 \]
-\noindent Siendo \(x\) la solución del sistema. ¿Cómo hayar \(L\)? A partir de las transformaciones elementales que hemos hecho, le hacemos la inversa, y se las aplicamos a una matriz unitaria, veamos este ejemplo:
+Siendo \(x\) la solución del sistema. ¿Cómo hayar \(L\)? A partir de las transformaciones elementales que hemos hecho, le hacemos la inversa, y se las aplicamos a una matriz unitaria, veamos este ejemplo:
 \[
         \begin{pmatrix}
                 2  & -1 & 0 & 1  \\
@@ -131,16 +131,16 @@
                 0 & 0  & 0 & 1
         \end{pmatrix}
 \]
-\noindent Ahora tenemos la siguiente ecuacion:
+Ahora tenemos la siguiente ecuacion:
 \[F_{42}\left ( \frac{1}{2} \right )F_{32}(-1)F_{41}\left ( \frac{1}{2} \right )F_{31}(1)F_{21}(-1)A = U\]
 
 \[
         L = (F_{42}\left ( \frac{1}{2} \right )F_{32}(-1)F_{41}\left ( \frac{1}{2} \right )F_{31}(1)F_{21}(-1))^{-1}\]
 \[L = F_{21}(1)F_{31}(-1)F_{41}\left ( \frac{-1}{2} \right ) F_{32}(1)F_{42}\left ( \frac{-1}{2} \right ) I\]
-\noindent Con todo esto, ya seríamos capaces de plantear los sistemas de ecuaciones.
+Con todo esto, ya seríamos capaces de plantear los sistemas de ecuaciones.
 \subsubsection{Método de Cholesky}
-\noindent Es una derivación del método LU, solo se puede usar cuando la matriz es simétrica \(A = A^t\), en cuyo caso \(A = KK^t\)
-\par \noindent De esta forma, ahora la ecuación que tendremos que resolver es la siguiente:
+Es una derivación del método LU, solo se puede usar cuando la matriz es simétrica \(A = A^t\), en cuyo caso \(A = KK^t\)
+\par  De esta forma, ahora la ecuación que tendremos que resolver es la siguiente:
 \[
         \boxed{
                 \spalignsys{
@@ -148,7 +148,7 @@
                         K^tx = y_0;
                 }}
 \]
-\noindent Para obtener \(K\) debemos de obtener \(L\) y multiplicarla por una matriz formada por los elementos de la diagonal de U, con su raiz cuadrada:
+Para obtener \(K\) debemos de obtener \(L\) y multiplicarla por una matriz formada por los elementos de la diagonal de U, con su raiz cuadrada:
 \[
         \begin{pmatrix}
                 4 & 2  & 0  \\

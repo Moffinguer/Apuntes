@@ -1,20 +1,20 @@
 \subsection{Introducción}
-\noindent Debemos considerar que \underline{derivabilidad} no es lo mismo que la \underline{diferenciabilidad}, y que trabajaremos con funciones reales, de dos variables, aunque se puede trabajar con \(n\) variables.
+ Debemos considerar que \underline{derivabilidad} no es lo mismo que la \underline{diferenciabilidad}, y que trabajaremos con funciones reales, de dos variables, aunque se puede trabajar con \(n\) variables.
 \subsection{Limite con dos variables}
-\noindent Existen infinitas direcciones para una función de \(n\) variables, solo en el caso de que exista el limite de esa función en un punto \(P(x_0,y_0)\), considerando dos variables. Vamos a estudiar 3 casos, en caso de comprobar que la función no es continua o no tiene limite, diremos que la función \(f\) no tiene dirección en ese sentido, pero se podría analizar usando la definición de límite.
+ Existen infinitas direcciones para una función de \(n\) variables, solo en el caso de que exista el limite de esa función en un punto \(P(x_0,y_0)\), considerando dos variables. Vamos a estudiar 3 casos, en caso de comprobar que la función no es continua o no tiene limite, diremos que la función \(f\) no tiene dirección en ese sentido, pero se podría analizar usando la definición de límite.
 \begin{itemize}
         \item \(y = mx\)
         \item \(y = mx^2\)
         \item \(y = \sqrt{x}\)
 \end{itemize}
-\noindent Sustituiremos el valor de \(y\) en el límite por estas suposiciones.
+ Sustituiremos el valor de \(y\) en el límite por estas suposiciones.
 \subsubsection{Continuidad}
-\noindent Al igual que con las funciones de una variable, para que sea continua en un punto, esta debe existir en un punto concreto y su límite existir también, valiendo lo mismo.
+ Al igual que con las funciones de una variable, para que sea continua en un punto, esta debe existir en un punto concreto y su límite existir también, valiendo lo mismo.
 \[
         \boxed{\exists \lim_{(x,y) \rightarrow  (x_0,y_0)}f(x,y) = f(x_0,y_0)}
 \]
 \subsection{Diferenciabilidad}
-\noindent Denominamos a las derivadas en funciones de más de una variable, a diferenciabilidad, y se basan en el mismo principio que las derivadas:
+ Denominamos a las derivadas en funciones de más de una variable, a diferenciabilidad, y se basan en el mismo principio que las derivadas:
 \[
         \frac{\partial f(x,y)}{\partial x} =D_1 \hspace{.5cm}\Rightarrow  \hspace{.5cm}\lim_{h\rightarrow k} \frac{f(x_0+h,y)-f(x_0,y_0)}{h}
 \]
@@ -22,56 +22,56 @@
         \frac{\partial f(x,y)}{\partial y} =D_2 \hspace{.5cm}\Rightarrow  \hspace{.5cm}\lim_{h\rightarrow k} \frac{f(x,y_0+h)-f(x_0,y_0)}{h}
 \]
 \subsubsection{Primer Orden}
-\noindent Las denominamos así a las diferenciales que se calculan por cada variable, con la función inicial
+ Las denominamos así a las diferenciales que se calculan por cada variable, con la función inicial
 \subsubsection{Segundo Orden}
-\noindent Las denominamos así a las diferenciales que se calculan por cada variable, con las funciones generadas por la derivada de Primer Orden. \par Y así hasta el infinito.
+ Las denominamos así a las diferenciales que se calculan por cada variable, con las funciones generadas por la derivada de Primer Orden. \par Y así hasta el infinito.
 \subsubsection{Diferenciales Cruzadas}
-\noindent Las denominamos así cuando las derivadas de segundo orden son las mismas, debido a la indiferenciabilidad de la variable.
+ Las denominamos así cuando las derivadas de segundo orden son las mismas, debido a la indiferenciabilidad de la variable.
 \subsection{Diferenciabilidad en un punto}
-\noindent Para que sea diferenciable en un punto, la función debe de poderse ``derivar'' por cada una de sus variables y se debe de poder calcular por definición, si no, no es diferenciable.
+ Para que sea diferenciable en un punto, la función debe de poderse ``derivar'' por cada una de sus variables y se debe de poder calcular por definición, si no, no es diferenciable.
 \subsection{Vector Gradiente}
 \[
         \boxed{\nabla f(x,y)_{{(x=x_0, y=y_0)}} = \Big(\frac{\partial f(x_0,y_0)}{\partial x},\frac{\partial f(x_0,y_0)}{\partial y}\Big)}
 \]
-\noindent Define la dirección de mayor crecimiento de la pendiente en un punto concreto.
+ Define la dirección de mayor crecimiento de la pendiente en un punto concreto.
 \subsection{Derivada Direccional}
-\noindent Diremos que por cada vector unitario \(\hat{u} = (u_x,u_y)\) y una constante \(\lambda\)
+ Diremos que por cada vector unitario \(\hat{u} = (u_x,u_y)\) y una constante \(\lambda\)
 \[
         \frac{\partial f(x,y)}{\partial x} = \lim_{\lambda\rightarrow 0} \frac{f(x_0+\lambda \hat{u_x}, y_0 + \lambda \hat{u_y})-f(x_0,y_0)}{\lambda}
 \]
 \[
         Df_{\hat{u}} = \nabla f \vec{u}
 \]
-\noindent Estudiar la variacion que experimenta una función cuando modificamos una variables en un proporción, es decir, la pendiente de la curva de la función en un punto con la dirección del vector, nos indicará si la recta corta en \(z=0\) al plano.
+ Estudiar la variacion que experimenta una función cuando modificamos una variables en un proporción, es decir, la pendiente de la curva de la función en un punto con la dirección del vector, nos indicará si la recta corta en \(z=0\) al plano.
 \subsection{Condición Suficiente de Diferenciabilidad}
-\noindent Si consideramos una esfera de actuación y un punto en el plano de los números reales, podemos afirmar:
+ Si consideramos una esfera de actuación y un punto en el plano de los números reales, podemos afirmar:
 \begin{itemize}
         \item \(f(x,y)\) es diferenciable para \(x\) e \(y\)
         \item \(\frac{\partial f(x,y)}{\partial x} \) y \(\frac{\partial f(x,y)}{\partial y} \) es continua en un punto cualquiera.
 \end{itemize}
 \subsection{Condición Necesaria de Diferenciabilidad}
-\noindent Asumiendo que la función es diferenciable en un punto, entonces todo vector unitario provoca que exista:
+ Asumiendo que la función es diferenciable en un punto, entonces todo vector unitario provoca que exista:
 \[
         \boxed{D_uf(x_0,y_0)=\nabla f(x_0,y_0)\frac{\vec{u}}{\hat{u}}}
 \]
 \subsection{Plano Tangente}
-\noindent Dada una función como \(z = f(x,y)\), podemos calcular el plano tangente a un punto \(P(x_0,y_0)\) usando la misma expresión que al calcular la recta tangente en un punto:
+ Dada una función como \(z = f(x,y)\), podemos calcular el plano tangente a un punto \(P(x_0,y_0)\) usando la misma expresión que al calcular la recta tangente en un punto:
 \[
         z- f(x_0,y_0) = \Big( \frac{\partial f(x_0,y_0)}{\partial x}, \frac{\partial f(x_0,y_0)}{\partial y}\Big) + (x-x_0, y-y_0)
 \]
 \[
         \boxed{z- f(x_0,y_0) = \frac{\partial f(x_0,y_0)}{\partial x}(x-x_0)+ \frac{\partial f(x_0,y_0)}{\partial y}(y-y_0)}
 \]
-\noindent \underline{El plano tangente} a la superficie \(f(x,y)\) en ese punto generará un plano de vector normal:
+ \underline{El plano tangente} a la superficie \(f(x,y)\) en ese punto generará un plano de vector normal:
 \[
         \boxed{\vec{u} = \Big(\frac{\partial f(x_0,y_0)}{\partial x},\frac{\partial f(x_0,y_0)}{\partial y},-1\Big)}
 \]
 \subsection{Extremos Relativos}
-\noindent Calculamos las derivadas parciales de primer orden de la función y obtenemos con que valores ambas se anulan:
+ Calculamos las derivadas parciales de primer orden de la función y obtenemos con que valores ambas se anulan:
 \[
         \frac{\partial f(x,y)}{\partial x} = 0 \hspace{0.75cm},\hspace{0.75cm} \frac{\partial f(x,y)}{\partial y} = 0
 \]
-\noindent De aquí obtendremos un conjunto \(\phi = \left \{ \left.  x_0, y_0, ... x_n, y_n\right \} \right.\)\par \noindent Tras esto construiremos una matriz Hessiana, formada por las derivadas parciales de segundo orden, y calcularemos su determinante:
+ De aquí obtendremos un conjunto \(\phi = \left \{ \left.  x_0, y_0, ... x_n, y_n\right \} \right.\)\par  Tras esto construiremos una matriz Hessiana, formada por las derivadas parciales de segundo orden, y calcularemos su determinante:
 \[\boxed{HF(x,y) = \begin{pmatrix}
                         \frac{\partial f(x,y)}{\partial^2 x}           & \frac{\partial f(x,y)}{\partial x \partial y} \\
                         \frac{\partial f(x,y)}{ \partial y \partial x} & \frac{\partial f(x,y)}{\partial^2 y}
@@ -80,7 +80,7 @@
 \[
         |HF(x,y)| =  \frac{\partial f(x,y)}{\partial^2 x} \frac{\partial f(x,y)}{\partial^2 y} - \frac{\partial f(x,y)}{\partial x \partial y}\frac{\partial f(x,y)}{ \partial y \partial x} = \Delta
 \]
-\noindent Tras obtener este determinante, sustituye \(x\) e \(y\) por los valores obtenidos previamente. De esta forma llegaremos a 4 conclusiones:
+ Tras obtener este determinante, sustituye \(x\) e \(y\) por los valores obtenidos previamente. De esta forma llegaremos a 4 conclusiones:
 \[
         \Delta
         \begin{cases}

@@ -1,7 +1,7 @@
 % !TeX root = .\IMD.tex
 \documentclass[oneside,11pt]{article}
 \usepackage{datetime}
-\usepackage[spanish]{babel}
+\usepackage[spanish, es-noindentfirst]{babel}
 \usepackage{mathrsfs}
 \usepackage{amsmath}
 \usepackage{tikz, pgf}
@@ -14,6 +14,8 @@
 \usepackage{changepage}
 \usepackage[annataritalic]{tengwarscript}
 \usepackage[a4paper, width=150mm, top=25mm, bottom=25mm]{geometry}
+\setlength{\parskip}{.25em}
+\setlength{\parindent}{0pt}
 \renewcommand{\today}{\number \day\space de \ifcase \month \or Enero\or Febrero\or Marzo\or Abril\or Mayo \or Junio\or Julio\or Agosto\or Septiembre\or Octubre\or Noviembre\or Diciembre\fi \space del \number \year}
 \usetikzlibrary{shapes}
 \pdfmapfile{=tengwarscript.map}
@@ -21,6 +23,6 @@
 \usetikzlibrary{arrows, babel}
 \begin{document}
 \include{./src/header/portada}
-\setlength{\parindent}{12pt}
+
 \include{./src/header/index}
 \end{document}

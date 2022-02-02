@@ -1,0 +1,26 @@
+\subsection{Introducción}
+Dado un sistema \(Ax=b\), si \(A\) es invertible, es decir, el sistema es \underline{compatible determinado}, por lo que podemos calcular la solución como \(\hat{x} = A^{-1}b\), siendo \(\hat{x}\) la única solución posible. \par
+Usamos este método cuando el sistema es pequeño, pero si la matriz \(A\) es extremadamente grande, podemos usar métodos de aproximación que nos ayuden a acercarnos a la solución, con un error muy cercano a 0. \par
+Para lograr esto usaremos el \underline{\textbf{radio espectral}} y el \underline{\textbf{autovalor}}.
+\subsection{Radio Espectral}
+Consideramos \(Q\) como una matriz cuadrada, por lo que un \textbf{autovalor} es un escalar \(\lambda\) para el que existe un vector \(x\) no nulo tal que:
+\[
+        Qx = \lambda x
+\]
+Tras esto podemos calcular los autovalores como:
+\[
+        \boxed{\left | Q - \lambda I \right | = 0}
+\]
+De esta forma solo tendremos que calcular un determinante para esta matriz resultante tal que sus raices son sus autovalores:
+\[
+        \boxed{\text{pQ}(\lambda) = \left | Q - \lambda I \right |}
+\]
+Así obtendremos el radio espectral, que será el autovalor de mayor valor, absoluto:
+\[
+        \boxed{\rho(\lambda) = \left \{ \left | \lambda \right | : \lambda \text{\hspace{2mm} autovalor de \hspace{2mm}} Q \right \}}
+\]
+\subsection{Descomposición}
+¿Cómo calculamos la matriz \(Q\)?,
+\subsubsection{Método de Jacobi}
+\subsubsection{Método de Gauss-Seidel}
+\subsubsection{Método de Relajación S.O.R}

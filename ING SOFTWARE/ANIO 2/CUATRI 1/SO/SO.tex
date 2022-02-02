@@ -1,6 +1,6 @@
 % !TeX root = .\SO.tex
 \documentclass[oneside,11pt]{article}
-\usepackage[spanish]{babel}
+\usepackage[spanish, es-noindentfirst]{babel}
 \usepackage{datetime}
 \usepackage{mathrsfs}
 \usepackage{amsmath}
@@ -15,6 +15,8 @@
 \usepackage[annataritalic]{tengwarscript}
 \usepackage{circuitikz}
 \usepackage[a4paper, width=150mm, top=25mm, bottom=25mm]{geometry}
+\setlength{\parskip}{.25em}
+\setlength{\parindent}{0pt}
 \renewcommand{\today}{\number \day\space de \ifcase \month \or Enero\or Febrero\or Marzo\or Abril\or Mayo \or Junio\or Julio\or Agosto\or Septiembre\or Octubre\or Noviembre\or Diciembre\fi \space del \number \year}
 \usetikzlibrary{shapes}
 \pdfmapfile{=tengwarscript.map}
