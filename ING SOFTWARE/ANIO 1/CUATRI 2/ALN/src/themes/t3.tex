@@ -64,10 +64,198 @@ Dado un sistema \(Ax=b\), con \(A\) invertible y \(b \neq 0\), \(b\) se modifica
                 Ax_p = b_p \hspace{2em} x_p = A^{-1}b_p;
         }
 \]
-La solución de \(x_p\) tendrá un error, \(\varepsilon = \left \| b - b_p \right \|\), que llamaremos \textbf{cota de error relativo}. \par Si:
-\[\xi \simeq 0 \Rightarrow  \left \| x_0 - x_p \right \| = \left \| A^{-1} \left ( b -b_p \right )\right \| \leq \left \| A^{-1} \right \| \left \| b - b_p \right \|\]
+La solución de \(x_p\) tendrá un error, \(\mathbf{C} = \left \| b - b_p \right \|\), que llamaremos \textbf{error absoluto}. \par Si:
+\[\varepsilon \simeq 0 \Rightarrow  \left \| x_0 - x_p \right \| = \left \| A^{-1} \left ( b -b_p \right )\right \| \leq \left \| A^{-1} \right \| \left \| b - b_p \right \|\]
 \underline{Esto significa que nos interesa que \(\left \| A^{-1} \right \|\) sea lo más pequeño posible, ya que \(\left \| b - b_p \right \|\) será muy pequeño}
-
+\par \vspace{1em}
+Por otro lado:
+\[
+        \left \| b \right \| \leq \left \| A x_0 \right \| \hspace{1em} \Rightarrow \hspace{1em} \left \| x_0 \right \| \leq \frac{\left \| b \right \|}{\left \| A \right \|}
+\]
+Entonces, el error relativo cumple lo siguiente:
+\[
+        \boxed{\frac{\left \| x_0 - x_p \right \|}{\left \| x_0 \right \|}\leq \left \| A \right \|\left \| A ^{-1} \right \| \frac{\left \| b - b_p \right \|}{\left \| b \right \|} < \lambda} \hspace{2em} \boxed{\text{cond}\left ( A \right )\varepsilon < \lambda}
+\]
+Considerando \(\lambda\) el error total, y \(\varepsilon\) el error de precisión, solo tendremos que tomar la precisión del error de precisión como:
+\[
+        \varepsilon > \frac{\left \|  b - b_p\right \|}{\left \| b \right \|}
+\]
+Podemos concluir que lo que indica si el error es grande o no es el condicionamiento de A, cuanto menor sea este valor, menor el error.
+\par Si \(\varepsilon\) no sobrepasa el valor \(\lambda\), diremos que el sistema está bien condicionado.[Ejemplo: \(\lambda = 10^{-3} \rightarrow \varepsilon = 10^{-4}\)]
+\par En definitiva:
+\[
+        \text{cond}(A)\frac{\mathbf{C}}{\left \| b_0 \right \|} < \lambda \hspace{1em}  ; \hspace{1em} \varepsilon > \frac{\mathbf{C}}{\left \| b_0 \right \|}
+\]
 \subsection{Transformaciones y Condicionamiento}
+Sigue siendo laborioso tantos cálculos, por ende usaremos estas propiedades para simplificar las tareas:
+\begin{itemize}
+        \item \(\text{cond}(A) \geq 1\) pero cuanto más cerca a 1 esté, mejor condicionado.
+        \item Si tenemos dos sistemas y \[
+                      \spalignsys{
+                              Ax = b ;
+                              Bx = c;
+                      }
+              \] El que tenga un condicionamiento más cercano a 1, será mejor.
+        \item Llamamos \(\lambda_{\text{min}}\) y \(\lambda_{\text{max}}\) a los autovalores de \(A^tA\) de mayor y menor módulo, por lo que tenemos:
+              \[
+                      \boxed{\text{cond}_2(A) = \left \| A \right \|_2 \left \| A^{-1} \right \|_2=\sqrt{\frac{\lambda_{\text{max}}}{\lambda_{\text{min}}}}}
+              \]
+        \item Llamamos a \(\lambda_n\) a los autovalores de \(A^tA\), por lo que tenemos:
+              \[
+                      \boxed{\text{cond}_\text{F}(A) = \left \| A \right \|_\text{F} \left \| A^{-1} \right \|_\text{F}=\sqrt{\sum_{i=1}\lambda_i \sum_{i=1}\frac{1}{\lambda_i}}}
+              \]
+\end{itemize}
+Para lograr una transformación eficiente, debemos de encontrar una matriz \(U\) tal que cumpla dos propiedades:
+\begin{itemize}
+        \item \(\text{cond}(UA)\leq \text{cond}(A)\)
+        \item La matriz \(U\) debe de ser unitaria, ortogonal:
+              \begin{itemize}
+                      \item \(U^{-1} = U^t\)
+                      \item \(U^tU = I\)
+                      \item \(\text{cond}(UA)_2 = \text{cond}(A)_2\)
+                      \item \(\text{cond}(UA)_\text{F} = \text{cond}(A)_\text{F}\)
+              \end{itemize}
+\end{itemize}
 \subsection{Transformaciones Householder}
+Dado un vector \(v \in \mathbb{R}^n\), se define la \underline{transformación Householder asociada a \(v\)}:
+\[
+        \boxed{H_v = I - \frac{2}{v^tv}vv^t}
+\]
+De forma que:
+\[
+        v = \begin{pmatrix}
+                v_1    \\
+                \vdots \\
+                v_n
+        \end{pmatrix}
+\]
+Así, podemos calcular los dos productos de una forma bastante eficiente:
+\[
+        \boxed{vv^t = \begin{pmatrix}
+                        v^2_1   & v_1v_2 & \cdots & v_1 v_n \\
+                        v_2v_1  & v_2^2  & \cdots & v_2 v_n \\
+                        \vdots  & \vdots & \ddots & \vdots  \\
+                        v_n v_1 & v_nv_2 & \cdots & v_n^2
+                \end{pmatrix}}
+        \hspace{3em}
+        \boxed{v^tv = \left \| v \right \|^2_2 = \sum_{i=1}v_i^2}
+\]
 \subsection{Método QR}
+Para lograr obtener \(v\) debemos de obtener dos vectores \(u\) y \(w\) que tendrán que tener la misma norma euclídea, y repetiremos el proceso tantas veces como filas tenga \(A\)
+\[
+        (A|b) = \begin{pmatrix}
+                1  & -3 & -2 & 3  & |2  \\
+                1  & 0  & 3  & 2  & | 2 \\
+                1  & -4 & 4  & 1  & | 2 \\
+                -1 & 3  & 1  & -4 & | 0 \\
+        \end{pmatrix}
+\]
+El vector \(u_1\) se corresponderá con la columna 1 de la matriz \(A\) y \(w_1\) con un vector del mismo tamaño que \(u_1\) con todos los valores a 0, excepto su posición 1.
+\par En caso de trabajar con la iteración enésima, \(u_n\) será el vector enésimo de la anterior transformación y \(w_n\) un vector con todos los valores a cero, salvo el de la posición enésima, todos los valores anteriores a esta posición tendrán el mismo valor que el del vector \(u_n\).
+\[
+        u_1 = \begin{pmatrix}
+                1 \\
+                1 \\
+                1 \\
+                -1
+        \end{pmatrix}
+        w_1 = \begin{pmatrix}
+                \left \| u_1 \right \|^2 \\
+                0                        \\
+                0                        \\
+                0
+        \end{pmatrix}
+        \left \| u_1 \right \|^2 = 2
+\]
+\[
+        v_1 = u_1 - w_1 = \begin{pmatrix}
+                -1 \\
+                1  \\
+                1  \\
+                -1
+        \end{pmatrix}
+\]
+\[
+        H_{v_1} = \begin{pmatrix}
+                1 & 1 & 1 & 1 \\
+                1 & 1 & 1 & 1 \\
+                1 & 1 & 1 & 1 \\
+                1 & 1 & 1 & 1
+        \end{pmatrix}
+        - \frac{2}{4}
+        \begin{pmatrix}
+                1  & -1 & -1 & 1  \\
+                -1 & 1  & 1  & -1 \\
+                -1 & 1  & 1  & -1 \\
+                1  & -1 & -1 & 1
+        \end{pmatrix}
+        H_{v_1}(A|b) = \begin{pmatrix}
+                2 & -5 & 2  & 5  & | 1  \\
+                0 & 2  & -1 & 0  & | -1 \\
+                0 & -2 & 0  & -1 & | -1 \\
+                0 & 1  & 5  & -2 & |3
+        \end{pmatrix}
+\]
+Ahora que tenemos la primera iteración hacemos las siguientes:
+\[
+        u_2 = \begin{pmatrix}
+                -5 \\
+                2  \\
+                -2 \\
+                1
+        \end{pmatrix}
+        w_2 = \begin{pmatrix}
+                -5                       \\
+                \left \| u_2 \right \|^2 \\
+                0                        \\
+                0
+        \end{pmatrix}
+        \left \| u_2 \right \|^2 = 3
+\]
+\[
+        v_2 = u_2 - w_2 =\begin{pmatrix}
+                0  \\
+                -1 \\
+                -2 \\
+                1
+        \end{pmatrix}
+\]
+\[
+        H_{v_2}(A|b) = \begin{pmatrix}
+                2 & -5 & 2 & 5  & |1  \\
+                0 & 3  & 1 & 0  & | 1 \\
+                0 & 0  & 4 & -1 & |3
+                \\ 0 &  0& 3 &  -2& |1
+        \end{pmatrix}
+\]
+Ahora la ultima:
+\[
+        u_3 = \begin{pmatrix}
+                2 \\
+                1 \\
+                4 \\
+                3
+        \end{pmatrix}
+        w_3 = \begin{pmatrix}
+                2                        \\
+                1                        \\
+                \left \| u_3 \right \|^2 \\
+                0
+        \end{pmatrix}
+        \left \| u_3 \right \|^2 = 5
+\]
+\[v_3 = u_3 - w_3 = \begin{pmatrix}
+                0  \\
+                0  \\
+                -1 \\
+                3
+        \end{pmatrix}\]
+\[
+        H_{v_3}(A|b) = \begin{pmatrix}
+                2 & -5 & 2 & 5  & |1 \\
+                0 & 3  & 1 & 0  & |1 \\
+                0 & 0  & 5 & -2 & |3 \\
+                0 & 0  & 0 & 1  & |1
+        \end{pmatrix}
+\]
+Ya solo tendremos que resolver el sistema resultante usando Gauss
