@@ -1,4 +1,244 @@
 \subsection{Conceptos Básicos}
 \subsubsection{Base de un Espacio Vectorial}
+Sea \(\mathcal{V}\) un espacio vectorial sobre \(\mathbb{R} \left(\mathcal{V} = \mathbb{R}^n\right) \) y \(\left(v_1,\cdots,v_n\right) \in \mathcal{V} \), denotaremos:
+\begin{enumerate}
+        \item  Una \underline{combinación lineal} (CL) de \(\left(v_1,\cdots,v_n\right)\) a cualquier expresión tal que:
+              \[
+                      \sum_{i=1}\alpha_i v_i \hspace{2em} \text{Con } \alpha_i \in \mathbb{R}
+              \]
+        \item  \(\left(v_1,\cdots,v_n\right)\) son \underline{linealmente independientes} (LI) si:
+              \[
+                      \sum_{i=1}\alpha_i v_i = 0
+              \]
+        \item  \(\left(v_1,\cdots,v_n\right)\) son \underline{linealmente dependientes} (LD) si no son \textbf{CL} del resto, es decir si \(\exists u,v \in \mathcal{V} \hspace{.25em} v = \alpha u\), es decir si ambos vectores son proporcionales entre si.
+              \(\left\{v_1,\cdots,v_n\right\} \) es un \underline{sistema generador} (Sg), de \(\mathcal{V}\) si cualquier vector de \(\mathcal{V}\) se puede expresar como \textbf{CL} de \(\left\{v_1,\cdots,v_n\right\} \)
+        \item  Llamamos \underline{base} de un espacio vectorial \(\mathcal{V}\) a cualquier conjunto de vectores \(\mathcal{B} = \left\{v_1,\cdots, v_n\right\} \) que sean \textbf{Sg} y \textbf{LI} (Como dato a tener en cuenta, mientras no nos digan lo contrario, trabajaremos sobre la \textbf{base canónica} \(\mathbf{C} = \left\{e_1,e_2,\cdots, e_n\right\} \)) que tendrán una estructura como esta:
+              \[
+                      e_1 =\begin{pmatrix}
+                              1      \\
+                              0      \\
+                              \vdots \\
+                              \vdots \\
+                      \end{pmatrix}
+                      e_2 =
+                      \begin{pmatrix}
+                              0      \\
+                              1      \\
+                              \vdots \\
+                              \vdots
+                      \end{pmatrix}
+                      \cdots
+                      e_n =
+                      \begin{pmatrix}
+                              0      \\
+                              0      \\
+                              \vdots \\
+                              1
+                      \end{pmatrix}
+              \]
+        \item Todas las bases de \(\mathcal{V}\) tienen el mismo número de vectores, se denomina \underline{dimensión} \(\text{dim}\left(\mathcal{V}\right) \)
+              \par Por esto, \(\forall u \in \mathcal{V}\), existe una forma de expresarlo como \textbf{Cl} de los vectores de la base en la que se encuentra:
+              \[
+                      \mathcal{B} = \left\{v_1,\cdots, v_n\right\}  \Rightarrow u = \sum^k_{n=1}\alpha_n v_n =\sum^k_{n=1}\beta_n v_n
+              \]
+        \item A los coeficientes, \(\left(\alpha, \beta\right) \), se les llama \underline{coordenadas de \(u\)} respecto de \(\mathcal{B}\), se escriben los vectores entonces así:
+              \[
+                      \boxed{u = v_1\left(\alpha_1,\cdots,\alpha_n\right),\cdots,v_n\left(\beta_1,\cdots,\beta_n\right)_\mathcal{B} }
+              \]
+              Por ejemplo:
+              \[
+                      \mathcal{B} = \left\{v_1\left(2,5\right) , v_2\left(1,-1\right) \right\} \hspace{2em} u=\left(4,3\right)
+              \]
+              \[
+                      \begin{pmatrix}
+                              4
+                              \\
+                              3
+                      \end{pmatrix}
+                      =\alpha_1
+                      \begin{pmatrix}
+                              2
+                              \\
+                              5
+                      \end{pmatrix}
+                      +\alpha_2
+                      \begin{pmatrix}
+                              1
+                              \\
+                              -1
+                      \end{pmatrix}
+                      \Rightarrow
+                      \spalignsys{
+                              u = (1\text{,}2)_\mathcal{B};
+                              u = (4\text{,}3)_\mathbf{C};
+                      }
+              \]
+\end{enumerate}
+Para terminar vamos a hablar de las bases.
+\par Partiendo de la definición de espacio vectorial, dada anteriormente y \(w,u \in \mathcal{V}\) de los que conocemos sus coordenadas en base \(\mathcal{B}\) vemos:
+\[
+        w_\mathcal{B} = \sum^k_{i=1}\alpha_i u_{i\mathcal{B}} \Leftrightarrow \begin{pmatrix}
+                u_{1\mathcal{B}} & \cdots & u_{k\mathcal{B}}
+        \end{pmatrix}
+        \begin{pmatrix}
+                \alpha_1 \\
+                \vdots   \\
+                \alpha_k
+        \end{pmatrix}
+        =w_\mathcal{B}
+\]
+De esta forma \(w\) es \textbf{CL} de \(u\) solamente si el sistema de ecuaciones con el que trabajemos,\(Ax=b\), es compatible.
+\begin{itemize}
+        \item[\(\Rightarrow\)] \(\left(u_1,\cdots,u_n\right) \) son \textbf{LI} si y solo si, el rango de nuestra matriz \(A\) es igual al tamaño de este vector \(u\): \(\text{Rango}\left(A\right) = n \) y \(\left\lvert A\right\rvert \neq 0\)
+        \item[\(\Rightarrow\)] \(\left\{u_1,\cdots,u_n\right\} \) es base de \(\mathcal{V}\), por lo que \(\text{dim}\left(\mathcal{V}\right) = n \) y el vector \(u\) tiene todas sus componentes \textbf{LI}, si se aplica cualquier transformación elemental por filas.
+\end{itemize}
 \subsubsection{Cambio de Base}
-\subsubsection{Variedad Lineal}
+Supongamos que tenemos dos bases \(\mathcal{B}\)\ y \(\mathcal{D}\), de un espacio vectorial \(\mathcal{V}\) y un vector genérico \(v\), digamos que para expresar el vector \(v\) en base \(\mathcal{B}\) a la base \(\mathcal{D}\):
+\[
+        \boxed{v_\mathcal{D} =
+                \begin{pmatrix}
+                        u_{1\mathcal{D}} & |\cdots| & u_{n\mathcal{D}}
+                \end{pmatrix}
+                \begin{pmatrix}
+                        v_{1\mathcal{B}}
+                        \\
+                        \vdots
+                        \\
+                        v_{n\mathcal{B}}
+                \end{pmatrix}}
+        \hspace{3em}
+        \boxed{v_\mathcal{B} =
+        \begin{pmatrix}
+                u_{1\mathcal{D}} & |\cdots | & u_{n\mathcal{D}}
+        \end{pmatrix}^{-1}
+        \begin{pmatrix}
+                v_{1\mathcal{D}}
+                \\
+                \vdots
+                \\
+                v_{n\mathcal{D}}
+        \end{pmatrix}}
+\]
+Solo podremos hacer esto cuando las dos bases con las que trabajemos, se encuentren en el mismo espacio vectorial.
+\par Ejemplo:
+\[
+        \mathcal{B} = \left\{v_1, v_2, v_3, v_4\right\}  \hspace{1em} \mathcal{D} = \left\{u_1, u_2, u_3, u_4\right\} \in \mathbf{R}^4 \Rightarrow
+        \spalignsys{
+                u_1 = 3v_1 - 2_v3 + v_4;
+                u_2 = -v_1 + v_2 - v_4;
+                u_3 = v_1 - 2v_2 + v_3 + 2v_4;
+                u_4 = v_2 - v_3
+        }
+\]
+Podemos sacar la siguiente ecuacion de la base \(\mathcal{D}\) respecto de \(\mathcal{B}\):
+\[
+        \mathcal{D} = \left\{\left(3,0,-2,1\right)_\mathcal{B},
+        \left(-1,1,0,-1\right)_\mathcal{B},
+        \left(1,-2,1,2\right)_\mathcal{B},
+        \left(0,1,-1,0\right)_\mathcal{B}
+        \right\}
+\]
+Ahora, aplicando la definición:
+\[
+        v_\mathcal{B} = B_\mathcal{B} v_\mathcal{D} \hspace{2em} v_\mathcal{D} = B_\mathcal{B}^{-1} v_\mathcal{B}
+\]
+\subsection{Variedad Lineal}
+Considerando un conjunto de vectores \(v \in \mathcal{V}\), llamamos \textbf{variedad lineal generada} por los vectores de \(v\) al conjunto de \textbf{CL} posibles de dichos vectores, se denota por \(L=\mathcal{L}\left\langle v_1, \cdots, v_n\right\rangle \). Es decir:
+\[
+        \mathcal{L}\left\langle v_1, \cdots, v_n\right\rangle = \left\{\sum_{i=1}^n\alpha_i v_i \hspace{.25em} : \hspace{.25em} \alpha_1,\cdots,\alpha_n \in \mathbf{R}^n\right\}
+\]
+\par Propiedades:
+\begin{itemize}
+        \item \(L\) es un subespacio vectorial de \(\mathcal{V}\).
+        \item El conjunto de vectores \(v\) es un \textbf{Sg} de\(L\).
+        \item Si eliminamos los vectores \textbf{LI} de \(v\), obtenemos una base de \(L\).
+        \item Si \(L\) contiene a un solo vector, trabajamos con una recta; si tiene 2, con un plano; si tiene 3 con un espacio tridimensional, etc
+        \item \(0 \leq \text{dim}\left(L\right) \leq \text{dim}\left(\mathcal{V}\right) \), por lo tanto:
+              \begin{itemize}
+                      \item \(\text{dim}\left(L\right) = 0 \Leftrightarrow L = \left\{\emptyset\right\} \)
+                      \item \(\text{dim}\left(L\right) = \text{dim}\left(\mathcal{V}\right) \Leftrightarrow L = \mathcal{V} \)
+              \end{itemize}
+\end{itemize}
+\subsubsection{Ecuaciones de Base}
+Existen distintas formas de representar los vectores de una base \(\mathcal{B}\) en una \underline{variedad lineal} \(L\):
+\begin{enumerate}
+        \item \underline{\textbf{Ecuación Vectorial}}: \(x_\mathcal{B} = \sum_{i=1}^n \alpha_i v_{i\mathcal{B}}\)
+        \item \underline{\textbf{Ecuación Paramétrica}}: Es el sistema de ecuaciones que obtenemos.
+        \item \underline{\textbf{Ecuaciones Implícitas}}: Expresandose como un sistema de ecuaciones o imponiendo que el número de ecuaciones sea igual a \(\text{dim}\left(\mathcal{V}\right) = \text{dim}\left(\mathcal{L}\right) \), es decir, \(\text{Rango}\left(u_{1\mathcal{B}} \left\lvert \cdots \right\rvert  u_{n\mathcal{B}}\right)  =
+              \text{Rango}\left(u_{1\mathcal{B}} \left\lvert \cdots \right\rvert  u_{n\mathcal{B}| x_\mathcal{B}}\right)
+              \)
+\end{enumerate}
+\[
+        \begin{pmatrix}
+                x \\
+                y \\
+                z
+        \end{pmatrix}
+        =
+        \alpha_1 \begin{pmatrix}
+                1 \\
+                0 \\
+                -2
+        \end{pmatrix} + \alpha_2 \begin{pmatrix}
+                0  \\
+                -1 \\
+                3
+        \end{pmatrix}
+        \rightarrow_{1,2}
+        \spalignsys{
+                x = \alpha_1;
+                y = \alpha_2;
+                z = 3\alpha_2 - 2\alpha_1;
+        }
+        \rightarrow_{2,3} 2x + 3y +z = 0
+\]
+Ejemplo:
+\[\mathcal{B} = \left\{v_1,\cdots, v_5\right\} \hspace{1em} L = \mathcal{L}\left\langle u_1,\cdots, u_4\right\rangle  \]
+\[
+        \spalignsys{
+                u_1 = v_1 - v_2 + 2v_3 + v_4;
+                u_2= v_2 - 2v_3 + v_4 + 2v_5;
+                u_3= v_2 + 6v_3 + 3v_4 -4v_5;
+                u_4= -v1 + 2v_2 + v_4 -v_5;
+        } \Rightarrow
+        \spalignsys{
+                u_1 (1\text{,}-1\text{,}2\text{,}1\text{,}0);
+                u_2 (0\text{,}1\text{,}-2\text{,}1\text{,}2);
+                u_3= (0\text{,}1\text{,}6\text{,}3\text{,}-4);
+                u_4= (-1\text{,}2\text{,}0\text{,}1\text{,}-1)}
+\]
+Si queremos obtener una base de \(L\) en \(B\), debemos sacar las ecuaciones implícitas de \(L\) en base \(B\), por lo que el rango entre los vectores de \(L\) y los de \(L \bigcup \left\{x_\mathcal{B}\right\} \) deben de ser iguales:
+\[
+        \begin{pmatrix}
+                1  & 0  & 0  & -1 & | x_1 \\
+                -1 & 1  & 1  & 2  & |x_2  \\
+                2  & -2 & 6  & 0  & |x_3  \\
+                1  & 1  & 3  & 1  & |x_4  \\
+                0  & 2  & -4 & -1 & |x_5
+        \end{pmatrix}
+        \xrightarrow[\text{Usando Gauss}]{\text{Hacemos transformaciones elementales}}
+        \begin{pmatrix}
+                1 & 0 & 0 & -1 & x_1                      \\
+                0 & 1 & 1 & 1  & x_1 + x_2                \\
+                0 & 0 & 2 & 1  & -2x_1 - x_2 +x_4         \\
+                0 & 0 & 0 & 0  & 8x_1 + 6x_2 + x_3 - 4x_4 \\
+                0 & 0 & 0 & 0  & -8x_1 -5x_2 - 3x_4 + x_5
+        \end{pmatrix}
+\]
+Vemos que el rango de \(L\) es 3, por lo que para que el rango de la matriz ampliada se iguale, obtenemos las ecuaciones de \(L\) en base \(\mathcal{B}\) :
+\[
+        \spalignsys{
+                8x_1 + 6x_2 + x_3 - 4x_4 = 0;
+                -8x_1 -5x_2 - 3x_4 + x_5 = 0;
+        }
+\]
+Por otro lado debemos de convertir la matriz escalonada que obtuvimos antes, a una diagonal unitaria, para así obtener una base de \(L\), y como sabemos que el rango debe de ser 3, solo tendrá 3 variables esta base:
+\[
+        \begin{pmatrix}
+                1 & 0 & 0 & -1          \\
+                0 & 1 & 0 & \frac{1}{2} \\
+                0 & 0 & 1 & \frac{1}{2} \\
+                0 & 0 & 0 & 0           \\
+                0 & 0 & 0 & 0
+        \end{pmatrix} \equiv \left \{ \hat{u_1}, \hat{u_2}, \hat{u_3}, -\hat{u_1} + \frac{1}{2}(\hat{u_2} + \hat{u_3}) \right \}
+\]
