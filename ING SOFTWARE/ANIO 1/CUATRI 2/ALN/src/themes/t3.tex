@@ -38,7 +38,7 @@ De esta forma podemos calcular también la distancia entre dos vectores:
 \]
 Es un \textbf{espacio normado}, un espacio vectorial \(\mathcal{V}\) dotado de una forma:
 \begin{itemize}
-        \item \(\left \| u \right \|_{\infty} = \text{max}\left \{ \left | u_1 \right |, ..., \left | u_n \right | \right \} \)
+        \item \(\left \| u \right \|_{\infty} = \max \left \{ \left | u_1 \right |, ..., \left | u_n \right | \right \} \)
         \item \(\left \| u \right \|_k=\sqrt[k]{\sum_{n=1} u_n^k}\)
         \item Norma euclídea: \(\left \| u \right \|_2=\sqrt[2]{\sum_{n=1} u_n^2}\)
 \end{itemize}
@@ -50,9 +50,9 @@ Una \textbf{norma matricial}, se define en un espacio de matrices, normas sobre 
 \end{itemize}
 Ejemplos de normas son:
 \begin{itemize}
-        \item \(\left \| A \right \| = \text{max}_{u \neq 0} \frac{\left \| Au \right \|}{\left \| u \right \|}\)
-        \item \underline{La máxima suma de las \textbf{columnas}} \(\left \| A \right \|_\infty = \text{max} \sum_{j=1} \left | a_{ij} \right |\)
-        \item \underline{La máxima suma de las \textbf{filas}} \(\left \| A \right \|_1 = \text{max} \sum_{i=1} \left | a_{ij} \right |\)
+        \item \(\left \| A \right \| = \max _{u \neq 0} \frac{\left \| Au \right \|}{\left \| u \right \|}\)
+        \item \underline{La máxima suma de las \textbf{columnas}} \(\left \| A \right \|_\infty = \max  \sum_{j=1} \left | a_{ij} \right |\)
+        \item \underline{La máxima suma de las \textbf{filas}} \(\left \| A \right \|_1 = \max  \sum_{i=1} \left | a_{ij} \right |\)
         \item \textbf{\underline{Norma espectral}}: \(\left \| A \right \|_2 = \sqrt{\rho(A^tA)}\)
         \item \textbf{\underline{Norma de Frobenius}}, es la suma de todos los elementos de la matriz, al cuadrado: \(\sqrt{\sum_{i=1}\sum_{j=1} a_{ij}^2}\).\par O la suma de los elementos de la matriz traspuesta por si misma: \(\sqrt{\delta(A^t,A)}\) \par Es similar a la norma espectral.
 \end{itemize}
@@ -96,9 +96,9 @@ Sigue siendo laborioso tantos cálculos, por ende usaremos estas propiedades par
                               Bx = c;
                       }
               \] El que tenga un condicionamiento más cercano a 1, será mejor.
-        \item Llamamos \(\lambda_{\text{min}}\) y \(\lambda_{\text{max}}\) a los autovalores de \(A^tA\) de mayor y menor módulo, por lo que tenemos:
+        \item Llamamos \(\lambda_{\text{min}}\) y \(\lambda_{\max }\) a los autovalores de \(A^tA\) de mayor y menor módulo, por lo que tenemos:
               \[
-                      \boxed{\text{cond}_2(A) = \left \| A \right \|_2 \left \| A^{-1} \right \|_2=\sqrt{\frac{\lambda_{\text{max}}}{\lambda_{\text{min}}}}}
+                      \boxed{\text{cond}_2(A) = \left \| A \right \|_2 \left \| A^{-1} \right \|_2=\sqrt{\frac{\lambda_{\max }}{\lambda_{\text{min}}}}}
               \]
         \item Llamamos a \(\lambda_n\) a los autovalores de \(A^tA\), por lo que tenemos:
               \[
