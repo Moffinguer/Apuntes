@@ -244,7 +244,57 @@ Por otro lado debemos de convertir la matriz escalonada que obtuvimos antes, a u
         \end{pmatrix} \equiv \left \{ \hat{u_1}, \hat{u_2}, \hat{u_3}, -\hat{u_1} + \frac{1}{2}(\hat{u_2} + \hat{u_3}) \right \}
 \]
 \subsection{Operaciones entre Espacios}
+\begin{itemize}
+        \item \underline{Intersección} \(L_1 \cap  L_2 \):  Obtenemos las ecuaciones implícitas de ambos espacios (juntando)
+        \item \underline{Suma} \(L_1 +  L_2 \Rightarrow \mathcal{L}\left\langle v_1,\cdots,w_1,\cdots\right\rangle \):   Juntamos los dos espacios y sacamos los vectores \textbf{LI}.
+        \item \underline{Suma Directa}\(L_1 \bigoplus  L_2 = L_1 + L_2 \Leftrightarrow L_1 \cap  L_2 = \left\{\emptyset\right\} \): Si la suma nos da como resultado el mismo espacio vectorial sobre el que trabajamos, \(\mathcal{V}\) entonces, ambos espacios contienen variables complementarias.
+\end{itemize}
 \subsection{Producto Escalar}
+Lo denotamos como \(\left\langle u,w\right\rangle  \in \mathcal{V}\), con \(u_\mathcal{B}\) y \(w_\mathcal{B}\) siendo vectores no nulos. Por definición el producto escalar es:
+\[
+        \boxed{\left\langle u,w\right\rangle = \left\lVert u\right\rVert_2 \left\lVert w\right\rVert_2 \cos{\sigma} }
+\]
+Sin embargo, esta es la definición que nos sirve al estudiar la ortogonalidad, de forma general funciona de una forma distinta:
+\[
+        \boxed{\left\langle u,w\right\rangle =
+                \begin{pmatrix}
+                        u_1 & \cdots & u_n \\
+                \end{pmatrix}_\mathcal{B}
+                Q
+                \begin{pmatrix}
+                        w_1    \\
+                        \vdots \\
+                        w_n    \\
+                \end{pmatrix}}_\mathcal{B}
+\]
+¿Qué es esta matriz \(Q\)? Es una matriz compuesta por todas las combinaciones posibles entre los vectores que conforman la base con la que trabajamos, de forma que sus valores son el producto escalar entre 2 vectores cualquiera de esa base:
+\[
+        Q = \begin{pmatrix}
+                \left\langle v_1,v_1\right\rangle & \cdots & \left\langle v_1,v_n\right\rangle  \\
+                \vdots                            & \ddots & \vdots                             \\
+                \cdots                            & \cdots & \left\langle v_n, v_n\right\rangle
+        \end{pmatrix}
+\]
+Aquí \(v \in \mathcal{B}\). Por lo tanto podemos describir el producto escalar de la siguiente forma:
+\[
+        \boxed{\left\langle u,w\right\rangle = u^t Q w = \sum^n_{i=1} \sum_{j=1}^n u_i w_j \left\langle v_i,v_j\right\rangle}
+\]
 \subsubsection{Ortogonalidad}
+Decimos  que dos vectores son ortogonales cuando su producto escalar es cero, son perpendiculares. \textbf{También sabemos que el producto escalar es conmutativo} y
 \subsection{Ortonormalidad}
-\subsubsection{Ortonormalidad de Gram–Schmidt}
+Decimos que tenemos una base ortonormal cuando:
+\begin{itemize}
+        \item \textbf{El producto escalar de un vector por si mismo vale \(1\)}
+        \item \textbf{El producto escalar por el resto de combinaciones de vectores, vale cero, es decir, son ortonales}.
+\end{itemize}
+\subsubsection{Ortonormalidad de Gram-Schmidt}
+Para obtener un conjunto de vectores ortonormales debemos de obtener una base ortonormal, y para esto aplicaremos el algoritmo de Gram-Schmidt:
+\[
+        \boxed{w_k = u_k - \sum^{k-1}_{n=1} w_n\frac{\left\langle u_k, w_n\right\rangle }{\left\langle w_n, w_n\right\rangle }}
+\]
+Siendo \(u_k\) el vector que conforma un espacio concreto y \(w_k\) vectores ortogonales entre si, de forma que para que sean ortonormales, crearemos un espacio tal que:
+\[
+        v = \left(\frac{w_1}{\left\lVert w_1\right\rVert }, \cdots, \frac{w_k}{\left\lVert w_k\right\rVert }\right)
+\]
+\subsubsection{Variedad Ortogonal}
+Denotamos a aquellas variedades, tal que el producto escalar entre los vectores de dos bases, da siempre cero.
