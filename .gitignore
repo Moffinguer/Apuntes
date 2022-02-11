@@ -15,6 +15,7 @@
 *.fls
 *.toc
 *.synctex.gz
+__latexindent_temp.tex
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
