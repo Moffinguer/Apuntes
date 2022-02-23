@@ -1,0 +1,68 @@
+\subsection{Caminos}
+Conjunto de vértices y aristas adyacentes, pueden ser varios, que indican la ruta a seguir de un punto a otro del grafo. Pueden ser:
+\begin{itemize}
+        \item Simple: No se repiten vértices
+        \item Cerrado: El camino vuelve al vertice de origen.
+        \item Recorrido: No se repiten aristas.
+        \item Circuito: Es cerrado y recorrido.
+        \item Ciclo: Es cerrado y simple.
+\end{itemize}
+\subsection{Conexión de Grafos}
+Si dos vértices están conectados, entonces existe un camino simple entre ellos. Podemos distinguir, dos tipos:
+\begin{itemize}
+        \item Conexo: Todos los vértices están  conectados entre si, existe un camino para ir de un vértice a otro.
+        \item No Conexo: Poseen varias componentes conexas, independientes.
+\end{itemize}
+\subsubsection{Distancia}
+Definimos la distancia como el número de aristas entre dos vértices que recorren el camino más corto.
+\[
+        d(v_0, v) = N | \infty
+\]
+Si no hay un camino, se indica con el símbolo de infinito. Usamos el algoritmo de BFS para calcular este valor.
+\subsubsection{Excentricidad}
+Es la mayor distancia que existe partiendo de un vértice.
+\[
+        e(v) = \max{d(v,u) : u\in \mathcal{V}}
+\]
+Podemos determinar que el conjunto de vértices con la menor excentricidad se denomina \underline{Centro}, y su valor se denomina \underline{radio de un grafo}, \(\text{rad}(G)\). Al conjunto de vértices con la mayor excentricidad, se denomina \underline{periferia}, y su valor se denomina \underline{diámetro}, \(\text{diam}(G)\).
+\subsection{Conexión en Digrafos}
+Las definiciones que hemos usado sirven solo para grafos no dirigidos o no ponderados, aquí afecta el hecho de que una arista solo puede recorrerse en un sentido.
+\par Podemos distinguir nuevos conceptos:
+\begin{itemize}
+        \item Semicamino: Es el camino que se obtiene al suprimir la orientación de las aristas
+        \item Grafo Debilmente Conexo: Si consideramos el grafo sin orientación, podemos decir que es conexo si satisface su definición.
+        \item Unilateralmente Conexo: No se encuentra un camino dirigido de un vértice a otro (con que exista un vértice que lo cumpla, sirve).
+        \item Fuertemente Conexo: A partir de un vértice cualquiera, puedes llegar a cualquier otro vértice del grafo.
+\end{itemize}
+\subsubsection{Componentes}
+Podemos analizar un grafo por componentes, es decir, si somos capaces de generar dos grafos que al unirlos nos proporcionen el grafo original, y una de sus componentes posea la cualidad de ser un grafo Fuertemente Conexo; Unilateralmente Conexo o Debil, entonces podemos decir que ese grafo posee una componente de ese tipo.
+\par En el caso de las componentes fuertemente conexas, podemos usar el \underline{algoritmo de Tarjan}.
+\subsection{K-Conexión}
+Estudiaremos la fragilidad de una red, a la hora de eliminar un vértice o arista. Si eliminar algo del grafo, impide que se puedan hacer caminos entre todos los vértices, entonces se dice que es \underline{fragil}.
+\begin{itemize}
+        \item Si el grafo es de tipo rueda, se volverá fragil, al eliminar 3 vértices.
+        \item Si el grafo es ciclo, se vuelve fragil, eliminando dos vértices.
+
+\end{itemize}
+\subsubsection{Cortes}
+Hay distintos tipos:
+\begin{itemize}
+        \item Se dice que es un vértice de corte, si es el único vértice que al eliminar, rompe el grafo.
+        \item Pareja de corte: formado por dos vértices corte, si no se eliminan los dos, no se rompe.
+\end{itemize}
+Indicamos la conectividad de un grafo con \(k(G)\), de forma que indica el número de vértices que se necesitan eliminar.
+\par Si eliminamos las aristas:
+\begin{itemize}
+        \item Llamamos arista puente a la arista que al eliminarla, rompe el grafo.
+        \item Si existe un conjunto de aristas puente, lo denominamos aristas de corte.
+\end{itemize}
+Lo representamos con \(\lambda(G)\), y su valor es el número de aristas mínimas a eliminar para romperlo. Se llama \underline{conectividad lineal}
+\subsubsection{Whitney}
+Dado un grafo conexo, decimos que la conectividad será menor o igual que la conectividad lineal y menor que la valencia más pequeña del grafo:
+\[
+        k(G) \leq \lambda(G) \leq \delta(G)
+\]
+\subsubsection{Teorema de Menger}
+La conectividad de un grafo coincide con el número de caminos disjuntos que hay en un grafo, entre dos vértices, que están conectados por el menor número de caminos disjuntos. El par de vértices con el menor número de caminos, que no repitan vértices, indicará la conectividad.
+\par
+La conectividad lineal de un grafo coincide con el número de caminos disjuntos entre aristas, no se repiten aristas, que separan dos vértices por el menor número de caminos disjuntos.
